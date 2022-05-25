@@ -9,7 +9,6 @@ type Props = {
 
 const Pill = ({ name, icon }: Props) => {
     const [active, setActive] = useState<boolean>(false)
-    console.log(`${name} is ${active}`);
     
   return (
     <div onClick={() => setActive(!active)} className={`group select-none flex flex-row justify-between border ${active ? "border-neutral-800 dark:bg-neutral-200/[0.15] dark:border-neutral-200" : "bg-neutral-200 dark:bg-neutral-800 border-transparent" } p-2.5 rounded hover:border-neutral-700 dark:hover:border-neutral-500 transtion-all duration-150 cursor-pointer`}>

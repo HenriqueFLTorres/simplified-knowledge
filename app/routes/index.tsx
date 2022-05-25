@@ -10,9 +10,26 @@ import ReactIcon from "../svg/ReactIcon";
 import NextJS from "../svg/NextJS";
 import NodeJS from "../svg/NodeJS";
 
+import * as firstPost from "./blog/referencia-vs-valor.mdx"
+
 import styles from "../styles/tailwind.css";
+import { LoaderFunction } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
+import { pseudoRandomBytes } from "crypto";
+
+const getPostFromModule = (mod: any) => {
+  return {
+    name: mod.filename.replace(/\.mdx?$/, ""),
+    ...mod.attributes,
+  }
+}
+
+export const loader: LoaderFunction = () => {
+  return [getPostFromModule(firstPost)];
+}
 
 export default function Index() {
+  const posts = useLoaderData()
   
   return (
     <div className="font-sanspro w-full h-screen bg-neutral-100 dark:bg-neutral-900">
@@ -30,7 +47,12 @@ export default function Index() {
       </div>
 
       <div className="flex flex-row w-4/5 mx-auto justify-center mt-32">
-        <BlogCard name="Reference - A deep dive into comparasion and memory cleanup" date="5 Nov" readTime="5 min" tags={<JavaScript/>} />
+        <ul>
+          {posts.map((post: any) => {
+            const { title, posted, readTime, link } = post
+            return <BlogCard key={title} name={title} link={link} date={posted} readTime={readTime} tags={<JavaScript/>} />
+          })}
+        </ul>
       </div>
     </div>
   );
