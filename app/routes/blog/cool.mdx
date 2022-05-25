@@ -1,42 +1,42 @@
 ---
-title: "Valor e Referência: Porque você deve saber a diferença?"
+title: "Referência e Valor: Por que você deve saber a diferença"
 posted: "5 20 2022"
 edited: "5 20 2022"
 mainImage: ""
 ---
 
-import Code from "../../components/Code"
+import Code from "../../components/Code";
+import Highlight from "../../components/Highlight";
 
 ## {attributes.title}
 
-Se por algum motivo você já tentou comparar objetos ou arrays no javascript, você provavelmente ficou confuso do porque apesar de eles terem o mesmo valor, eles não são "iguais". <br/>
+Se por algum motivo você tentou comparar <Code>objetos</Code> ou <Code>arrays</Code> em JavaScript, você provavelmente ficou confuso, porque eles não eram os mesmos apesar de ter um valor/conteúdo idêntico. <br/>
 
-Isso acontece porque o javascript compara os objetos ou arrays por sua REFERENCIA e não seu real valor, podendo causar dor de cabeça caso você não saiba como isto funciona.<br/>
+Isso acontece porque o JavaScript compara tipos não primitivos com sua <Highlight>referência</Highlight> e não com seu valor real, e não saber disso pode causar dor de cabeça.
 
-## Cópia por Valor <br/>
+### Copiar por Valor <br/>
 
-Informações primitivas, <Code>String</Code>, <code>Number</code>, <code>Boolean</code>, <code>undefined</code>, <code>null</code>, são chamadas assim, porque, ao jogarmos suas informações ou valor em alguma outra variável, esta nova variável irá copiar o seu valor, ou seja, sua informação.
+Tipos de dados primitivos como <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code>, <Code>null</Code>, são marcados como tipos <Highlight>Valor</Highlight>, porque, quando copiamos sua informação ou valor para alguma outra variável, essa nova variável copiará seu valor.
 
-<br />
-Veja o exemplo a seguir
+Veja o exemplo a seguir.
 
 ```js
-let 🍎 = "Maça"
-let 💰 = 0
+let 🍎 = "Maçã"
+deixe 💰 = 0
 
-let 🍏 = 🍎 // "Maça"
-let 👜 = 💰 // 0
+let 🍏 = 🍎 // "Maçã"
+deixe 👜 = 💰 // 0
 
 console.log(🍏 === 🍎) // true
 console.log(👜 === 💰) // true
 
 ```
 
-Ao compararmos as novas variáveis usando <code>console.log()</code>, ele vai nos retornar <code>true</code>, pois o javascript compara os primitivos de acordo com os seu conteúdo.
+Ao comparar as novas variáveis usando <Code>console.log()</Code>, ele retornará <Code>true</Code>, pois o JavaScript compara as primitivas de acordo com seu conteúdo.
 
-## Cópia por Referência
+### Copiar por referência
 
-Por outro lado, os copiados por sua referência, <code>Arrays</code>, <code>Objetos</code> e <code>Funcões</code>, ao definirmos uma nova variável com suas informações, esta nova variável não irá conter o seu valor, apenas sua referência!
+Por outro lado, os não primitivos, <Code>Array</Code>, <Code>Object</Code> e <Code>Function</Code>, são marcados como tipo de <Highlight>Referência</Highlight> . Porque, quando definimos uma nova variável com suas informações, essa nova variável terá sua referência e não seu valor.
 
 <br />
 Veja o exemplo a seguir
@@ -50,11 +50,13 @@ console.log(🚓 === 🚗) // false
 console.log(🚘 === 🚗) // true
 ```
 
-Vamos voltar um pouco no texto "esta nova variável não irá conter o seu valor, apenas sua referência!". Calma aí, se não vai ter o valor, como o javascript conseguiu comparar o 🚘 com o 🚗? E porque que 🚓 quando comparado com 🚗, o javascript nos diz que é "diferente"? A resposta é simples, comparação por referência! assim como informações primitivas que são copiadas e comparadas por valor, as não primitivas são copiadas e comparadas por referência
+Vamos voltar a algumas linhas do texto <Highlight>"esta nova variável terá sua referência e não seu valor"</Highlight>. Mas, se não terá o valor, como o javascript conseguiu comparar o 🚘 com o 🚗? E por que 🚓 quando comparado a 🚗, JavaScript nos diz que é "diferente"? <br/>
 
-## Como o javascript usa essa Referência?
+A resposta é simples, comparação por <Highlight>referência</Highlight>! Os tipos de dados primitivos são copiados e comparados por valor, e os não primitivos são copiados e comparados por referência.
 
-Referências são alocadas em um espaço na memória do seu computador, e quando nós comparamos duas informações não primitivas, por exemplo um objeto, o Javascript compara seu endereço na memória e não seu conteúdo. Vejamos mais um exemplo
+### Ok, mas o que é Referência?
+
+Referências são endereços alocados na memória do seu computador, e quando comparamos duas informações não primitivas, por exemplo, um <Code>objeto</Code>, o JavaScript compara seu endereço de memória e não seu conteúdo. Vamos ver mais um exemplo.
 
 ```js
 const 👩‍⚕️ = {
@@ -65,16 +67,27 @@ const 👩‍⚕️ = {
 const 👩‍🍳 = 👩‍⚕️;
 
 
-console.log(👩‍⚕️.nome); // Bia
+console.log(👩‍⚕️.nome); // bia
 
-👩‍🍳.nome = "Patricia";
+👩‍🍳.nome = "Patrícia";
 
-console.log(👩‍⚕️.nome); // Patricia
-console.log(👩‍🍳.nome); // Patricia
+console.log(👩‍⚕️.nome); // Patrícia
+console.log(👩‍🍳.name); // Patrícia
 ```
 
-Ao definirmos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ também muda! Isso acontece porque o conteúdo de 👩‍🍳 é uma REFERENCIA ao conteúdo de 👩‍⚕️, então qualquer mudança que haja, em qualquer referência, o <code>Objeto</code>, <code>Array</code>, <code>Função</code> original será afetada.
+Quando definimos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ também muda! Isso porque o conteúdo de 👩‍🍳 é uma <Highlight>referência</Highlight> ao conteúdo de 👩‍⚕️, portanto, quaisquer alterações em uma cópia de não primitivo, <Code>Object</Code>, <Code>Array</Code>, <Code >Function</Code> o original será afetado.
 
-## Porque saber disso é tão importante?
+### Por que saber isso é importante?
 
-Se você usa React a um tempo ou por acaso já se preocupou com problemas de performance no seu aplicativo, temos diversos hooks e funcionalidades que ajudam na performance do nosso programa, uma funcionalidade importante seria a array de dependências do <code>useEffect()</code>, se caso você colocar uma array ou objeto como dependência, a sua página não vai funcionar corretamente, pelo <code>useEffect()</code> comparar não primitivos com sua referência. Um outro exemplo é o hook <code>useCallback()</code>, utilizado para memorização de funcões, que comparam com o seu real conteúdo, previnindo a criação de uma função toda renderização. Caso queira um post falando sobre, deixe-me saber!
+Se você já usa o React há algum tempo, temos vários hooks e recursos que ajudam no desempenho do nosso programa, e um importante é o array de dependência do <Code>useEffect()</Code>. Se você colocar um array ou objeto como uma dependência, sua página não funcionará corretamente, e isso é porque <Code>useEffect()</Code> está comparando não primitivos com sua <Highlight>referência</Highlight>. <br/>
+
+Outro exemplo é o <Code>useCallback()</Code>, usado para memorizar funções, comparando-as com seu conteúdo, evitando a criação de outra função idêntica em cada renderização. Caso queira um post falando sobre isso, me deixe saber!
+
+### <Highlight>Lembre-se!</Highlight>
+
+• Os copiados por valor são primitivos. <br/>
+• Os copiados por referência são os não primitivos. <br/>
+• Ao comparar não primitivos idênticos, eles retornam <Code>false</Code> pelo seu tipo de cópia por <Highlight>referência</Highlight>. <br/>
+
+• Copiados por valor → <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code> e <Code>null</Code>. <br/>
+• Copiados por referência → <Code>Array</Code>, <Code>Object</Code> e <Code>Function</Code>.

@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import styles from "highlight.js/styles/github-dark-dimmed.css";
 import type { LinksFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
+
+import hljs from "highlight.js";
 
 export const links: LinksFunction = () => {
   return [
@@ -13,6 +16,9 @@ export const links: LinksFunction = () => {
 };
 
 export default function Blog() {
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
   return (
     <div className="w-full h-full bg-neutral-100 dark:bg-neutral-800">
       <Navbar />

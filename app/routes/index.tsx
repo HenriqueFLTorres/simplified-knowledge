@@ -1,4 +1,4 @@
-import Navbar from "~/components/navbar";
+import Navbar from "~/components/Navbar";
 import BlogCard from "~/components/BlogCard";
 import Pill from "~/components/Pill";
 

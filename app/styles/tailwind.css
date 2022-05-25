@@ -1905,8 +1905,15 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-radius: 0.3rem;
 
     padding: 0.25rem 0.75rem;
-    margin-right: 0.2rem;
+    margin-inline: 0.2rem;
     font-size: 1rem;
+  }
+
+  .Highlight {
+    display: inline;
+
+    font-weight: 600;
+    color: #F3C52C;
   }
 }
 
@@ -1931,6 +1938,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-radius: 0.5rem !important;
     padding: 1.5rem 2rem !important;
     border: 1px solid #ffffff1d !important;
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
   }
 
   .hljs-attr,
