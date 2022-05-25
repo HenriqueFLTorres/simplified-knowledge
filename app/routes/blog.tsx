@@ -16,7 +16,7 @@ export default function Blog() {
   return (
     <div className="w-full h-full bg-neutral-100 dark:bg-neutral-800">
       <Navbar />
-      <article className="prose lg:prose-xl mx-auto prose-neutral dark:prose-invert">
+      <article className="prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40">
         <Outlet />
       </article>
     </div>

@@ -1,8 +1,6 @@
 module.exports = {
   content: [
-    "./app/**/*.{ts,tsx,jsx,js}",
-    "./app/components/*.{ts,tsx,jsx,js}",
-    "./app/*.{ts,tsx,jsx,js}",
+    "./app/**/*.{ts,tsx,jsx,js,mdx}",
   ],
   darkMode: "class",
   theme: {

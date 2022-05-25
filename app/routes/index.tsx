@@ -10,7 +10,7 @@ import ReactIcon from "../svg/ReactIcon";
 import NextJS from "../svg/NextJS";
 import NodeJS from "../svg/NodeJS";
 
-import styles from "../tailwind.css";
+import styles from "../styles/tailwind.css";
 
 export default function Index() {
   

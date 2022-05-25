@@ -84,8 +84,8 @@ const Navbar = (props: Props) => {
           <Language className="absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8]" />
           <div
             className={`absolute flex flex-col items-center justify-between p-2 w-16 h-auto rounded bg-gradient-to-br from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm divide-y border border-neutral-200/20 divide-solid opacity-0 divide-neutral-300 dark:divide-neutral-600 translate-y-[5rem] ${
-              languageDropDown && "opacity-100 clip-path-inset"
-            } transition-all`}
+              languageDropDown ? "opacity-100 clip-path-inset" : "opacity-0 hide-top"
+            } duration-200 transition-all`}
           >
             <p className="w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-t transition-colors duration-200">
               EN
