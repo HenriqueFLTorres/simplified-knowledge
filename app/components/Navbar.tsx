@@ -39,7 +39,7 @@ const Navbar = (props: Props) => {
   }
 
   return (
-    <nav className="flex justify-between px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#272727d3] to-[#1a1a1a52] backdrop-blur-sm border-b border-b-neutral-100">
+    <nav className="flex justify-between px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#272727e5] to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-100/20 select-none">
       <div className="w-12">
         <IconWhite />
       </div>
@@ -75,7 +75,7 @@ const Navbar = (props: Props) => {
         >
           <Language className="absolute w-6 fill-white drop-shadow-[0_0_5px_#292929] dark:drop-shadow-[0_0_5px_#fff]" />
           <div
-            className={`absolute flex flex-col items-center justify-between p-2 w-16 h-auto rounded bg-neutral-800 divide-y divide-solid opacity-0 divide-neutral-600 translate-y-[5rem] ${
+            className={`absolute flex flex-col items-center justify-between p-2 w-16 h-auto rounded bg-gradient-to-br from-[#272727d3] to-[#1a1a1a52] backdrop-blur-sm divide-y border border-neutral-200/20 divide-solid opacity-0 divide-neutral-600 translate-y-[5rem] ${
               languageDropDown && "opacity-100 clip-path-inset"
             } transition-all`}
           >
