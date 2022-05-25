@@ -1,4 +1,5 @@
 import Navbar from "~/components/navbar";
+import BlogCard from "~/components/BlogCard";
 import Pill from "~/components/Pill";
 
 import HTML from "../svg/HTML";
@@ -10,7 +11,6 @@ import NextJS from "../svg/NextJS";
 import NodeJS from "../svg/NodeJS";
 
 import styles from "../tailwind.css";
-import BlogCard from "~/components/BlogCard";
 
 export default function Index() {
   

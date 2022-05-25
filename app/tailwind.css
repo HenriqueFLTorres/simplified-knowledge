@@ -1118,6 +1118,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.25rem;
 }
 
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1397,8 +1402,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: #2929292c;
 }
 
-.hover\:bg-neutral-200\/50:hover {
-  background-color: rgb(229 229 229 / 0.5);
+.hover\:bg-neutral-400\/50:hover {
+  background-color: rgb(163 163 163 / 0.5);
 }
 
 .hover\:text-neutral-900:hover {
