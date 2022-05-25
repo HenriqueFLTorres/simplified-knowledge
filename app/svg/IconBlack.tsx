@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 const IconBlack = (props: any) => (
   <svg
@@ -11,7 +11,7 @@ const IconBlack = (props: any) => (
     {...props}
   >
     <linearGradient
-      id="t"
+      id="z"
       gradientUnits="userSpaceOnUse"
       x1={76.751}
       y1={76.751}
@@ -34,11 +34,11 @@ const IconBlack = (props: any) => (
     <path
       d="M62.8 742.9V162.8c0-55.2 44.8-100 100-100h580.1v630.1c0 27.6-22.4 50-50 50H62.8z"
       style={{
-        fill: "url(#t)",
+        fill: "url(#z)",
       }}
     />
     <linearGradient
-      id="u"
+      id="x"
       gradientUnits="userSpaceOnUse"
       x1={1133.918}
       y1={661.925}
@@ -62,10 +62,10 @@ const IconBlack = (props: any) => (
     <path
       d="M937.2 257.1v580.1c0 55.2-44.8 100-100 100H257.1V307.1c0-27.6 22.4-50 50-50h630.1z"
       style={{
-        fill: "url(#u)",
+        fill: "url(#x)",
       }}
     />
   </svg>
-)
+);
 
-export default IconBlack
+export default IconBlack;
