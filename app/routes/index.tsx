@@ -34,9 +34,7 @@ export default function Index() {
   return (
     <div className="font-sanspro w-full h-screen bg-neutral-100 dark:bg-neutral-900">
       <Navbar />
-      <h1>Hello!</h1>
-
-      <div className="mt-20 flex align-center justify-center gap-6">
+      <div className="pt-32 flex align-center justify-center gap-6">
         <Pill name="HTML" icon={<HTML/>} />
         <Pill name="CSS" icon={<CSS/>} />
         <Pill name="JavaScript" icon={<JavaScript/>} />

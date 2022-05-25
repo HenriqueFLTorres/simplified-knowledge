@@ -65,7 +65,20 @@ A resposta é simples, comparação por <Highlight>referência</Highlight>! Os t
 Referências são endereços alocados na memória do seu computador, e quando comparamos duas informações não primitivas, por exemplo, um <Code>objeto</Code>, o JavaScript compara seu endereço de memória e não seu conteúdo. Vamos ver mais um exemplo.
 
 ```js
-fsdfsadfsdfads  
+const 👩‍⚕️ = {
+  nome: "Bia",
+  idade: 28
+};
+
+const 👩‍🍳 = 👩‍⚕️;
+
+
+console.log(👩‍⚕️.nome); // Bia
+
+👩‍🍳.nome = "Patricia";
+
+console.log(👩‍⚕️.nome); // Patricia
+console.log(👩‍🍳.nome); // Patricia
 ```
 
 Quando definimos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ também muda! Isso porque o conteúdo de 👩‍🍳 é uma <Highlight>referência</Highlight> ao conteúdo de 👩‍⚕️, portanto, quaisquer alterações em uma cópia de não primitivo, <Code>Object</Code>, <Code>Array</Code>, <Code >Function</Code> o original será afetado.
