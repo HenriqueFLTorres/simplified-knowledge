@@ -4,7 +4,7 @@ import styles from "../tailwind.css";
 
 const Highlight = ({ children }: any) => {
   return (
-    <div className='Highlight'>{children}</div>
+    <span className='Highlight'>{children}</span>
   )
 }
 

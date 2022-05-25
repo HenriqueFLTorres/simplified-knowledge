@@ -3,9 +3,7 @@ import styles from "highlight.js/styles/github-dark-dimmed.css";
 import { Outlet } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 
-import hljs from "highlight.js";
-
-export const links: LinksFunction = () => {
+export const links = () => {
   return [
     {
       rel: "stylesheet",
@@ -15,9 +13,6 @@ export const links: LinksFunction = () => {
 };
 
 export default function Blog(props: any) {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
   
 
   return (

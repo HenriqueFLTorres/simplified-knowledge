@@ -33,7 +33,6 @@ deixe 👜 = 💰 // 0
 
 console.log(🍏 === 🍎) // true
 console.log(👜 === 💰) // true
-
 ```
 
 Ao comparar as novas variáveis usando <Code>console.log()</Code>, ele retornará <Code>true</Code>, pois o JavaScript compara as primitivas de acordo com seu conteúdo.
@@ -63,20 +62,7 @@ A resposta é simples, comparação por <Highlight>referência</Highlight>! Os t
 Referências são endereços alocados na memória do seu computador, e quando comparamos duas informações não primitivas, por exemplo, um <Code>objeto</Code>, o JavaScript compara seu endereço de memória e não seu conteúdo. Vamos ver mais um exemplo.
 
 ```js
-const 👩‍⚕️ = {
-  nome: "Bia",
-  idade: 28
-};
-
-const 👩‍🍳 = 👩‍⚕️;
-
-
-console.log(👩‍⚕️.nome); // bia
-
-👩‍🍳.nome = "Patrícia";
-
-console.log(👩‍⚕️.nome); // Patrícia
-console.log(👩‍🍳.name); // Patrícia
+fsdfsadfsdfads  
 ```
 
 Quando definimos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ também muda! Isso porque o conteúdo de 👩‍🍳 é uma <Highlight>referência</Highlight> ao conteúdo de 👩‍⚕️, portanto, quaisquer alterações em uma cópia de não primitivo, <Code>Object</Code>, <Code>Array</Code>, <Code >Function</Code> o original será afetado.

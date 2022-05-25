@@ -4,7 +4,7 @@ import styles from "../tailwind.css";
 
 const Code = ({ children }: any) => {
   return (
-    <div className='InlineCode'>{children}</div>
+    <span className='InlineCode'>{children}</span>
   )
 }
 
