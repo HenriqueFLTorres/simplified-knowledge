@@ -5,6 +5,7 @@ import Moon from "~/svg/Moon";
 import Sun from "~/svg/Sun";
 import Language from "~/svg/Language";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../tailwind.css";
 
 type Props = {};
@@ -66,14 +67,14 @@ const Navbar = (props: Props) => {
           onClick={() =>
             document.querySelector("html")?.classList.toggle("dark")
           }
-          className="flex items-center justify-center w-12 h-12 rounded border border-neutral-300 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-500 hover:bg-[#ffffff2c] cursor-pointer transition-all clip-path-inset duration-200"
+          className="flex items-center justify-center w-12 h-12 rounded border border-neutral-300 dark:border-neutral-800 hover:border-neutral-600 hover:dark:border-neutral-500 hover:bg-[#2929292c] cursor-pointer transition-all clip-path-inset duration-200"
         >
           <Moon className="absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8] translate-y-10 dark:translate-y-0 transition-transform" />
           <Sun className="absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8] translate-y-0 dark:-translate-y-10 transition-transform" />
         </div>
         <div
           onClick={() => setLanguageDropDown(!languageDropDown)}
-          className="flex items-center justify-center w-12 h-12 rounded border border-neutral-300 dark:border-neutral-800 hover:border-neutral-200 hover:dark:border-neutral-500 hover:bg-[#ffffff2c] cursor-pointer transition-all duration-200"
+          className="flex items-center justify-center w-12 h-12 rounded border border-neutral-300 dark:border-neutral-800 hover:border-neutral-600 hover:dark:border-neutral-500 hover:bg-[#2929292c] cursor-pointer transition-all duration-200"
         >
           <Language className="absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8]" />
           <div

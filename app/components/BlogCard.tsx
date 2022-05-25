@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react";
 
 import Clock from "../svg/Clock";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../tailwind.css";
 
 type Props = {
