@@ -1,5 +1,6 @@
 ---
 title: "Referência e Valor: Por que você deve saber a diferença"
+englishVersion: "reference-vs-value"
 posted: "5 20 2022"
 edited: "5 20 2022"
 mainImage: ""
@@ -7,8 +8,11 @@ mainImage: ""
 
 import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
+import { Link } from "@remix-run/react";
 
 ## {attributes.title}
+
+<Link to={`/blog/${attributes.englishVersion}`}><div>English Article</div></Link>
 
 Se por algum motivo você tentou comparar <Code>objetos</Code> ou <Code>arrays</Code> em JavaScript, você provavelmente ficou confuso, porque eles não eram os mesmos apesar de ter um valor/conteúdo idêntico. <br/>
 
