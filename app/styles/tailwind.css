@@ -1898,10 +1898,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 @layer components {
   .InlineCode {
-    display: inline;
+    background-color: #dddddd;
+    border: 1px solid rgba(0, 0, 0, 0.4) !important;
+  }
 
+  .dark .InlineCode {
     background-color: #222222;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .InlineCode {
+    display: inline;
+
     border-radius: 0.3rem;
 
     padding: 0.25rem 0.75rem;
@@ -1910,10 +1918,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 
   .Highlight {
-    display: inline;
+    color: #FF8F00;
+  }
 
-    font-weight: 600;
+  .dark .Highlight {
     color: #f3c52c;
+  }
+
+  .Highlight {
+    display: inline;
+    font-weight: 600;
   }
 }
 
