@@ -54,7 +54,7 @@ export default function Index() {
 
       <div className="flex flex-row w-4/5 mx-auto justify-center mt-32">
         {languagePosts.map((post: any) => {
-          const { title, posted, readTime, link, mainImage } = post[0];
+          const { title, posted, readTime, link, mainImage } = post[0];     
           return (
             <BlogCard
               key={title}
