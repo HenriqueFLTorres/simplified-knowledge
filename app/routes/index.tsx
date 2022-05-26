@@ -37,9 +37,9 @@ export default function Index() {
   );
 
   return (
-    <div className="font-sanspro max-w-full  h-screen bg-neutral-100 dark:bg-sky-800">
+    <div className="font-sanspro max-w-full h-screen bg-neutral-100 dark:bg-neutral-900">
       <Navbar />
-      <div className="flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-32 gap-6">
+      <div className="flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6">
         <Pill name="HTML" icon={<HTML />} />
         <Pill name="CSS" icon={<CSS />} />
         <Pill name="JavaScript" icon={<JavaScript />} />
@@ -49,9 +49,9 @@ export default function Index() {
         <Pill name="Node.js" icon={<NodeJS />} />
       </div>
 
-      <div className="flex flex-row w-4/5 mx-auto justify-center mt-32">
+      <div className="flex flex-row w-4/5 mx-auto justify-center mt-24">
         {languagePosts.map((post: any) => {
-          const { title, posted, readTime, link, mainImage } = post[0];     
+          const { title, posted, readTime, link, mainImage, language } = post[0];     
           return (
             <BlogCard
               key={title}
@@ -61,6 +61,7 @@ export default function Index() {
               date={posted}
               readTime={readTime}
               tags={<JavaScript />}
+              language={language}
             />
           );
         })}
