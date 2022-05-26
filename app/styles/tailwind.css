@@ -1896,7 +1896,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
 @layer components {
+
+  .MainImage {
+    border-radius: 0.75rem;
+  }
+
   .InlineCode {
     background-color: #dddddd;
     border: 1px solid rgba(0, 0, 0, 0.4) !important;

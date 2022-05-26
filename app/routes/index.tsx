@@ -12,13 +12,14 @@ import NodeJS from "../svg/NodeJS";
 
 import * as firstPost from "./blog/referencia-vs-valor.mdx";
 import * as sas from "./blog/reference-vs-value.mdx";
+import sasa from "~/public/images/ReferenceVsValue.jpg"
+
+import { LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import getPosts from "~/utils/getPostsList";
+import { useLanguage } from "~/utils/useLanguage";
 
 import styles from "../styles/tailwind.css";
-import { LoaderFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import getPosts from "~/utils/getPostsList";
-import { useEffect, useState } from "react";
-import { useLanguage } from "~/utils/useLanguage";
 
 const getPostFromModule = (mod: any) => {
   return {
@@ -53,12 +54,13 @@ export default function Index() {
 
       <div className="flex flex-row w-4/5 mx-auto justify-center mt-32">
         {languagePosts.map((post: any) => {
-          const { title, posted, readTime, link } = post[0];
+          const { title, posted, readTime, link, mainImage } = post[0];
           return (
             <BlogCard
               key={title}
               name={title}
               link={link}
+              image={mainImage}
               date={posted}
               readTime={readTime}
               tags={<JavaScript />}

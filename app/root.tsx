@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
@@ -23,7 +23,7 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function App() {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const storageHasTheme = "theme" in localStorage;
     const isSystemDarkTheme = window.matchMedia(
       "(prefers-color-scheme: dark)"

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styles from "highlight.js/styles/github-dark-dimmed.css";
 import { Outlet } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
+import { useLanguage } from "~/utils/useLanguage";
 
 export const links = () => {
   return [
@@ -12,7 +13,9 @@ export const links = () => {
   ];
 };
 
+
 export default function Blog(props: any) {
+  const language = useLanguage()
   
 
   return (

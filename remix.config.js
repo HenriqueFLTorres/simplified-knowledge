@@ -1,3 +1,5 @@
+const { remarkMdxImages } = require('remark-mdx-images');
+
 /**
  * @type {import('@remix-run/dev').AppConfig}
  */
@@ -12,7 +14,8 @@ module.exports = {
       import("rehype-highlight").then(mod => mod.default),
     ]);
     return {
-      rehypePlugins: [rehypeHighlight]
+      rehypePlugins: [rehypeHighlight],
+      remarkPlugins: [remarkMdxImages]
     }
   }
 };
