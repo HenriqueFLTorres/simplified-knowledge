@@ -40,9 +40,9 @@ export default function Index() {
   );
 
   return (
-    <div className="font-sanspro w-full h-screen bg-neutral-100 dark:bg-neutral-900">
+    <div className="font-sanspro max-w-full  h-screen bg-neutral-100 dark:bg-sky-800">
       <Navbar />
-      <div className="pt-32 flex align-center justify-center gap-6">
+      <div className="flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-32 gap-6">
         <Pill name="HTML" icon={<HTML />} />
         <Pill name="CSS" icon={<CSS />} />
         <Pill name="JavaScript" icon={<JavaScript />} />
