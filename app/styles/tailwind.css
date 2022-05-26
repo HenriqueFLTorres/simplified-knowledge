@@ -1913,7 +1913,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: inline;
 
     font-weight: 600;
-    color: #F3C52C;
+    color: #f3c52c;
   }
 }
 
@@ -1921,7 +1921,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   pre {
     background-color: transparent !important;
   }
-
 }
 
 @layer utilities {
@@ -1932,31 +1931,65 @@ Ensure the default browser behavior of the `hidden` attribute.
     clip-path: inset(0 0 100% 0);
   }
 
+  .hljs.language-js {
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .hljs.language-js {
+    background-color: #202020 !important;
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
+  }
 
   .hljs.language-js {
-    background-color: #202020 !important;
     border-radius: 0.5rem !important;
     padding: 1.5rem 2rem !important;
     border: 1px solid #ffffff1d !important;
-    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
   }
 
   .hljs-attr,
   .hljs-title.function_ {
+    color: #9b7cd4 !important;
+  }
+
+  .dark .hljs-attr,
+  .dark .hljs-title.function_ {
     color: #bb9af7 !important;
   }
 
   .hljs-keyword,
   .hljs-variable.language_ {
+    color: #e88419 !important;
+  }
+
+  .dark .hljs-keyword,
+  .dark .hljs-variable.language_ {
     color: #d99f62 !important;
   }
 
   .hljs-property {
+    color: #CBA6E1 !important;
+  }
+
+  .dark .hljs-property {
     color: #d0bfd9 !important;
   }
 
   .hljs-string,
   .hljs-number {
+    color: #dead6b !important;
+  }
+
+  .dark .hljs-string,
+  .dark .hljs-number {
     color: #dbc09c !important;
+  }
+
+  .hljs-comment {
+    color: #717171 !important;
+  }
+
+  .dark .hljs-comment {
+    color: #768390 !important;
   }
 }
