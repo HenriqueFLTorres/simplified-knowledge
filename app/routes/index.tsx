@@ -10,15 +10,12 @@ import ReactIcon from "../svg/ReactIcon";
 import NextJS from "../svg/NextJS";
 import NodeJS from "../svg/NodeJS";
 
-import * as firstPost from "./blog/referencia-vs-valor.mdx";
-import * as sas from "./blog/reference-vs-value.mdx";
-import sasa from "~/public/images/ReferenceVsValue.jpg"
-
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import getPosts from "~/utils/getPostsList";
 import { useLanguage } from "~/utils/useLanguage";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../styles/tailwind.css";
 
 const getPostFromModule = (mod: any) => {
@@ -35,8 +32,8 @@ export default function Index() {
   const posts = useLoaderData();
   const language = useLanguage();
 
-  const languagePosts = posts.map((post) =>
-    post.filter((post) => post.language === language)
+  const languagePosts = posts.map((post: any) =>
+    post.filter((post: any) => post.language === language)
   );
 
   return (
