@@ -10,28 +10,28 @@ import Language from "~/svg/Language";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../tailwind.css";
+import { useLanguage, useLanguageUpdate } from "~/utils/useLanguage";
 
 type Props = {};
 
+type navList = {
+  EN: Array<String>,
+  PT: Array<String>
+}
+
+const navItems = {
+  EN: ["Blog", "My Github", "My Website", "My LinkedIn"],
+  PT: ["Blog", "Meu Github", "Meu Website", "Meu LinkedIn"],
+};
+
 const Navbar = (props: Props) => {
-  const [languageDropDown, setLanguageDropDown] = useState(false);
+  const [languageDropDown, setLanguageDropDown] = useState<Boolean>(false);
+
+  const language = useLanguage()
+  const updateLanguage: any = useLanguageUpdate()
+
   const closeDropDown = () => setLanguageDropDown(false);
   const dropDownRef = useDetectClickOutside({ onTriggered: closeDropDown });
-
-  useLayoutEffect(() => {
-    if (typeof localStorage !== "undefined") {
-      if (
-        !("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark")
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "")
-      }
-    }
-  }, []);
 
   const themeHandler = () => {
     if (typeof localStorage !== "undefined") {
@@ -44,6 +44,7 @@ const Navbar = (props: Props) => {
       }
     }
   };
+  
 
   return (
     <nav className="flex justify-between px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none">
@@ -55,18 +56,14 @@ const Navbar = (props: Props) => {
       </Link>
 
       <div className=" flex flex-row justify-between w-5/12">
-        <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">
-          Blog
-        </div>
-        <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">
-          Meu Github
-        </div>
-        <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">
-          Meu Website
-        </div>
-        <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">
-          Meu LinkedIn
-        </div>
+        { navItems?[language].map((item: any) => (
+          <div
+            key={item}
+            className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer"
+          >
+            {item}
+          </div>
+        ))}
       </div>
 
       <div className="flex flex-row items-center justify-between w-32">
@@ -90,10 +87,16 @@ const Navbar = (props: Props) => {
                 : "opacity-0 hide-top"
             } duration-200 transition-all`}
           >
-            <p className="w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-t transition-colors duration-200">
+            <p
+              onClick={() => updateLanguage("EN")}
+              className="w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-t transition-colors duration-200"
+            >
               EN
             </p>
-            <p className="w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-b transition-colors duration-200">
+            <p
+              onClick={() => updateLanguage("PT")}
+              className="w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-b transition-colors duration-200"
+            >
               PT
             </p>
           </div>
