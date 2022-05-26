@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import { formatRelative } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import "~/public/images/referencevsvalue.jpg";
+import "app/public/images/ReferenceVsValue.jpg";
 import Clock from "../svg/Clock";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
