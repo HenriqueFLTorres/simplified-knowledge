@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "@remix-run/react";
-import { formatRelative, subDays } from 'date-fns'
+import { formatRelative } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 

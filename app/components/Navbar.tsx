@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import { useState } from "react";
 import { Link } from "@remix-run/react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 
@@ -19,7 +19,7 @@ type navList = {
   PT: Array<String>
 }
 
-const navItems = {
+const navItems: navList = {
   EN: ["Blog", "My Github", "My Website", "My LinkedIn"],
   PT: ["Blog", "Meu Github", "Meu Website", "Meu LinkedIn"],
 };
@@ -44,7 +44,12 @@ const Navbar = (props: Props) => {
       }
     }
   };
-  
+
+  const handleItemsList = () => {
+    if ( language === "PT" ) return navItems.PT
+    else return navItems.EN
+  }
+
 
   return (
     <nav className="flex justify-between px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none">
@@ -56,7 +61,7 @@ const Navbar = (props: Props) => {
       </Link>
 
       <div className=" flex flex-row justify-between w-5/12">
-        { navItems?[language].map((item: any) => (
+        { handleItemsList().map((item: any) => (
           <div
             key={item}
             className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer"

@@ -11,25 +11,22 @@ import NextJS from "../svg/NextJS";
 import NodeJS from "../svg/NodeJS";
 
 import * as firstPost from "./blog/referencia-vs-valor.mdx"
+import * as sas from "./blog/reference-vs-value.mdx"
 
 import styles from "../styles/tailwind.css";
 import { LoaderFunction } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { pseudoRandomBytes } from "crypto";
-
-const getPostFromModule = (mod: any) => {
-  return {
-    name: mod.filename.replace(/\.mdx?$/, ""),
-    ...mod.attributes,
-  }
-}
+import getPosts from "~/utils/getPostsList";
+import getPostFromModule from "~/utils/getPostFromModule";
+import { useLanguage } from "~/utils/useLanguage";
 
 export const loader: LoaderFunction = () => {
-  return [getPostFromModule(firstPost)];
+  return [getPostFromModule(getPosts())];
 }
 
 export default function Index() {
   const posts = useLoaderData()
+  console.log(posts);
   
   return (
     <div className="font-sanspro w-full h-screen bg-neutral-100 dark:bg-neutral-900">

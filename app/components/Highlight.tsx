@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from "../tailwind.css";
 
 const Highlight = ({ children }: any) => {
