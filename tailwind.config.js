@@ -9,6 +9,10 @@ module.exports = {
     },
     extend: {},
   },
+  safelist: [
+    'clip-path-inset',
+    'hide-top',
+  ],
   plugins: [
     require("@tailwindcss/typography"),
   ],

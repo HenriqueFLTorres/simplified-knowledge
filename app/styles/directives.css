@@ -1,0 +1,119 @@
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+@layer components {
+  .MainImage {
+    border-radius: 0.75rem;
+  }
+
+  .InlineCode {
+    background-color: #dddddd;
+    border: 1px solid rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .dark .InlineCode {
+    background-color: #222222;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .InlineCode {
+    display: inline;
+
+    border-radius: 0.3rem;
+
+    padding: 0.25rem 0.75rem;
+    margin-inline: 0.2rem;
+    font-size: 1rem;
+  }
+
+  .Highlight {
+    color: #ff8f00;
+  }
+
+  .dark .Highlight {
+    color: #f3c52c;
+  }
+
+  .Highlight {
+    display: inline;
+    font-weight: 600;
+  }
+}
+
+@layer base {
+  pre {
+    background-color: transparent !important;
+  }
+}
+
+@layer utilities {
+  .clip-path-inset {
+    clip-path: inset(0);
+  }
+  .hide-top {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .hljs.language-js {
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .hljs.language-js {
+    background-color: #202020 !important;
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
+  }
+
+  .hljs.language-js {
+    border-radius: 0.5rem !important;
+    padding: 1.5rem 2rem !important;
+    border: 1px solid #ffffff1d !important;
+  }
+
+  .hljs-attr,
+  .hljs-title.function_ {
+    color: #9b7cd4 !important;
+  }
+
+  .dark .hljs-attr,
+  .dark .hljs-title.function_ {
+    color: #bb9af7 !important;
+  }
+
+  .hljs-keyword,
+  .hljs-variable.language_ {
+    color: #e88419 !important;
+  }
+
+  .dark .hljs-keyword,
+  .dark .hljs-variable.language_ {
+    color: #d99f62 !important;
+  }
+
+  .hljs-property {
+    color: #cba6e1 !important;
+  }
+
+  .dark .hljs-property {
+    color: #d0bfd9 !important;
+  }
+
+  .hljs-string,
+  .hljs-number {
+    color: #dead6b !important;
+  }
+
+  .dark .hljs-string,
+  .dark .hljs-number {
+    color: #dbc09c !important;
+  }
+
+  .hljs-comment {
+    color: #717171 !important;
+  }
+
+  .dark .hljs-comment {
+    color: #768390 !important;
+  }
+}
