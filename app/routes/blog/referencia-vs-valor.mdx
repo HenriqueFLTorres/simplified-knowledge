@@ -14,18 +14,21 @@ import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
 import { Link } from "@remix-run/react";
 import mainImage from "~/public/images/ReferenceVsValue.jpg"
+import Warning from "../../components/Warning"
 
 ## {attributes.title}
 
 <Link to={`/blog/${attributes.englishVersion}`}><div>English Article</div></Link>
 
-<img src={mainImage} alt="" title="Photo by Duy Thanh Nguyen" className="MainImage" />
+<img src={mainImage} alt="" title="Imagem de David Jorre" className="MainImage" />
+
+<Warning>Nos exemplos a seguir são utilizados emojis para nomear variáveis e não devem ser replicados, caso contrário, o seu código retornará um erro de síntaxe.</Warning>
 
 Se por algum motivo você tentou comparar <Code>objetos</Code> ou <Code>arrays</Code> em JavaScript, você provavelmente ficou confuso, porque eles não eram os mesmos apesar de ter um valor/conteúdo idêntico. <br/>
 
 Isso acontece porque o JavaScript compara tipos não primitivos com sua <Highlight>referência</Highlight> e não com seu valor real, e não saber disso pode causar dor de cabeça.
 
-### Copiar por Valor <br/>
+### Cópia por Valor <br/>
 
 Tipos de dados primitivos como <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code>, <Code>null</Code>, são marcados como tipos <Highlight>Valor</Highlight>, porque, quando copiamos sua informação ou valor para alguma outra variável, essa nova variável copiará seu valor.
 
@@ -44,7 +47,7 @@ console.log(👜 === 💰) // true
 
 Ao comparar as novas variáveis usando <Code>console.log()</Code>, ele retornará <Code>true</Code>, pois o JavaScript compara as primitivas de acordo com seu conteúdo.
 
-### Copiar por referência
+### Cópia por Referência
 
 Por outro lado, os não primitivos, <Code>Array</Code>, <Code>Object</Code> e <Code>Function</Code>, são marcados como tipo de <Highlight>Referência</Highlight> . Porque, quando definimos uma nova variável com suas informações, essa nova variável terá sua referência e não seu valor.
 
@@ -91,13 +94,13 @@ Quando definimos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ ta
 
 Se você já usa o React há algum tempo, temos vários hooks e recursos que ajudam no desempenho do nosso programa, e um importante é o array de dependência do <Code>useEffect()</Code>. Se você colocar um array ou objeto como uma dependência, sua página não funcionará corretamente, e isso é porque <Code>useEffect()</Code> está comparando não primitivos com sua <Highlight>referência</Highlight>. <br/>
 
-Outro exemplo é o <Code>useCallback()</Code>, usado para memorizar funções, comparando-as com seu conteúdo, evitando a criação de outra função idêntica em cada renderização. Caso queira um post falando sobre isso, me deixe saber!
+Outro exemplo é o <Code>useCallback()</Code>, usado para memorizar funções e não apenas comparar com sua referência, evitando a criação de outra função idêntica em cada renderização. Caso queira um post falando sobre isso, me deixe saber!
 
 ### <Highlight>Lembre-se!</Highlight>
 
 • Os copiados por valor são primitivos. <br/>
 • Os copiados por referência são os não primitivos. <br/>
-• Ao comparar não primitivos idênticos, eles retornam <Code>false</Code> pelo seu tipo de cópia por <Highlight>referência</Highlight>. <br/>
+• Ao comparar não primitivos idênticos, eles retornam <Code>false</Code> pelo seu tipo de comparação por <Highlight>referência</Highlight>. <br/>
 
 • Copiados por valor → <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code> e <Code>null</Code>. <br/>
 • Copiados por referência → <Code>Array</Code>, <Code>Object</Code> e <Code>Function</Code>.

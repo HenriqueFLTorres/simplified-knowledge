@@ -14,12 +14,16 @@ import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
 import { Link } from "@remix-run/react";
 import mainImage from "~/public/images/ReferenceVsValue.jpg"
+import Warning from "../../components/Warning"
+
 
 ## {attributes.title}
 
 <Link to={`/blog/${attributes.portugueseVersion}`}><div>Artigo em Português</div></Link>
 
-<img src={mainImage} alt="" title="Photo by Duy Thanh Nguyen" className="MainImage" />
+<img src={mainImage} alt="" title="Photo by David Jorre" className="MainImage" />
+
+<Warning>In the following examples emojis are used to name variables and should not be replicated, otherwise your code will return a syntax error.</Warning>
 
 If for some reason you've tried comparing <Code>objects</Code> or <Code>arrays</Code> in JavaScript, you probably went confused by why they weren't the same even having an identical value/content.. <br/>
 
@@ -92,7 +96,7 @@ When we set the name of 👩‍🍳 to Patricia, the name of 👩‍⚕️ also 
 
 If you've been using React for a while, we have several hooks and features that help our program's performance, and an important one is the <Code>useEffect()</Code>'s dependency array. If you put an array or object as a dependency, your page will not work correctly, and that's because <Code>useEffect()</Code> is comparing non-primitives with their <Highlight>reference</Highlight>. <br/>
 
-Another example is the <Code>useCallback()</Code>, used to memoize functions, comparing them with their content, preventing the creation of another identical function on every rendering. If you want a post talking about it, let me know!
+Another example is the <Code>useCallback()</Code>, used to memorize functions and not just compare with their reference, preventing the creation of another identical function on every rendering. If you want a post talking about it, let me know!
 
 
 ### <Highlight>Remember!</Highlight>
