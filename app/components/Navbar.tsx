@@ -93,7 +93,7 @@ const Navbar = (props: Props) => {
         </div>
       </Link>
 
-      <div className="hidden flex-row justify-between lg:flex">
+      <div className="hidden gap-8 flex-row justify-between lg:flex">
         {handleItemsList().map((item: any) => (
           <a href={item.linkTo} key={item.name}>
             <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">

@@ -17,6 +17,7 @@ import { useLanguage } from "~/utils/useLanguage";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../styles/tailwind.css";
+import { useEffect } from "react";
 
 const getPostFromModule = (mod: any) => {
   return {
@@ -31,7 +32,7 @@ export const loader: LoaderFunction = () => {
 export default function Index() {
   const posts = useLoaderData();
   const language = useLanguage();
-
+  
   const languagePosts = posts.map((post: any) =>
     post.filter((post: any) => post.language === language)
   );
