@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
   return {
     ...generateSocialPreview({ url: `https://simplifiedknowledge.vercel.app/${useLocation().pathname}`})
   };
-// };
+};
 
 export default function Blog(props: any) {
   
