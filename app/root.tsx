@@ -48,7 +48,7 @@ export default function App() {
   }, []);
 
   return (
-    <html lang="en" className="dark font-sans">
+    <html lang="en" className="dark">
       <head>
         <Meta />
         <Links />

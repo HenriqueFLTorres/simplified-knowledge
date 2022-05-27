@@ -15,20 +15,54 @@ import { useLanguage, useLanguageUpdate } from "~/utils/useLanguage";
 type Props = {};
 
 type navList = {
-  EN: Array<String>,
-  PT: Array<String>
-}
+  EN: Array<Object>;
+  PT: Array<Object>;
+};
 
 const navItems: navList = {
-  EN: ["Blog", "My Github", "My Website", "My LinkedIn"],
-  PT: ["Blog", "Meu Github", "Meu Website", "Meu LinkedIn"],
+  EN: [
+    {
+      name: "Blog",
+      linkTo: "/",
+    },
+    {
+      name: "My GitHub",
+      linkTo: "https://github.com/HenriqueFLTorres",
+    },
+    {
+      name: "My Website",
+      linkTo: "https://htportfolio.vercel.app/",
+    },
+    {
+      name: "My LinkedIn",
+      linkTo: "https://www.linkedin.com/in/henriquefltorres/",
+    },
+  ],
+  PT: [
+    {
+      name: "Blog",
+      linkTo: "/",
+    },
+    {
+      name: "Meu GitHub",
+      linkTo: "https://github.com/HenriqueFLTorres",
+    },
+    {
+      name: "Meu Website",
+      linkTo: "https://htportfolio.vercel.app/",
+    },
+    {
+      name: "Meu LinkedIn",
+      linkTo: "https://www.linkedin.com/in/henriquefltorres/",
+    },
+  ],
 };
 
 const Navbar = (props: Props) => {
   const [languageDropDown, setLanguageDropDown] = useState<Boolean>(false);
 
-  const language = useLanguage()
-  const updateLanguage: any = useLanguageUpdate()
+  const language = useLanguage();
+  const updateLanguage: any = useLanguageUpdate();
 
   const closeDropDown = () => setLanguageDropDown(false);
   const dropDownRef = useDetectClickOutside({ onTriggered: closeDropDown });
@@ -46,13 +80,12 @@ const Navbar = (props: Props) => {
   };
 
   const handleItemsList = () => {
-    if ( language === "PT" ) return navItems.PT
-    else return navItems.EN
-  }
-
+    if (language === "PT") return navItems.PT;
+    else return navItems.EN;
+  };
 
   return (
-    <nav className="flex justify-between px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none">
+    <nav className="flex justify-between px-12 lg:px-36 items-center w-full h-20 fixed bg-gradient-to-r from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none">
       <Link to="/">
         <div className="flex items-center justify-center w-12 h-12">
           <IconWhite className="absolute w-10 h-10 opacity-0 dark:opacity-100 transition-all duration-300" />
@@ -60,14 +93,13 @@ const Navbar = (props: Props) => {
         </div>
       </Link>
 
-      <div className=" flex flex-row justify-between w-5/12">
-        { handleItemsList().map((item: any) => (
-          <div
-            key={item}
-            className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer"
-          >
-            {item}
-          </div>
+      <div className="hidden flex-row justify-between lg:flex">
+        {handleItemsList().map((item: any) => (
+          <a href={item.linkTo} key={item.name}>
+            <div className="text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer">
+              {item.name}
+            </div>
+          </a>
         ))}
       </div>
 
