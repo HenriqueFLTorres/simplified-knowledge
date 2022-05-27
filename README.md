@@ -1,53 +1,28 @@
-# Welcome to Remix!
+# Simplified Knowledge Blog 🥳
 
-- [Remix Docs](https://remix.run/docs)
+<br/>
+<p align="center">
+  <img width="40%" src="https://user-images.githubusercontent.com/96752883/170715479-178b612f-e304-4bd2-840d-bcc861865f54.svg#gh-dark-mode-only">
+  <img width="40%" src="https://user-images.githubusercontent.com/96752883/170715443-91891775-400f-42a8-97a4-d1cf75a55db7.svg#gh-light-mode-only">
+</p>
+<br/><br/>
+<h3 align="center">A blog to share my knowledge and grow in my career!</h3>
+<h5 align="center">🚧 The website isn't finished, there is a lot that I can do! 🚧</h3>
+<br/><br/><br/>
 
-## Development
+<h2>Why another blog in millions? 🌠</h2>
 
-From your terminal:
+<br/>
+My main goal is not to compete with anyone, there are many excellent blogs out there like KentCDodds or Overreacted from Dan Abramov. I want to share what I know in a simplified way and even grow in my career.
+<br/>
 
-```sh
-npm run dev
-```
+<h2>Why just not write on medium? 📜</h2>
+<br/>
+Creating a blog and managing such a big project can also contribute to my knowledge and my career, so why not torture myself? 😄
+<br/>
 
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+<h2>Stack Used</h2>
+<br/>
+Remix <br/>
+Tailwind <br/>
+React <br/>
