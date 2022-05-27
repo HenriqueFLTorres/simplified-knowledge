@@ -69,12 +69,12 @@ const Navbar = (props: Props) => {
 
   const themeHandler = () => {
     if (typeof localStorage !== "undefined") {
-      if (document.querySelector("html")?.className === "") {
+      if (document.querySelector("html")?.className === "light") {
         localStorage.setItem("theme", "dark");
-        document.querySelector("html")?.classList.add("dark");
+        document.querySelector("html")?.classList.replace("light", "dark");
       } else {
-        localStorage.setItem("theme", "");
-        document.querySelector("html")?.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        document.querySelector("html")?.classList.replace("dark", "light");
       }
     }
   };

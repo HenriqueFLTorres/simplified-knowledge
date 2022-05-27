@@ -17,7 +17,6 @@ import { useLanguage } from "~/utils/useLanguage";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "../styles/tailwind.css";
-import { useEffect } from "react";
 
 const getPostFromModule = (mod: any) => {
   return {

@@ -67,7 +67,9 @@ console.log(🚘 === 🚗) // true
 
 Let's go back to some lines in the text <Highlight>"this new variable will have its reference and not its value"</Highlight>. But, if it won't have the value, how did javascript manage to compare the 🚘 with 🚗? And why does 🚓 when compared to 🚗, JavaScript tell us that it's "different"? <br/>
 
-The answer is simple, comparison by <Highlight>reference</Highlight>! Primitive data types are copied and compared by value, and non-primitive ones are copied and compared by reference.
+The answer is simple, comparison by <Highlight>reference</Highlight>! Primitive data types are copied and compared by value, and non-primitive ones are copied and compared by reference. <br/>
+
+So knowing the difference between <Highlight>reference</Highlight> and actual <Highlight>value</Highlight> is critical for learning advanced hooks in React like <Code>useEffect()</Code>, <Code>useCallback() </Code> and <Code>useMemo()</Code>.
 
 ### Ok, but what is Reference?
 
@@ -80,7 +82,6 @@ const 👩‍⚕️ = {
 };
 
 const 👩‍🍳 = 👩‍⚕️;
-
 
 console.log(👩‍⚕️.name); // Bia
 

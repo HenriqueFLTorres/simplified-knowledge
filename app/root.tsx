@@ -13,7 +13,21 @@ import styles from "./styles/tailwind.css";
 import { LanguageProvider } from "./utils/useLanguage";
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      href: "favicons/favicon32.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      href: "favicons/favicon16.png",
+    },
+    { rel: "stylesheet", href: styles },
+  ];
 }
 
 export const meta: MetaFunction = () => ({
@@ -31,18 +45,20 @@ export default function App() {
     const storageTheme = localStorage.getItem("theme");
 
     if (storageHasTheme) {
-      if (storageTheme === "") {
-        document.documentElement.classList.remove("dark");
+      if (storageTheme === "light") {
+        document.documentElement.classList.replace("dark", "light");
+        localStorage.setItem("theme", "light");
       } else {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.replace("light", "dark");
+        localStorage.setItem("theme", "dark");
       }
     } else {
       if (isSystemDarkTheme) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.replace("light", "dark");
         localStorage.setItem("theme", "dark");
       } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "");
+        document.documentElement.classList.replace("dark", "light");
+        localStorage.setItem("theme", "light");
       }
     }
   }, []);

@@ -13,7 +13,7 @@
   }
 
   .dark .InlineCode {
-    background-color: #222222;
+    background-color: #222222 ;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
   }
 
@@ -43,8 +43,14 @@
 
 @layer base {
   pre {
-    background-color: transparent !important;
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   }
+  .dark pre{
+    background-color: #202020 !important;
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
+  }
+
 }
 
 @layer utilities {
@@ -55,25 +61,25 @@
     clip-path: inset(0 0 100% 0);
   }
 
-  .hljs.language-js {
-    background-color: #f0f0f0 !important;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  .light code.hljs.language-js {
+    background-color: transparent !important;
+    color: #1d1d1d;
   }
 
-  .dark .hljs.language-js {
-    background-color: #202020 !important;
-    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
+  .dark code.hljs.language-js {
+    background-color: transparent !important;
   }
 
-  .hljs.language-js {
+  code.hljs.language-js {
     border-radius: 0.5rem !important;
-    padding: 1.5rem 2rem !important;
+    padding: 1.5rem 2rem !important;  
     border: 1px solid #ffffff1d !important;
   }
 
-  .hljs-attr,
-  .hljs-title.function_ {
+  .light .hljs-attr,
+  .light .hljs-title.function_ {
     color: #9b7cd4 !important;
+    font-weight: 800 !important;
   }
 
   .dark .hljs-attr,
@@ -81,8 +87,8 @@
     color: #bb9af7 !important;
   }
 
-  .hljs-keyword,
-  .hljs-variable.language_ {
+  .light .hljs-keyword,
+  .light .hljs-variable.language_ {
     color: #e88419 !important;
   }
 
@@ -91,7 +97,7 @@
     color: #d99f62 !important;
   }
 
-  .hljs-property {
+  .light .hljs-property {
     color: #cba6e1 !important;
   }
 
@@ -99,8 +105,8 @@
     color: #d0bfd9 !important;
   }
 
-  .hljs-string,
-  .hljs-number {
+  .light .hljs-string,
+  .light .hljs-number {
     color: #dead6b !important;
   }
 
@@ -109,7 +115,7 @@
     color: #dbc09c !important;
   }
 
-  .hljs-comment {
+  .light .hljs-comment {
     color: #717171 !important;
   }
 

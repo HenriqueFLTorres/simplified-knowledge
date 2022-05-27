@@ -79,7 +79,6 @@ const 👩‍⚕️ = {
 
 const 👩‍🍳 = 👩‍⚕️;
 
-
 console.log(👩‍⚕️.nome); // Bia
 
 👩‍🍳.nome = "Patricia";
@@ -94,7 +93,9 @@ Quando definimos o nome de 👩‍🍳 para Patricia, o nome de 👩‍⚕️ ta
 
 Se você já usa o React há algum tempo, temos vários hooks e recursos que ajudam no desempenho do nosso programa, e um importante é o array de dependência do <Code>useEffect()</Code>. Se você colocar um array ou objeto como uma dependência, sua página não funcionará corretamente, e isso é porque <Code>useEffect()</Code> está comparando não primitivos com sua <Highlight>referência</Highlight>. <br/>
 
-Outro exemplo é o <Code>useCallback()</Code>, usado para memorizar funções e não apenas comparar com sua referência, evitando a criação de outra função idêntica em cada renderização. Caso queira um post falando sobre isso, me deixe saber!
+Outro exemplo é o <Code>useCallback()</Code>, usado para memorizar funções e não apenas comparar com sua referência, evitando a criação de outra função idêntica em cada renderização. Caso queira um post falando sobre isso, me deixe saber! <br/>
+
+Portanto, saber a diferença entre <Highlight>referência</Highlight> e real <Highlight>valor</Highlight> é fundamental para aprender hooks avançados no React como <Code>useEffect()</Code>, <Code>useCallback()</Code> e <Code>useMemo()</Code>.
 
 ### <Highlight>Lembre-se!</Highlight>
 
