@@ -484,6 +484,14 @@
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -520,6 +528,14 @@
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .flex {
@@ -578,6 +594,22 @@
   height: 100%;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-28 {
+  height: 7rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -624,6 +656,10 @@
 
 .w-4\/5 {
   width: 80%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .max-w-full {
@@ -696,6 +732,14 @@
   gap: 3.5rem;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -709,6 +753,10 @@
 .divide-neutral-300 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(212 212 212 / var(--tw-divide-opacity));
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .rounded {
@@ -785,6 +833,21 @@
 .bg-neutral-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.bg-sky-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -883,6 +946,21 @@
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.px-52 {
+  padding-left: 13rem;
+  padding-right: 13rem;
 }
 
 .pt-2\.5 {
