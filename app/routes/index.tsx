@@ -32,6 +32,7 @@ export default function Index() {
   const posts = useLoaderData();
   const language = useLanguage();
   
+  
   const languagePosts = posts.map((post: any) =>
     post.filter((post: any) => post.language === language)
   );
@@ -49,9 +50,10 @@ export default function Index() {
         <Pill name="Node.js" icon={<NodeJS />} />
       </div>
 
-      <div className="flex flex-row w-4/5 mx-auto justify-center mt-24">
-        {languagePosts.map((post: any) => {
-          const { title, posted, readTime, link, mainImage, language } = post[0];     
+      <div className="flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14">
+        {languagePosts.map((post: any) => post.map((post: any) => {
+          const { title, posted, readTime, link, mainImage, language } = post;   
+            
           return (
             <BlogCard
               key={title}
@@ -64,7 +66,7 @@ export default function Index() {
               language={language}
             />
           );
-        })}
+        }))}
       </div>
     </div>
   );
