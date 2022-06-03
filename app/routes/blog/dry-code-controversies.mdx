@@ -1,5 +1,5 @@
 ---
-title: "Clean Code: DRY principle controversies"
+title: "Clean Code: DRY code controversies and the Monster of the Wrong Abstraction"
 portugueseVersion: "controversias-dry-code"
 posted: "6 2 2022 10:10"
 edited: "6 2 2022 10:10"
@@ -13,81 +13,95 @@ link: "dry-code-controversies"
 import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
 import { Link } from "@remix-run/react";
-import mainImage from "~/public/images/ReferenceVsValue.jpg";
-import Warning from "../../components/Warning";
 
-DRY, "Dont repeat yourself" ou "Não se repita", é um princípio no desenvolvimento de software que vem sendo
-seguido por grande parte da comunidade de programadores e basicamente se consiste em fazer abstrações para
-evitar repetições, não se preocupe se ficou meio confuso, durante este post vamos fragmentar essas definições
-e conceitos.
+## {attributes.title}
 
-### Por que é tão usado?
+<Link to={`/blog/${attributes.portugueseVersion}`}>
+  <div>Artigo em Português</div>
+</Link>
 
-Como se é de imaginar, a técnica é utilizada para que evitar que copiamos e colamos partes do nosso código que
-são idênticas, e de fato, é um princípio extremamente forte, podendo melhorar a organização e unificar
-funcões, fazendo com que um bug seja mais fácil de ser encontrado e arrumado.
+<img
+  src={attributes.mainImage}
+  alt=""
+  title="Imagem de David Jorre"
+  className="MainImage"
+/>
 
-Mas será que são mil maravilhas? não há maneira alguma de isso dar errado? Bom, quando os projetos são maiores
-a complexidade aumenta, e com isso, abusamos do principio utilizando em toda parte do nosso código, e são nas abstrações
-que a situação começa a ficar complicada. Neste post, usaremos como exemplo grande parte da conversa do Kent C. Dodds no
-post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> e do Dan Abramov en
+DRY, "Don't repeat yourself", is a principle in software development that has been
+followed by a large part of the programming community and basically consists of making abstractions to
+avoid repetitions, don't worry if it's a bit confusing, during this post we'll break down these definitions
+and concepts.
 
-{" "}
-<a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>. ## O que
-é abstrações?
+### Why is it so used?
 
-Abstrações são basicamente funcões ou componentes (Caso esteja usando React ou algo parecido), com a intenção de automatizar
-um certo processo. Um exemplo, são libraries como Ant Design, MaterialUI e outras, que fornecem componentes que podem receber
-certos props, e esses props são usados para 'deixar o componente do seu jeito'. Vejamos um simples exemplo.
+As you can imagine, the technique is used to prevent us from copying and pasting parts of our code that
+are identical, and in fact, it is an extremely strong principle, which can improve the organization and unify
+functions, making a bug easier to find and fix.
+
+But it's not all rosy, well, when the projects are bigger
+complexity increases, and with that, we abuse the principle, using it everywhere in our code, and it's in abstractions
+that the situation starts to get complicated.
+
+This post takes strong inspiration from Kent C. Dodds' conversation on
+post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> and by Dan Abramov at
+<a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>.
+
+## What are abstractions?
+
+Abstractions are basically functions or components (if using React or something similar), with the intention of automating
+a certain process. An example is libraries such as Ant Design, MaterialUI and others, which provide components that can receive
+certain props, and these props are used to <Highlight>"make the component your own way"</Highlight>. Let's look at a simple example.
 
 ```js
 function printNameAndAge(name, age) {
-  console.log(`${name} tem ${age} anos de idade.`);
+  console.log(`${name} is ${age} years old.`);
 }
 
-printNameAndAge("Maria", 26);
-// Maria tem 26 anos de idade.
+printNameAndAge("Mary", 26);
+// Mary is 26 years old.
 ```
 
-Uma abstração é algo que podemos reutilizar e caso haja necessidade, adicionar mais complexidade, como por exemplo a seguinte
-função, que se comporta de maneira unica em certas idades.
+An abstraction is something that we can reuse and, if necessary, add more complexity, such as the following
+function, which behaves uniquely at certain ages.
 
 ```js
 function printNameAndAge(name, age) {
   if (age < 18) {
-    console.log(`${name} tem ${age} anos de idade e não pode beber.`);
+    console.log(`${name} is ${age} years old and cannot drink.`);
   } else if (age >= 18 && age <= 120) {
-    console.log(`${name} tem ${age} anos de idade e pode dirigir.`);
+    console.log(`${name} is ${age} years old and can drive.`);
   } else {
-    console.log(`${name} tem ${age} anos de idade e pode se aposentar.`);
+    console.log(`${name} is ${age} years old and eligible for retirement.`);
   }
 }
 
 printNameAndAge("Jonas", 235);
-// Jonas tem 235 anos de idade e pode se aposentar.
+// Jonas is 235 years old and eligible for retirement.
 ```
 
-## O monstro da abstração errada.
+## The monster of wrong abstraction.
 
-Se você já usou esse principio em um projeto mais complexo, você com certeza ficou confuso ao parar para pensar, como você
-deveria transformar códigos parecidos em uma função que suportasse todos os casos, e caso este projeto se ficou um pouco mais
-complicado, o mesmo deve acontecer com a sua abstração.
-O importante é saber quando se deve quebrar uma abstração, caso ela esteja ficando cada vez mais complexa e mais difícil de
-implementar features para suportar diversos casos, a solução é quebrá-la para evitar dor de cabeça, e assim, entramos em outro
-princípio da programação.
+If you've ever used this principle in a more complex project, you've certainly been confused when you stop to think, how you
+should transform similar code into a function that supports all cases, and in case this project got a little longer and
+complicated, so probably your abstraction got complexier too.
+
+> Prefer duplication over the wrong abstraction.
+
+<a href="https://twitter.com/sandimetz">Sandi Metz</a>
+
+The important thing is to know when to break an abstraction if it is getting more and more complex and harder to manage and implement features to support several cases, the solution is to break it to avoid a headache, and so, we enter another programming principle.
 
 ## YAGNI
 
-"You aren't going to need it" ou "Você nao vai precisar disso", é um outro principio do desenvolvimento de softwares, e ele se
-consiste em não fazer códigos complexos porque você <Highlight>não vai precisar disso</Highlight>. As tecnologias mudam, features
-devem ser adicionadas constantemente, você não precisa se matar para colocar mil pacotes ou frameworks diferentes, apenas faça
-o necessário. Por mais que este principio faz todos pensar que você não deve se esforçar, a real é que você não precisa complicar
-as coisas demais!
+"You aren't going to need it" is another principle of software development, and it
+consists of not doing complex code because you will <Highlight>not need it</Highlight>.
 
-## Conclusão
+Technologies change, features must be added constantly, you don't have to struggle to put a thousand packages or frameworks, just do what you need. 
+As much as this principle makes everyone think that you shouldn't make an effort, the real thing is that you don't
+need to complicate things too much!
 
-Por mais que esses princípios pareçam, eles não são nenhuma regra, você tem liberdade de testar oque é melhor para você e oque
-funciona, não leve o conteúdo deste post como uma boa maneira a ser seguida, pois ninguém é o dono da razão e eu estou
+## Conclusion
 
-<Highlight>muito longe</Highlight> para falar oque é certo a ser seguido. Espero
-que este post tenha clareado sua mente, me fale oque você gostou e se foi útil!
+As much as these principles may seem, they are no rules, you are free to test what is best for you and experiment
+what works. Don't take the content of this post as a good way to be followed, because nobody owns the reason and I'm <Highlight>too far</Highlight>
+to say what is right to be followed. I hope this post cleared your mind, let me know what you liked and if it was helpful!

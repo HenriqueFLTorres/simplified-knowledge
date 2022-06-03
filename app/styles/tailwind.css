@@ -787,10 +787,6 @@
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
-.bg-gradient-to-tl {
-  background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-}
-
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -801,11 +797,6 @@
 
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
-}
-
-.from-\[\#f89720\] {
-  --tw-gradient-from: #f89720;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(248 151 32 / 0));
 }
 
 .from-\[\#cecece90\] {
@@ -820,10 +811,6 @@
 
 .via-\[\#e6bd1927\] {
   --tw-gradient-stops: var(--tw-gradient-from), #e6bd1927, var(--tw-gradient-to, rgb(230 189 25 / 0));
-}
-
-.to-\[\#fed006\] {
-  --tw-gradient-to: #fed006;
 }
 
 .to-\[\#ababab4d\] {
@@ -1545,11 +1532,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 pre {
   background-color: #f0f0f0 !important;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .dark pre{
   background-color: #202020 !important;
   box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
 *, ::before, ::after {
