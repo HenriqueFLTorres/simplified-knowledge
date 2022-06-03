@@ -24,7 +24,7 @@ const BlogCard = ({ name, link, image, date, readTime, tags, language }: Props) 
   return (
     <Link to={`blog/${link}`}>
       <div className="group h-[300px] w-[350px] cursor-pointer bg-neutral-200 dark:bg-neutral-800 rounded-tl-3xl rounded-br-3xl hover:scale-110 transition-transform duration-[400ms]">
-        <div className={`w-full h-[150px] bg-cool rounded-tl-3xl bg-gradient-to-tl from-[#f89720] to-[#fed006] group-hover:h-[190px] transition-all clip-path-inset duration-[400ms]`}>
+        <div className={`w-full h-[150px] bg-cool rounded-tl-3xl group-hover:h-[190px] transition-all clip-path-inset duration-[400ms]`}>
             <img className="object-contain rounded-tl-3xl" src={image} alt="" />
             <div className="w-5 h-5 z-50 ml-auto mr-2.5 pt-2.5 fill-neutral-800 dark:fill-neutral-100 opacity-0 group-hover:opacity-100 group-hover:drop-shadow-[0_0_1px_#404040] dark:group-hover:drop-shadow-[0_0_1px_#fff] transition duration-[400ms]">
               {tags}

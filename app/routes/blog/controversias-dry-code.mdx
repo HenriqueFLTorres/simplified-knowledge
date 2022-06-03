@@ -1,9 +1,9 @@
 ---
-title: "Controvérsias do DRY code"
+title: "Clean Code: Controvérsias do DRY code"
 englishVersion: "dry-code-controversies"
 posted: "6 2 2022 10:10"
 edited: "6 2 2022 10:10"
-mainImage: "https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921"
+mainImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
 language: "PT"
 tags: "Clean Code"
 readTime: "3"
@@ -13,8 +13,8 @@ link: "controversias-dry-code"
 import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
 import { Link } from "@remix-run/react";
-import mainImage from "~/public/images/ReferenceVsValue.jpg"
-import Warning from "../../components/Warning"
+import mainImage from "~/public/images/ReferenceVsValue.jpg";
+import Warning from "../../components/Warning";
 
 DRY, "Dont repeat yourself" ou "Não se repita", é um princípio no desenvolvimento de software que vem sendo
 seguido por grande parte da comunidade de programadores e basicamente se consiste em fazer abstrações para
@@ -23,60 +23,62 @@ e conceitos.
 
 ### Por que é tão usado?
 
- Como se é de imaginar, a técnica é utilizada para que evitar que copiamos e colamos partes do nosso código que
- são idênticas, e de fato, é um princípio extremamente forte, podendo melhorar a organização e unificar
- funcões, fazendo com que um bug seja mais fácil de ser encontrado e arrumado.
- 
- 	Mas será que são mil maravilhas? não há maneira alguma de isso dar errado? Bom, quando os projetos são maiores
- a complexidade aumenta, e com isso, abusamos do principio utilizando em toda parte do nosso código, e são nas abstrações
- que a situação começa a ficar complicada. Neste post, usaremos como exemplo grande parte da conversa do Kent C. Dodds no
- post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> e do Dan Abramov en 
- <a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>.
- 
-## O que é abstrações?
+Como se é de imaginar, a técnica é utilizada para que evitar que copiamos e colamos partes do nosso código que
+são idênticas, e de fato, é um princípio extremamente forte, podendo melhorar a organização e unificar
+funcões, fazendo com que um bug seja mais fácil de ser encontrado e arrumado.
 
-  Abstrações são basicamente funcões ou componentes (Caso esteja usando React ou algo parecido), com a intenção de automatizar
+Mas será que são mil maravilhas? não há maneira alguma de isso dar errado? Bom, quando os projetos são maiores
+a complexidade aumenta, e com isso, abusamos do principio utilizando em toda parte do nosso código, e são nas abstrações
+que a situação começa a ficar complicada. Neste post, usaremos como exemplo grande parte da conversa do Kent C. Dodds no
+post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> e do Dan Abramov en
+
+{" "}
+<a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>. ## O que
+é abstrações?
+
+Abstrações são basicamente funcões ou componentes (Caso esteja usando React ou algo parecido), com a intenção de automatizar
 um certo processo. Um exemplo, são libraries como Ant Design, MaterialUI e outras, que fornecem componentes que podem receber
 certos props, e esses props são usados para 'deixar o componente do seu jeito'. Vejamos um simples exemplo.
 
 ```js
 function printNameAndAge(name, age) {
-  console.log(`${name} tem ${age} anos de idade.`)
+  console.log(`${name} tem ${age} anos de idade.`);
 }
 
-printNameAndAge("Maria", 26)
-// Maria tem 26 anos de idade. 
+printNameAndAge("Maria", 26);
+// Maria tem 26 anos de idade.
 ```
 
-  Uma abstração é algo que podemos reutilizar e caso haja necessidade, adicionar mais complexidade, como por exemplo a seguinte
+Uma abstração é algo que podemos reutilizar e caso haja necessidade, adicionar mais complexidade, como por exemplo a seguinte
 função, que se comporta de maneira unica em certas idades.
 
 ```js
 function printNameAndAge(name, age) {
-  if ( age < 18 ) {
-    console.log(`${name} tem ${age} anos de idade e não pode beber.`)
-  } else if ( age >= 18 && age <= 120 ) {
-    console.log(`${name} tem ${age} anos de idade e pode dirigir.`)
+  if (age < 18) {
+    console.log(`${name} tem ${age} anos de idade e não pode beber.`);
+  } else if (age >= 18 && age <= 120) {
+    console.log(`${name} tem ${age} anos de idade e pode dirigir.`);
   } else {
-    console.log(`${name} tem ${age} anos de idade e pode se aposentar.`)
+    console.log(`${name} tem ${age} anos de idade e pode se aposentar.`);
   }
 }
 
-printNameAndAge("Jonas", 235)
-// Jonas tem 235 anos de idade e pode se aposentar. 
+printNameAndAge("Jonas", 235);
+// Jonas tem 235 anos de idade e pode se aposentar.
 ```
 
 ## O monstro da abstração errada.
 
-  Se você já usou esse principio em um projeto mais complexo, você com certeza ficou confuso ao parar para pensar, como você
+Se você já usou esse principio em um projeto mais complexo, você com certeza ficou confuso ao parar para pensar, como você
 deveria transformar códigos parecidos em uma função que suportasse todos os casos, e caso este projeto se ficou um pouco mais
 complicado, o mesmo deve acontecer com a sua abstração.
-  O importante é saber quando se deve quebrar uma abstração, caso ela esteja ficando cada vez mais complexa e mais difícil de
-  implementar features para suportar diversos casos, a solução é quebrá-la para evitar dor de cabeça, e assim, entramos em outro
-  princípio da programação.
-  
-  ## YAGNI
-  "You aren't going to need it" ou "Você nao vai precisar disso", é um outro principio do desenvolvimento de softwares, e ele se 
+O importante é saber quando se deve quebrar uma abstração, caso ela esteja ficando cada vez mais complexa e mais difícil de
+implementar features para suportar diversos casos, a solução é quebrá-la para evitar dor de cabeça, e assim, entramos em outro
+princípio da programação.
+
+## YAGNI
+
+"You aren't going to need it" ou "Você nao vai precisar disso", é um outro principio do desenvolvimento de softwares, e ele se
 consiste em não fazer códigos complexos porque você <Highlight>não vai precisar disso</Highlight>. As tecnologias mudam, features
 devem ser adicionadas constantemente, você não precisa se matar para colocar mil pacotes ou frameworks diferentes, apenas faça
 o necessário. Por mais que este principio faz todos pensar que você não deve se esforçar, a real é que você não precisa complicar
@@ -84,7 +86,8 @@ as coisas demais!
 
 ## Conclusão
 
-  Por mais que esses princípios pareçam, eles não são nenhuma regra, você tem liberdade de testar oque é melhor para você e oque
-funciona, não leve o conteúdo deste post como uma boa maneira a ser seguida, pois ninguém é o dono da razão e eu estou 
-<Highlight>muito longe</Highlight> para falar oque é certo a ser seguido. Espero que este post tenha clareado sua mente, me fale oque
-você gostou e se foi útil!
+Por mais que esses princípios pareçam, eles não são nenhuma regra, você tem liberdade de testar oque é melhor para você e oque
+funciona, não leve o conteúdo deste post como uma boa maneira a ser seguida, pois ninguém é o dono da razão e eu estou
+
+<Highlight>muito longe</Highlight> para falar oque é certo a ser seguido. Espero
+que este post tenha clareado sua mente, me fale oque você gostou e se foi útil!
