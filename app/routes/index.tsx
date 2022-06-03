@@ -39,8 +39,8 @@ export default function Index() {
 
   return (
     <>
-      <div className="flex flex-col justify-between font-sans max-w-full h-screen bg-neutral-100 dark:bg-neutral-900">
-        <div className="flex flex-col items-center w-screen">
+      <div className="flex flex-col justify-between font-sans max-w-full min-h-screen bg-neutral-100 dark:bg-neutral-900">
+        <div className="flex flex-col items-center w-full">
           <Navbar />
           <div className="flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6">
             <Pill name="HTML" icon={<HTML />} />
@@ -52,7 +52,7 @@ export default function Index() {
             <Pill name="Node.js" icon={<NodeJS />} />
           </div>
 
-          <div className="flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14">
+          <div className="flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap">
             {languagePosts.map((post: any) =>
               post.map((post: any) => {
                 const { title, posted, readTime, link, mainImage, language } =
