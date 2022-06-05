@@ -12,6 +12,7 @@ link: "middlewares-no-express"
 
 import Code from "../../components/Code";
 import Highlight from "../../components/Highlight";
+import PostImage from "../../components/PostImage"
 import { Link } from "@remix-run/react";
 
 import messagePT from "~/public/posts/express-middlewares/messagePT.png"
@@ -155,6 +156,7 @@ app.get("/", autorizarMaioresDeIdade, (req, res) => {
 Ao acessar com <Code>http://localhost:3000/?idade=18</Code>, o Middleware nos autoriza por termos os requisitos necessários, e logo depois, renderiza
 a página com a mensagem: Autorizado <Code>true</Code>.
 
+<PostImage image={messagePT} description="" />
 
 ###  Evite erros usando Middlewares
 
