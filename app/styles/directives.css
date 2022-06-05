@@ -5,6 +5,9 @@
 @layer components {
   .MainImage {
     border-radius: 0.75rem;
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
   }
 
   .InlineCode {
