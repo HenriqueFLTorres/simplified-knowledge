@@ -13,6 +13,7 @@
   .InlineCode {
     background-color: #dddddd;
     border: 1px solid rgba(0, 0, 0, 0.4) !important;
+    white-space: nowrap;
   }
 
   .dark .InlineCode {

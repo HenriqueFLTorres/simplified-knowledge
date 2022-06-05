@@ -452,6 +452,7 @@
 .InlineCode {
   background-color: #dddddd;
   border: 1px solid rgba(0, 0, 0, 0.4) !important;
+  white-space: nowrap;
 }
 
 .dark .InlineCode {
@@ -550,6 +551,10 @@
   height: 150px;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -580,10 +585,6 @@
 
 .h-screen {
   height: 100vh;
-}
-
-.h-full {
-  height: 100%;
 }
 
 .min-h-screen {
@@ -856,11 +857,6 @@
 
 .fill-neutral-400 {
   fill: #a3a3a3;
-}
-
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .object-cover {

@@ -1,0 +1,178 @@
+---
+title: "Express Middlewares: Everything you need to know!"
+portugueseVersion: "middlewares-no-express"
+posted: "6 5 2022 15:09"
+edited: "6 5 2022 15:09"
+mainImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80"
+language: "EN"
+tags: "Express"
+readTime: "3"
+link: "express-middlewares"
+---
+
+import Code from "../../components/Code";
+import Highlight from "../../components/Highlight";
+import PostImage from "../../components/PostImage"
+import { Link } from "@remix-run/react";
+
+import messageEN from "~/public/posts/express-middlewares/messageEN.png"
+
+## {attributes.title}
+
+<Link to={`/blog/${attributes.portugueseVersion}`}>
+  <div>Artigo em Português</div>
+</Link>
+
+<img
+  src={attributes.mainImage}
+  alt=""
+  title="Image of @darth_u"
+  className="MainImage"
+/>
+
+We can say that middlewares are, <Highlight>Functions that run between the `request` object
+and an application's `response`</Highlight>. With them, we can run any
+code during this process, terminate the <Code>response</Code> or even modify the
+<Code>req</Code> and <Code>res</Code> objects.
+
+### Writing a simple Middleware
+
+Let's write a function called <Code>simpleMiddleware</Code> as our middleware,
+and after that, we'll use <Code>app.use(simpleMiddleware)</Code> for our <Code>app.get('/')</Code> to access it.
+
+```js
+const express = require("express");
+const app = express();
+
+const simpleMiddleware = (req, res, next) => {
+  console.log("Middleware working!");
+  next();
+};
+
+app.use(simpleMiddleware)
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World!</h1>");
+});
+
+app.listen(3000);
+```
+
+When we access <Code>http://localhost:3000/</Code> we will get the message <Code>"Middleware working!"</Code>.
+Note that we will not receive the <Code>console.log()</Code> in the browser, Node.js runs on the <Highlight>V8 Engine</Highlight> of the
+JavaScript and does not have access to our browser!
+
+### Using a Middleware: Global
+
+In the example above, we use <Code>app.use()</Code>, if we happen to have more routes in this file, Middleware
+will be used in all, hence called global usage. It is important to note that they are called in the order they are defined.
+See the example:
+
+```js
+...
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World!</h1>");
+});
+
+app.use(simpleMiddleware)
+
+app.get("/about", (req, res) => {
+  res.send("<h1>About Page!</h1>");
+});
+
+...
+
+```
+
+Our Middleware will only be called if someone is already accessing the page <Code>http://localhost:3000/About</Code>, the main 
+page will be ignored. Global usage can be useful when organizing routes by files and types!
+
+### Using a Middleware: Route
+
+If you want to use it by route, you can add the Middleware name between the <Code>req</Code> and <Code>res</Code> objects.
+see the example
+
+```js
+...
+
+app.get("/", simpleMiddleware, (req, res) => {
+  res.send("<h1>Hello World!</h1>");
+});
+
+...
+```
+
+or like this
+
+
+```js
+...
+
+app.get("/", (req, res, next) => {
+  res.send("<h1>Hello World!</h1>");
+});
+
+...
+```
+
+
+### Middleware Preference: Global vs Route
+
+Know that when we use <Code>app.use(middleware)</Code>, it has a higher preference than the route one, that is, it will be called first.
+
+
+```js
+app.use(myGlobalMiddleware)
+
+app.get("/about", myRouteMiddleware, (req, res) => {
+res.send("About page")
+});
+
+// myGlobalMiddleware is called
+// myRouteMiddleware is called
+```
+
+### Communication between Middlewares
+
+We can pass information between Middlewares by modifying its <Code>req</Code> and <Code>res</Code> objects. 
+See the example
+
+```js
+const authorizeMajorAge = (req, res, next) => {
+  if (req.query.age >= "18") {
+    authorized.req = true;
+    next();
+  } else {
+    res.send("ERROR: You are a minor");
+  }
+};
+
+app.get("/", authorizeMajorAge, (req, res) => {
+  res.send(`<h1>Main page <br/> Authorized = ${authorized request} </h1>`);
+});
+```
+
+When accessing with <Code>http://localhost:3000/?age=18</Code>, the Middleware authorizes us to have the necessary requirements, and soon after, renders
+the page with the message: Authorized <Code>true</Code>.
+
+<PostImage image={messageEN} description="" />
+
+### Avoid errors using Middlewares
+
+In the previous examples, we used a <Code>if</Code> and <Code>else</Code> to determine if the user is a minor or not,
+but what if we want to "shorten" the code with the intention of making it cleaner? The first thing someone thinks about is leaving it like this:
+
+```js
+const authorizeMajorAge = (req, res, next) => {
+  if (req.query.age >= "18") {
+    authorized.req = true;
+    next();
+  }
+  res.send("ERROR: You are a minor");
+};
+```
+
+express runs code even after <Code>next()</Code>, so the user would be authorized and then get an error!
+As annoying as it is, this way that express uses in Middlewares opens up another opportunity for us to run some code after the
+<Code>response</Code> object.
