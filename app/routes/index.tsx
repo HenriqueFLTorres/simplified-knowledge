@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "~/components/Navbar";
 import BlogCard from "~/components/BlogCard";
 import Pill from "~/components/Pill";
@@ -30,14 +31,22 @@ export const loader: LoaderFunction = () => {
 };
 
 export default function Index() {
+  const [tags, setTags] = useState<Array<String>>([]);
   const posts = useLoaderData();
   const language = useLanguage();
 
-  const languagePosts = posts.map((post: any) => post.filter((post: any) => post.postLanguage === language));
+  const languagePosts = posts.map((post: any) =>
+    post.filter((post: any) => post.postLanguage === language)
+  );
 
-  console.log(posts);
-  
-  
+  const handleSelectedTags = (tagName: any) => {
+    if (tags.includes(tagName)) {
+      const filteredTags = tags.filter((tag: String) => tag !== tagName);
+      setTags(filteredTags);
+    } else {
+      setTags([...tags, tagName]);
+    }
+  };
 
   return (
     <>
@@ -45,28 +54,78 @@ export default function Index() {
         <div className="flex flex-col items-center w-full">
           <Navbar />
           <div className="flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6">
-            <Pill name="HTML" icon={<HTML />} />
-            <Pill name="CSS" icon={<CSS />} />
-            <Pill name="JavaScript" icon={<JavaScript />} />
-            <Pill name="TypeScript" icon={<TypeScript />} />
-            <Pill name="React" icon={<ReactIcon />} />
-            <Pill name="Next.js" icon={<NextJS />} />
-            <Pill name="Node.js" icon={<NodeJS />} />
+            <Pill
+              name="HTML"
+              icon={<HTML />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="CSS"
+              icon={<CSS />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="JavaScript"
+              icon={<JavaScript />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="TypeScript"
+              icon={<TypeScript />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="React"
+              icon={<ReactIcon />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="Next.js"
+              icon={<NextJS />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
+            <Pill
+              name="Node.js"
+              icon={<NodeJS />}
+              handleSelectedTags={handleSelectedTags}
+              activeTags={tags}
+            />
           </div>
 
           <div className="flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap">
             {languagePosts.map((post: any) =>
               post.map((post: any) => {
-                const { title, postImage, postedOn, editedOn, tags, readTimeInMinutes, postLanguage, postURL } = post;
+                const {
+                  title,
+                  postImage,
+                  postedOn,
+                  editedOn,
+                  postTags,
+                  readTimeInMinutes,
+                  postLanguage,
+                  postURL,
+                } = post;
 
-                return (
+                // if tags are selected, it will return blogs posts accoarding to selection, otherwise it will always return true to render all posts
+                const postContainSelectedTags = tags.length > 0 ? postTags.every((tag: String) =>
+                  tags.includes(tag)
+                ) : true
+                
+
+               return postContainSelectedTags && (
                   <BlogCard
                     key={title}
                     title={title}
                     postImage={postImage}
                     postedOn={postedOn}
                     editedOn={editedOn}
-                    tags={tags}
+                    postTags={postTags}
                     readTimeInMinutes={readTimeInMinutes}
                     postLanguage={postLanguage}
                     postURL={postURL}
@@ -76,7 +135,7 @@ export default function Index() {
             )}
           </div>
         </div>
-      <Footer></Footer>
+        <Footer></Footer>
       </div>
     </>
   );

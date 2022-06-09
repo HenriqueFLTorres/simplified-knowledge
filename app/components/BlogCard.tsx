@@ -12,13 +12,13 @@ type Props = {
   postImage: string;
   postedOn: string;
   editedOn?: string;
-  tags: JSX.Element;
+  postTags: JSX.Element;
   readTimeInMinutes: string;
   postLanguage: string;
   postURL: string;
 };
 
-const BlogCard = ({ title, postImage, postedOn, editedOn, tags, readTimeInMinutes, postLanguage, postURL }: Props) => {
+const BlogCard = ({ title, postImage, postedOn, editedOn, postTags, readTimeInMinutes, postLanguage, postURL }: Props) => {
   const uploadDate = new Date(postedOn);
   const isPortuguse = postLanguage === "PT"
   const dateFormated = isPortuguse ? formatRelative(uploadDate, new Date(), { locale: ptBR }) : formatRelative(uploadDate, new Date())
@@ -28,7 +28,7 @@ const BlogCard = ({ title, postImage, postedOn, editedOn, tags, readTimeInMinute
         <div className={`w-full h-[150px] bg-cool rounded-tl-3xl group-hover:h-[190px] transition-all clip-path-inset duration-[400ms]`}>
             <img className="object-cover bg-center w-full h-full rounded-tl-3xl" src={postImage} alt="" />
             <div className="w-5 h-5 z-50 ml-auto mr-2.5 pt-2.5 fill-neutral-800 dark:fill-neutral-100 opacity-0 group-hover:opacity-100 group-hover:drop-shadow-[0_0_1px_#404040] dark:group-hover:drop-shadow-[0_0_1px_#fff] transition duration-[400ms]">
-              {tags}
+              {postTags}
             </div>
         </div>
         <div className="px-5 py-2.5 h-[150px] flex flex-col justify-between group-hover:h-[110px] transition-all duration-[400ms]">
