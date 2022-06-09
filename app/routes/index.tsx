@@ -60,13 +60,14 @@ export default function Index() {
                 return (
                   <BlogCard
                     key={title}
-                    name={title}
-                    link={postImage}
-                    image={postImage}
-                    date={postedOn}
-                    readTime={readTimeInMinutes}
-                    tags={<JavaScript />}
-                    language={postLanguage}
+                    title={title}
+                    postImage={postImage}
+                    postedOn={postedOn}
+                    editedOn={editedOn}
+                    tags={tags}
+                    readTimeInMinutes={readTimeInMinutes}
+                    postLanguage={postLanguage}
+                    postURL={postURL}
                   />
                 );
               })
