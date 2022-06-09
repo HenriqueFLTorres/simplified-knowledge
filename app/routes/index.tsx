@@ -33,9 +33,11 @@ export default function Index() {
   const posts = useLoaderData();
   const language = useLanguage();
 
-  const languagePosts = posts.map((post: any) =>
-    post.filter((post: any) => post.language === language)
-  );
+  const languagePosts = posts.map((post: any) => post.filter((post: any) => post.postLanguage === language));
+
+  console.log(posts);
+  
+  
 
   return (
     <>
