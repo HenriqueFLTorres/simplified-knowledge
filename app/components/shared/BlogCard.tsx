@@ -1,19 +1,9 @@
 import { Link } from '@remix-run/react';
 import { formatRelative } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import type { blogPostType } from '@utils/getPostsList';
 
 import { Clock } from '@components/icons/global';
-
-type Props = {
-  title: string;
-  postImage: string;
-  postedOn: string;
-  editedOn?: string;
-  postTags: JSX.Element;
-  readTimeInMinutes: string;
-  postLanguage: string;
-  postURL: string;
-};
 
 const BlogCard = ({
   title,
@@ -22,14 +12,16 @@ const BlogCard = ({
   editedOn,
   postTags,
   readTimeInMinutes,
-  postLanguage,
+  englishLanguage,
   postURL,
-}: Props) => {
+}: blogPostType) => {
   const uploadDate = new Date(postedOn);
-  const isPortuguse = postLanguage === 'PT';
+  const isPortuguse = !englishLanguage;
+
   const dateFormated = isPortuguse
     ? formatRelative(uploadDate, new Date(), { locale: ptBR })
     : formatRelative(uploadDate, new Date());
+    
   return (
     <Link to={`blog/${postURL}`}>
       <div className='group h-[300px] w-[350px] cursor-pointer bg-neutral-200 dark:bg-neutral-800 rounded-tl-3xl rounded-br-3xl hover:scale-110 transition-transform duration-[400ms] clip-path-inset'>

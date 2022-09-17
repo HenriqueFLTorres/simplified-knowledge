@@ -1,22 +1,35 @@
-import * as referencePost from "../routes/blog/reference-vs-value.mdx";
-import * as dryCodePost from "../routes/blog/dry-code-controversies.mdx";
-import * as middlewarePost from "../routes/blog/express-middlewares.mdx";
+import * as dryCodePost from '@content/dry-code-controversies/dry-code-controversies.mdx';
+import * as postDryCode from '@content/dry-code-controversies/controversias-dry-code.mdx';
 
-import * as postReferencia from "../routes/blog/referencia-vs-valor.mdx";
-import * as postDryCode from "../routes/blog/controversias-dry-code.mdx";
-import * as middlewareNoExpress from "../routes/blog/middlewares-no-express.mdx";
+import * as referencePost from '@content/reference-vs-value/reference-vs-value.mdx';
+import * as postReferencia from '@content/reference-vs-value/referencia-vs-valor.mdx';
+
+import * as middlewarePost from '@content/express-middlewares/express-middlewares.mdx';
+import * as middlewareNoExpress from '@content/express-middlewares/middlewares-no-express.mdx';
+
+export interface blogPostType {
+  title: string;
+  postImage: string;
+  postedOn: string;
+  editedOn: string;
+  postTags: string[];
+  readTimeInMinutes: string;
+  englishLanguage: boolean;
+  postURL: string;
+  alternativeLanguageURL: string;
+}
 
 let posts = [
-  referencePost,
-  postReferencia,
-  dryCodePost,
-  postDryCode,
-  middlewareNoExpress,
-  middlewarePost,
+  referencePost.attributes,
+  postReferencia.attributes,
+  dryCodePost.attributes,
+  postDryCode.attributes,
+  middlewareNoExpress.attributes,
+  middlewarePost.attributes,
 ];
 
-const getPosts = () => {
-  return posts;
-};
+const getPosts = new Promise((resolve) => {
+  resolve(posts);
+});
 
 export default getPosts;

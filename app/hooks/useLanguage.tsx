@@ -26,14 +26,10 @@ export const LanguageContext: React.FC<React.ReactNode> = ({ children }) => {
 
   useEffect(() => {
     const languageStorage: any = localStorage.getItem('isEnglishLanguage');
-    if ('isEnglishLanguage' in localStorage) {
-      setIsEnglishLanguage(languageStorage);
-    }
-  }, []);
+    if ('isEnglishLanguage' in localStorage) return
 
-  useEffect(() => {
-    localStorage.setItem('isEnglishLanguage', String(isEnglishLanguage));
-  }, [isEnglishLanguage]);
+    setIsEnglishLanguage(languageStorage);
+  }, []);
 
   return (
     <isLanguageEnglish.Provider value={LanguageState}>

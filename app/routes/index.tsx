@@ -3,12 +3,10 @@ import { useState } from 'react';
 import type { LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
-import getPosts from '@utils/getPostsList';
 import { useEnglishLanguage } from '@hooks/useLanguage';
 
 import { Navbar, Footer } from '@components/global';
 import { BlogCard, Pill } from '@components/shared';
-
 import {
   HTML,
   CSS,
@@ -19,24 +17,19 @@ import {
   NodeJS,
 } from '@components/icons/technology';
 
-const getPostFromModule = (mod: any) => {
-  return {
-    ...mod.attributes,
-  };
-};
+import type { blogPostType } from '@utils/getPostsList';
+import getPosts from '@utils/getPostsList';
+import { filterPostsByLanguage } from '@utils/index';
 
-export const loader: LoaderFunction = () => {
-  return [getPosts().map((post) => getPostFromModule(post))];
+export const loader: LoaderFunction = async () => {
+  return await getPosts;
 };
 
 export default function Index() {
   const [tags, setTags] = useState<Array<String>>([]);
-  const posts = useLoaderData();
   const { isEnglish } = useEnglishLanguage();
 
-  const languagePosts = posts.map((post: any) =>
-    post.filter((post: any) => post.englishLanguage === isEnglish)
-  );
+  const allPosts = useLoaderData();
 
   const handleSelectedTags = (tagName: any) => {
     if (tags.includes(tagName)) {
@@ -98,41 +91,35 @@ export default function Index() {
           </div>
 
           <div className='flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap'>
-            {languagePosts.map((post: any) =>
-              post.map((post: any) => {
+            {filterPostsByLanguage(allPosts, isEnglish).map(
+              (post: blogPostType) => {
                 const {
                   title,
-                  postImage,
                   postedOn,
                   editedOn,
+                  postImage,
                   postTags,
-                  readTimeInMinutes,
-                  postLanguage,
                   postURL,
+                  readTimeInMinutes,
+                  englishLanguage,
+                  alternativeLanguageURL,
                 } = post;
 
-                // if tags are selected, it will return blogs posts accoarding to selection, otherwise it will always return true to render all posts
-                const postContainSelectedTags =
-                  tags.length > 0
-                    ? postTags.every((tag: String) => tags.includes(tag))
-                    : true;
-
                 return (
-                  postContainSelectedTags && (
-                    <BlogCard
-                      key={title}
-                      title={title}
-                      postImage={postImage}
-                      postedOn={postedOn}
-                      editedOn={editedOn}
-                      postTags={postTags}
-                      readTimeInMinutes={readTimeInMinutes}
-                      postLanguage={postLanguage}
-                      postURL={postURL}
-                    />
-                  )
+                  <BlogCard
+                    key={title}
+                    title={title}
+                    postImage={postImage}
+                    postedOn={postedOn}
+                    editedOn={editedOn}
+                    postTags={postTags}
+                    readTimeInMinutes={readTimeInMinutes}
+                    englishLanguage={englishLanguage}
+                    postURL={postURL}
+                    alternativeLanguageURL={alternativeLanguageURL}
+                  />
                 );
-              })
+              }
             )}
           </div>
         </div>

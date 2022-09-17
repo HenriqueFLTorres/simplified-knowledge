@@ -62,7 +62,7 @@ const navItems: navList = {
 const Navbar = (props: Props) => {
   const [languageDropDown, setLanguageDropDown] = useState<Boolean>(false);
 
-  const { isEnglish, setIsEnglish } = useEnglishLanguage()
+  const { isEnglish, setIsEnglish } = useEnglishLanguage();
 
   const closeDropDown = () => setLanguageDropDown(false);
   const dropDownRef = useDetectClickOutside({ onTriggered: closeDropDown });
@@ -80,7 +80,7 @@ const Navbar = (props: Props) => {
   };
 
   const handleItemsList = () => {
-    return isEnglish ? navItems.EN : navItems.PT
+    return isEnglish ? navItems.EN : navItems.PT;
   };
 
   return (
@@ -124,13 +124,19 @@ const Navbar = (props: Props) => {
             } duration-200 transition-all`}
           >
             <p
-              onClick={() => setIsEnglish(true)}
+              onClick={() => {
+                setIsEnglish(true);
+                localStorage.setItem('isEnglishLanguage', String(true));
+              }}
               className='w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-t transition-colors duration-200'
             >
               EN
             </p>
             <p
-              onClick={() => setIsEnglish(false)}
+              onClick={() => {
+                setIsEnglish(true);
+                localStorage.setItem('isEnglishLanguage', String(false));
+              }}
               className='w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-b transition-colors duration-200'
             >
               PT
