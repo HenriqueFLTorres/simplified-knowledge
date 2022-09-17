@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 const Illustration = (props: any) => (
   <svg
@@ -49,6 +49,6 @@ const Illustration = (props: any) => (
       fill="#F2F2F2"
     />
   </svg>
-)
+);
 
-export default Illustration
+export default Illustration;

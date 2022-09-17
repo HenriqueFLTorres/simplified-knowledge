@@ -3,27 +3,34 @@ title: "Reference and Value: Why you should know the difference"
 postImage: "https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921"
 postedOn: "5 25 2022 17:26"
 editedOn: "5 25 2022 17:26"
-postTags: [ "JavaScript" ]
+postTags: ["JavaScript"]
 readTimeInMinutes: "3"
-postLanguage: "EN"
+englishLanguage: true
 postURL: "reference-vs-value"
 alternativeLanguageURL: "referencia-vs-valor"
 ---
 
-import Code from "../../components/Code";
-import Highlight from "../../components/Highlight";
+import { Code, Highlight, PostImage, Warning } from '@components/shared';
 import { Link } from "@remix-run/react";
-import mainImage from "~/public/images/ReferenceVsValue.jpg"
-import Warning from "../../components/Warning"
-
+import mainImage from "public/images/ReferenceVsValue.jpg";
 
 ## {attributes.title}
 
-<Link to={`/blog/${attributes.alternativeLanguageURL}`}><div>Artigo em Português</div></Link>
+<Link to={`/blog/${attributes.alternativeLanguageURL}`}>
+  <div>Artigo em Português</div>
+</Link>
 
-<img src={mainImage} alt="" title="Photo by David Jorre" className="MainImage" />
+<img
+  src={mainImage}
+  alt=""
+  title="Photo by David Jorre"
+  className="MainImage"
+/>
 
-<Warning>In the following examples emojis are used to name variables and should not be replicated, otherwise your code will return a syntax error.</Warning>
+<Warning>
+  In the following examples emojis are used to name variables and should not be
+  replicated, otherwise your code will return a syntax error.
+</Warning>
 
 If for some reason you've tried comparing <Code>objects</Code> or <Code>arrays</Code> in JavaScript, you probably went confused by why they weren't the same even having an identical value/content.. <br/>
 
@@ -99,12 +106,12 @@ If you've been using React for a while, we have several hooks and features that 
 
 Another example is the <Code>useCallback()</Code>, used to memorize functions and not just compare with their reference, preventing the creation of another identical function on every rendering. If you want a post talking about it, let me know!
 
-
 ### <Highlight>Remember!</Highlight>
 
-	• Value types are Primitives and copied by their value. <br/>
-	• Reference types are non-primitives and are copied by their reference. <br/>
-  • When comparing identical non-primitives, they return <Code>false</Code> because their <Highlight>reference</Highlight> type. <br/>
-  
-  • Value types → <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code> and <Code>null</Code>. <br/>
-  • Reference types → <Code>Array</Code>, <Code>Object</Code> and <Code>Function</Code>.
+    • Value types are Primitives and copied by their value. <br/>
+    • Reference types are non-primitives and are copied by their reference. <br/>
+
+• When comparing identical non-primitives, they return <Code>false</Code> because their <Highlight>reference</Highlight> type. <br/>
+
+• Value types → <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code> and <Code>null</Code>. <br/>
+• Reference types → <Code>Array</Code>, <Code>Object</Code> and <Code>Function</Code>.

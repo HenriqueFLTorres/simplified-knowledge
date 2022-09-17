@@ -1,7 +1,5 @@
 module.exports = {
-  content: [
-    "./app/**/*.{ts,tsx,jsx,js,mdx}",
-  ],
+  content: ["./app/**/*.{ts,tsx,jsx,js,mdx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -9,11 +7,6 @@ module.exports = {
     },
     extend: {},
   },
-  safelist: [
-    'clip-path-inset',
-    'hide-top',
-  ],
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
+  safelist: ["clip-path-inset", "hide-top"],
+  plugins: [require("@tailwindcss/typography")],
 };

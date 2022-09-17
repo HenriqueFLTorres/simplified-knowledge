@@ -3,19 +3,17 @@ title: "Express Middlewares: Everything you need to know!"
 postImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80"
 postedOn: "6 5 2022 15:09"
 editedOn: "6 5 2022 15:09"
-postTags: [ "Express" ]
+postTags: ["Express"]
 readTimeInMinutes: "3"
-postLanguage: "EN"
+englishLanguage: true
 postURL: "express-middlewares"
 alternativeLanguageURL: "middlewares-no-express"
 ---
 
-import Code from "../../components/Code";
-import Highlight from "../../components/Highlight";
-import PostImage from "../../components/PostImage"
+import { Code, Highlight, PostImage } from '@components/shared';
 import { Link } from "@remix-run/react";
 
-import messageEN from "~/public/posts/express-middlewares/messageEN.png"
+import messageEN from "app/data/posts/express-middlewares/messageEN.png";
 
 ## {attributes.title}
 
@@ -33,6 +31,7 @@ import messageEN from "~/public/posts/express-middlewares/messageEN.png"
 We can say that middlewares are, <Highlight>Functions that run between the `request` object
 and an application's `response`</Highlight>. With them, we can run any
 code during this process, terminate the <Code>response</Code> or even modify the
+
 <Code>req</Code> and <Code>res</Code> objects.
 
 ### Writing a simple Middleware
@@ -49,7 +48,7 @@ const simpleMiddleware = (req, res, next) => {
   next();
 };
 
-app.use(simpleMiddleware)
+app.use(simpleMiddleware);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World!</h1>");
@@ -85,7 +84,7 @@ app.get("/about", (req, res) => {
 
 ```
 
-Our Middleware will only be called if someone is already accessing the page <Code>http://localhost:3000/About</Code>, the main 
+Our Middleware will only be called if someone is already accessing the page <Code>http://localhost:3000/About</Code>, the main
 page will be ignored. Global usage can be useful when organizing routes by files and types!
 
 ### Using a Middleware: Route
@@ -105,7 +104,6 @@ app.get("/", simpleMiddleware, (req, res) => {
 
 or like this
 
-
 ```js
 ...
 
@@ -116,17 +114,15 @@ app.get("/", (req, res, next) => {
 ...
 ```
 
-
 ### Middleware Preference: Global vs Route
 
 Know that when we use <Code>app.use(middleware)</Code>, it has a higher preference than the route one, that is, it will be called first.
 
-
 ```js
-app.use(myGlobalMiddleware)
+app.use(myGlobalMiddleware);
 
 app.get("/about", myRouteMiddleware, (req, res) => {
-res.send("About page")
+  res.send("About page");
 });
 
 // myGlobalMiddleware is called
@@ -135,7 +131,7 @@ res.send("About page")
 
 ### Communication between Middlewares
 
-We can pass information between Middlewares by modifying its <Code>req</Code> and <Code>res</Code> objects. 
+We can pass information between Middlewares by modifying its <Code>req</Code> and <Code>res</Code> objects.
 See the example
 
 ```js
@@ -175,4 +171,5 @@ const authorizeMajorAge = (req, res, next) => {
 
 express runs code even after <Code>next()</Code>, so the user would be authorized and then get an error!
 As annoying as it is, this way that express uses in Middlewares opens up another opportunity for us to run some code after the
+
 <Code>response</Code> object.

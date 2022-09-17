@@ -3,15 +3,14 @@ title: "Clean Code: DRY code controversies and the Monster of the Wrong Abstract
 postImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
 postedOn: "6 2 2022 20:10"
 editedOn: "6 2 2022 20:10"
-postTags: [ "Clean Code" ]
+postTags: ["Clean Code"]
 readTimeInMinutes: "3"
-postLanguage: "EN"
+englishLanguage: true
 postURL: "dry-code-controversies"
 alternativeLanguageURL: "controversias-dry-code"
 ---
 
-import Code from "../../components/Code";
-import Highlight from "../../components/Highlight";
+import { Code, Highlight } from '@components/shared';
 import { Link } from "@remix-run/react";
 
 ## {attributes.title}
@@ -44,6 +43,7 @@ that the situation starts to get complicated.
 
 This post takes strong inspiration from Kent C. Dodds' conversation on
 post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> and by Dan Abramov at
+
 <a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>.
 
 ## What are abstractions?
@@ -96,7 +96,7 @@ The important thing is to know when to break an abstraction if it is getting mor
 "You aren't going to need it" is another principle of software development, and it
 consists of not doing complex code because you will <Highlight>not need it</Highlight>.
 
-Technologies change, features must be added constantly, you don't have to struggle to put a thousand packages or frameworks, just do what you need. 
+Technologies change, features must be added constantly, you don't have to struggle to put a thousand packages or frameworks, just do what you need.
 As much as this principle makes everyone think that you shouldn't make an effort, the real thing is that you don't
 need to complicate things too much!
 

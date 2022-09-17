@@ -3,19 +3,17 @@ title: "Middlewares no Express: Tudo que você precisa saber!"
 postImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80"
 postedOn: "6 5 2022 15:09"
 editedOn: "6 5 2022 15:09"
-postTags: [ "Express" ]
+postTags: ["Express"]
 readTimeInMinutes: "3"
-postLanguage: "PT"
+englishLanguage: false
 postURL: "middlewares-no-express"
 alternativeLanguageURL: "express-middlewares"
 ---
- 
-import Code from "../../components/Code";
-import Highlight from "../../components/Highlight";
-import PostImage from "../../components/PostImage"
+
+import { Code, Highlight, PostImage } from '@components/shared';
 import { Link } from "@remix-run/react";
 
-import messagePT from "~/public/posts/express-middlewares/messagePT.png"
+import messagePT from "app/data/posts/express-middlewares/messagePT.png";
 
 ## {attributes.title}
 
@@ -29,7 +27,6 @@ import messagePT from "~/public/posts/express-middlewares/messagePT.png"
   title="Imagem de @darth_u"
   className="MainImage"
 />
-
 
 Podemos falar que middlewares são, <Highlight>Funcões que rodam entre o objeto `request`
 e o `response` de uma aplicação</Highlight>. Com eles, podemos executar qualquer
@@ -50,7 +47,7 @@ const simpleMiddleware = (req, res, next) => {
   next();
 };
 
-app.use(simpleMiddleware)
+app.use(simpleMiddleware);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World!</h1>");
@@ -60,7 +57,7 @@ app.listen(3000);
 ```
 
 Quando acessamos <Code>http://localhost:3000/</Code> vamos receber a mensagem <Code>"Middleware funcionando!"</Code>.
-Perceba que não vamos receber o <Code>console.log()</Code> no browser, o Node.js roda no <Highlight>V8 Engine</Highlight> do 
+Perceba que não vamos receber o <Code>console.log()</Code> no browser, o Node.js roda no <Highlight>V8 Engine</Highlight> do
 JavaScript e não tem acesso ao nosso browser!
 
 ### Usando um Middleware: Global
@@ -106,7 +103,6 @@ app.get("/", simpleMiddleware, (req, res) => {
 
 ou assim
 
-
 ```js
 ...
 
@@ -117,17 +113,15 @@ app.get("/", (req, res, next) => {
 ...
 ```
 
-
 ### Preferência por Middlewares: Global vs Rota
 
 Saiba que quando usamos <Code>app.use(middleware)</Code>, ele tem uma preferência maior que o por rota, ou seja, ele irá ser chamado primeiro.
 
-
 ```js
-app.use(myGlobalMiddleware)
+app.use(myGlobalMiddleware);
 
 app.get("/about", myRouteMiddleware, (req, res) => {
-	res.send("About page")
+  res.send("About page");
 });
 
 // myGlobalMiddleware é chamado
@@ -158,9 +152,9 @@ a página com a mensagem: Autorizado <Code>true</Code>.
 
 <PostImage image={messagePT} description="" />
 
-###  Evite erros usando Middlewares
+### Evite erros usando Middlewares
 
-Nos exemplos anteriores, usamos um <Code>if</Code> e <Code>else</Code> para determinar se o usuário é maior de idade, 
+Nos exemplos anteriores, usamos um <Code>if</Code> e <Code>else</Code> para determinar se o usuário é maior de idade,
 mas e se quisermos "encurtar" o código com a intenção de deixá-lo mais limpo? A primeira coisa que alguém pensa é em deixar assim:
 
 ```js
@@ -176,10 +170,3 @@ const autorizarMaioresDeIdade = (req, res, next) => {
 O express roda códigos mesmo depois do <Code>next()</Code>, portanto, o usuário seria autorizado e logo depois receberia um erro!
 Por mais chato que seja, essa maneira que o express usa em Middlewares abre mais uma oportunidade para que rodamos algum código após o
 objeto <Code>response</Code>.
-
-
-
-
-
-
-

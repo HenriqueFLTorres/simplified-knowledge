@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 const IconWhite = (props: any) => (
   <svg
@@ -66,6 +66,6 @@ const IconWhite = (props: any) => (
       }}
     />
   </svg>
-)
+);
 
-export default IconWhite
+export default IconWhite;

@@ -1,29 +1,36 @@
 ---
-title: "Referência e Valor: Por que você deve saber a diferença"
-postImage: "https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921"
-postedOn: "5 25 2022 17:26"
-editedOn: "5 25 2022 17:26"
-postTags: [ "JavaScript" ]
-readTimeInMinutes: "3"
-postLanguage: "PT"
-postURL: "referencia-vs-valor"
-alternativeLanguageURL: "reference-vs-value"
+title: 'Referência e Valor: Por que você deve saber a diferença'
+postImage: 'https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921'
+postedOn: '5 25 2022 17:26'
+editedOn: '5 25 2022 17:26'
+postTags: ['JavaScript']
+readTimeInMinutes: '3'
+englishLanguage: false
+postURL: 'referencia-vs-valor'
+alternativeLanguageURL: 'reference-vs-value'
 ---
 
-
-import Code from "../../components/Code";
-import Highlight from "../../components/Highlight";
-import { Link } from "@remix-run/react";
-import mainImage from "~/public/images/ReferenceVsValue.jpg"
-import Warning from "../../components/Warning"
+import { Code, Highlight, PostImage, Warning } from '@components/shared';
+import { Link } from '@remix-run/react';
+import mainImage from 'public/images/ReferenceVsValue.jpg';
 
 ## {attributes.title}
 
-<Link to={`/blog/${attributes.alternativeLanguageURL}`}><div>English Article</div></Link>
+<Link to={`/blog/${attributes.alternativeLanguageURL}`}>
+  <div>English Article</div>
+</Link>
 
-<img src={mainImage} alt="" title="Imagem de David Jorre" className="MainImage" />
+<img
+  src={mainImage}
+  alt=''
+  title='Imagem de David Jorre'
+  className='MainImage'
+/>
 
-<Warning>Nos exemplos a seguir são utilizados emojis para nomear variáveis e não devem ser replicados, caso contrário, o seu código retornará um erro de síntaxe.</Warning>
+<Warning>
+  Nos exemplos a seguir são utilizados emojis para nomear variáveis e não devem
+  ser replicados, caso contrário, o seu código retornará um erro de síntaxe.
+</Warning>
 
 Se por algum motivo você tentou comparar <Code>objetos</Code> ou <Code>arrays</Code> em JavaScript, você provavelmente ficou confuso, porque eles não eram os mesmos apesar de ter um valor/conteúdo idêntico. <br/>
 
