@@ -1,12 +1,8 @@
-import * as React from "react";
-
-const IconWhite = (props: any) => (
+const IconWhite = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1000 1000"
-    style={{
-      enableBackground: "new 0 0 1000 1000",
-    }}
+    enableBackground="new 0 0 1000 1000"
     xmlSpace="preserve"
     {...props}
   >

@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-
-import styles from "../tailwind.css";
-
-type Props = {
+type PillProps = {
   name: string;
   icon: JSX.Element;
   handleSelectedTags: Function;
   activeTags: Array<String>;
 };
 
-const Pill = ({ name, icon, handleSelectedTags, activeTags }: Props) => {
+const Pill = ({ name, icon, handleSelectedTags, activeTags }: PillProps) => {
   const active = activeTags.includes(name);
 
   return (
-    <div
+    <button
       onClick={() => handleSelectedTags(name)}
       className={`group select-none flex flex-row justify-between border ${
         active
@@ -37,7 +33,7 @@ const Pill = ({ name, icon, handleSelectedTags, activeTags }: Props) => {
       >
         {name}
       </p>
-    </div>
+    </button>
   );
 };
 

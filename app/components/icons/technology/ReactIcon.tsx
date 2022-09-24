@@ -1,5 +1,3 @@
-import * as React from "react";
-
 const ReactIcon = (props: any) => (
   <svg
     id="Layer_1"

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export type LanguageProviderProps = {
   isEnglish: boolean;
@@ -13,7 +13,11 @@ export const isLanguageEnglish = createContext<LanguageProviderProps>({
 export function useEnglishLanguage() {
   return useContext(isLanguageEnglish);
 }
-export const LanguageContext: React.FC<React.ReactNode> = ({ children }) => {
+export const LanguageContext = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
 
   const LanguageState: {
@@ -26,7 +30,7 @@ export const LanguageContext: React.FC<React.ReactNode> = ({ children }) => {
 
   useEffect(() => {
     const languageStorage: any = localStorage.getItem('isEnglishLanguage');
-    if ('isEnglishLanguage' in localStorage) return
+    if ('isEnglishLanguage' in localStorage) return;
 
     setIsEnglishLanguage(languageStorage);
   }, []);

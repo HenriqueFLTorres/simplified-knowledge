@@ -1,5 +1,3 @@
-import styles from "../tailwind.css";
-
 const Highlight = ({ children }: any) => {
   return <span className="Highlight">{children}</span>;
 };

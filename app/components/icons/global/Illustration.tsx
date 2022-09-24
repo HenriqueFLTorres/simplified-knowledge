@@ -1,6 +1,4 @@
-import * as React from "react";
-
-const Illustration = (props: any) => (
+const Illustration = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
     width={404}
     height={395}

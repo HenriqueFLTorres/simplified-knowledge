@@ -1,15 +1,11 @@
-import * as React from "react";
-
-const NodeJS = (props: any) => (
+const NodeJS = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
     x={0}
     y={0}
     viewBox="0 0 512 512"
-    style={{
-      enableBackground: "new 0 0 512 512",
-    }}
+    enableBackground="new 0 0 512 512"
     xmlSpace="preserve"
     {...props}
   >

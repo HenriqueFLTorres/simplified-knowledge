@@ -498,11 +498,6 @@
   margin-right: auto;
 }
 
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -644,10 +639,6 @@
   width: 2rem;
 }
 
-.max-w-4xl {
-  max-width: 56rem;
-}
-
 .max-w-full {
   max-width: 100%;
 }
@@ -768,12 +759,12 @@
   border-width: 1px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .border-neutral-300 {
