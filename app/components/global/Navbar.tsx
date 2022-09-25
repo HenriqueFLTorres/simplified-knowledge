@@ -13,56 +13,10 @@ import {
   Language,
 } from '@components/icons/global';
 
-type Props = {};
-
-type navList = {
-  EN: Array<Object>;
-  PT: Array<Object>;
-};
-
-const navItems: navList = {
-  EN: [
-    {
-      name: 'Blog',
-      linkTo: '/',
-    },
-    {
-      name: 'My GitHub',
-      linkTo: 'https://github.com/HenriqueFLTorres',
-    },
-    {
-      name: 'My Website',
-      linkTo: 'https://htportfolio.vercel.app/',
-    },
-    {
-      name: 'My LinkedIn',
-      linkTo: 'https://www.linkedin.com/in/henriquefltorres/',
-    },
-  ],
-  PT: [
-    {
-      name: 'Blog',
-      linkTo: '/',
-    },
-    {
-      name: 'Meu GitHub',
-      linkTo: 'https://github.com/HenriqueFLTorres',
-    },
-    {
-      name: 'Meu Website',
-      linkTo: 'https://htportfolio.vercel.app/',
-    },
-    {
-      name: 'Meu LinkedIn',
-      linkTo: 'https://www.linkedin.com/in/henriquefltorres/',
-    },
-  ],
-};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [languageDropDown, setLanguageDropDown] = useState<Boolean>(false);
 
-  const { isEnglish } = useEnglishLanguage();
+  const { setIsEnglish } = useEnglishLanguage();
 
   const closeDropDown = () => setLanguageDropDown(false);
   const dropDownRef = useDetectClickOutside({ onTriggered: closeDropDown });
@@ -79,28 +33,14 @@ const Navbar = (props: Props) => {
     }
   };
 
-  const handleItemsList = () => {
-    return isEnglish ? navItems.EN : navItems.PT;
-  };
-
   return (
-    <nav className='flex z-50 justify-between px-12 lg:px-36 items-center w-full h-20 fixed bg-gradient-to-br from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none'>
+    <nav className='flex z-50 justify-between px-12 lg:px-36 items-center w-full h-20 select-none'>
       <Link to='/'>
         <div className='flex items-center justify-center w-12 h-12'>
           <IconWhite className='absolute w-10 h-10 opacity-0 dark:opacity-100 transition-all duration-300' />
           <IconBlack className='absolute w-10 h-10 opacity-100 dark:opacity-0 transition-all duration-300' />
         </div>
       </Link>
-
-      <div className='hidden gap-8 flex-row justify-between lg:flex'>
-        {handleItemsList().map((item: any) => (
-          <a href={item.linkTo} key={item.name}>
-            <div className='text-xl font-semibold p-4 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:-translate-y-2 transition-all duration-350 cursor-pointer'>
-              {item.name}
-            </div>
-          </a>
-        ))}
-      </div>
 
       <div className='flex flex-row items-center justify-between w-32'>
         <button
@@ -123,24 +63,24 @@ const Navbar = (props: Props) => {
                 : 'opacity-0 hide-top'
             } duration-200 transition-all`}
           >
-            <p
-              // onClick={() => {
-              //   setIsEnglish(true);
-              //   localStorage.setItem('isEnglishLanguage', String(true));
-              // }}
+            <button
+              onClick={() => {
+                setIsEnglish(true);
+                localStorage.setItem('isEnglishLanguage', String(true));
+              }}
               className='w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-t transition-colors duration-200'
             >
               EN
-            </p>
-            <p
-              // onClick={() => {
-              //   setIsEnglish(false);
-              //   localStorage.setItem('isEnglishLanguage', String(false));
-              // }}
+            </button>
+            <button
+              onClick={() => {
+                setIsEnglish(false);
+                localStorage.setItem('isEnglishLanguage', String(false));
+              }}
               className='w-full py-1 text-center text-xl font-bold text-neutral-700 hover:bg-neutral-400/50 dark:text-neutral-100 dark:hover:bg-neutral-600 rounded-b transition-colors duration-200'
             >
               PT
-            </p>
+            </button>
           </div>
         </button>
       </div>

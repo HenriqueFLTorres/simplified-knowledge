@@ -45,6 +45,10 @@
   }
 }
 
+.clip-path-inset {
+  clip-path: inset(0);
+}
+
 
 /*
  *

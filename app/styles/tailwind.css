@@ -489,6 +489,18 @@
   position: absolute;
 }
 
+.top-0 {
+  top: 0px;
+}
+
+.z-\[-1\] {
+  z-index: -1;
+}
+
+.-z-30 {
+  z-index: -30;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -593,6 +605,10 @@
 
 .w-4\/5 {
   width: 80%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .w-12 {
@@ -705,10 +721,6 @@
   gap: 2.5rem;
 }
 
-.gap-8 {
-  gap: 2rem;
-}
-
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -755,10 +767,6 @@
   border-width: 1px;
 }
 
-.border-b {
-  border-bottom-width: 1px;
-}
-
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -784,10 +792,6 @@
 .border-\[\#e6bd19\] {
   --tw-border-opacity: 1;
   border-color: rgb(230 189 25 / var(--tw-border-opacity));
-}
-
-.border-b-neutral-900\/40 {
-  border-bottom-color: rgb(23 23 23 / 0.4);
 }
 
 .bg-neutral-100 {
@@ -856,16 +860,16 @@
      object-fit: cover;
 }
 
-.p-4 {
-  padding: 1rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
 
 .p-2\.5 {
   padding: 0.625rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .py-40 {
@@ -988,6 +992,10 @@
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
+}
+
+.opacity-10 {
+  opacity: 0.1;
 }
 
 .opacity-0 {
@@ -1539,6 +1547,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.clip-path-inset {
+  -webkit-clip-path: inset(0);
+          clip-path: inset(0);
+}
+
 /*
  *
  * Code highlighter styling
@@ -1598,11 +1611,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem !important;
 }
 
-.hover\:-translate-y-2:hover {
-  --tw-translate-y: -0.5rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
@@ -1625,11 +1633,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .hover\:bg-neutral-400\/50:hover {
   background-color: rgb(163 163 163 / 0.5);
-}
-
-.hover\:text-neutral-900:hover {
-  --tw-text-opacity: 1;
-  color: rgb(23 23 23 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:h-\[190px\] {
@@ -1704,10 +1707,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .dark .dark\:border-neutral-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 229 229 / var(--tw-border-opacity));
-}
-
-.dark .dark\:border-b-neutral-100\/20 {
-  border-bottom-color: rgb(245 245 245 / 0.2);
 }
 
 .dark .dark\:bg-neutral-800 {
@@ -1792,11 +1791,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .dark .dark\:hover\:bg-neutral-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity));
-}
-
-.dark .dark\:hover\:text-neutral-200:hover {
-  --tw-text-opacity: 1;
-  color: rgb(229 229 229 / var(--tw-text-opacity));
 }
 
 .dark .group:hover .dark\:group-hover\:fill-neutral-100 {
@@ -2032,10 +2026,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:inline {
     display: inline;
-  }
-
-  .lg\:flex {
-    display: flex;
   }
 
   .lg\:justify-between {

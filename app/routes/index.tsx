@@ -5,7 +5,7 @@ import { useLoaderData } from '@remix-run/react';
 
 import { useEnglishLanguage } from '@hooks/useLanguage';
 
-import { Navbar, Footer } from '@components/global';
+import { Background, Navbar, Footer } from '@components/global';
 import { BlogCard, Pill } from '@components/shared';
 import {
   HTML,
@@ -42,7 +42,8 @@ export default function Index() {
 
   return (
     <>
-      <div className='flex flex-col justify-between font-sans max-w-full min-h-screen bg-neutral-100 dark:bg-neutral-900'>
+      <Background />
+      <div className='flex flex-col justify-between font-sans max-w-full min-h-screen'>
         <div className='flex flex-col items-center w-full'>
           <Navbar />
           <div className='flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6'>
@@ -123,7 +124,7 @@ export default function Index() {
             )}
           </div>
         </div>
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );
