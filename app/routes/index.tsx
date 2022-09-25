@@ -43,7 +43,7 @@ export default function Index() {
   return (
     <>
       <Background />
-      <div className='flex flex-col justify-between font-sans max-w-full min-h-screen'>
+      <div className='flex flex-col justify-between font-default max-w-full min-h-screen'>
         <div className='flex flex-col items-center w-full'>
           <Navbar />
           <div className='flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6'>
