@@ -449,40 +449,37 @@
      object-fit: cover;
 }
 
-/* 
-  .InlineCode {
-    background-color: #dddddd;
-    border: 1px solid rgba(0, 0, 0, 0.4) !important;
-    white-space: nowrap;
-  }
+.InlineCode {
+  background-color: #dddddd;
+  border: 1px solid rgba(0, 0, 0, 0.4) !important;
+  white-space: nowrap;
+}
 
-  .dark .InlineCode {
-    background-color: #222222;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  }
+.dark .InlineCode {
+  background-color: #222222;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
 
-  .InlineCode {
-    display: inline;
+.InlineCode {
+  display: inline;
+  border-radius: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  margin-inline: 0.2rem;
+  font-size: 1rem;
+}
 
-    border-radius: 0.3rem;
+.Highlight {
+  color: #ff8f00;
+}
 
-    padding: 0.25rem 0.75rem;
-    margin-inline: 0.2rem;
-    font-size: 1rem;
-  } */
+.dark .Highlight {
+  color: #f3c52c;
+}
 
-/* .Highlight {
-    color: #ff8f00;
-  }
-
-  .dark .Highlight {
-    color: #f3c52c;
-  }
-
-  .Highlight {
-    display: inline;
-    font-weight: 600;
-  } */
+.Highlight {
+  display: inline;
+  font-weight: 600;
+}
 
 .fixed {
   position: fixed;
@@ -1072,8 +1069,9 @@
   transition-duration: 150ms;
 }
 
-/* 
-  ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -1554,6 +1552,11 @@ code > .line::before {
   margin-right: 2rem;
   text-align: right;
   color: gray;
+}
+
+.clip-path-inset {
+  -webkit-clip-path: inset(0);
+          clip-path: inset(0);
 }
 
 .hover\:-translate-y-2:hover {

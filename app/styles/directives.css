@@ -9,7 +9,7 @@
     width: 100%;
     object-fit: cover;
   }
-/* 
+
   .InlineCode {
     background-color: #dddddd;
     border: 1px solid rgba(0, 0, 0, 0.4) !important;
@@ -29,10 +29,9 @@
     padding: 0.25rem 0.75rem;
     margin-inline: 0.2rem;
     font-size: 1rem;
-  } */
-  
-  
-  /* .Highlight {
+  }
+
+  .Highlight {
     color: #ff8f00;
   }
 
@@ -43,23 +42,25 @@
   .Highlight {
     display: inline;
     font-weight: 600;
-  } */
-
-  
+  }
 }
 
 code {
   counter-reset: line;
 }
- 
+
 code > .line::before {
   counter-increment: line;
   content: counter(line);
- 
+
   /* Other styling */
   display: inline-block;
   width: 1rem;
   margin-right: 2rem;
   text-align: right;
   color: gray;
+}
+
+.clip-path-inset {
+  clip-path: inset(0);
 }
