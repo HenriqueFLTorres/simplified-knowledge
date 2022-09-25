@@ -45,22 +45,58 @@
   }
 }
 
-code {
-  counter-reset: line;
+
+/*
+ *
+ * Code highlighter styling
+ *
+ */
+
+.ch-frame-buttons {
+  display: none !important;
 }
 
-code > .line::before {
-  counter-increment: line;
-  content: counter(line);
-
-  /* Other styling */
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
+.ch-code-scroll-parent {
+  position: relative !important;
+  height: auto !important;
 }
 
-.clip-path-inset {
-  clip-path: inset(0);
+.ch-code-scroll-content > * {
+  position: relative !important;
+  transform: translateY(0) !important;
+
+  margin-block: 1rem;
+}
+
+.ch-code-scroll-content {
+  position: relative !important;
+  height: max-content !important;
+}
+
+.ch-code-wrapper {
+  position: relative !important;
+  height: max-content !important;
+}
+
+.ch-editor-frame > *:last-child {
+  all: unset !important;
+  position: relative !important;
+  /* padding-block: 1rem !important; */
+
+  transition-property: height !important;
+  transition-duration: 300ms !important;
+  transition-timing-function: ease !important;
+}
+
+.ch-editor-frame {
+  height: max-content !important;
+  max-height: 500px !important;
+}
+
+.ch-code-line-number {
+  margin-left: 0.4rem !important;
+}
+
+.ch-code-scroll-content > div > div {
+  margin-left: 0.5rem !important;
 }

@@ -13,6 +13,7 @@
     "lint": "eslint app/**/*.ts app/**/*.tsx"
   },
   "dependencies": {
+    "@code-hike/mdx": "^0.7.4",
     "@remix-run/node": "^1.5.1",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",

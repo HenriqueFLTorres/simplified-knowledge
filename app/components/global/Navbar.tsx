@@ -84,7 +84,7 @@ const Navbar = (props: Props) => {
   };
 
   return (
-    <nav className='flex justify-between px-12 lg:px-36 items-center w-full h-20 fixed bg-gradient-to-br from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none'>
+    <nav className='flex z-50 justify-between px-12 lg:px-36 items-center w-full h-20 fixed bg-gradient-to-br from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm border-b border-b-neutral-900/40 dark:border-b-neutral-100/20 select-none'>
       <Link to='/'>
         <div className='flex items-center justify-center w-12 h-12'>
           <IconWhite className='absolute w-10 h-10 opacity-0 dark:opacity-100 transition-all duration-300' />

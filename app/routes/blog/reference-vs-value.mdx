@@ -1,18 +1,23 @@
 ---
-title: "Reference and Value: Why you should know the difference"
-postImage: "https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921"
-postedOn: "5 25 2022 17:26"
-editedOn: "5 25 2022 17:26"
-postTags: ["JavaScript"]
-readTimeInMinutes: "3"
+title: 'Reference and Value: Why you should know the difference'
+postImage: 'https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921'
+postedOn: '5 25 2022 17:26'
+editedOn: '5 25 2022 17:26'
+postTags: ['JavaScript']
+readTimeInMinutes: '3'
 englishLanguage: true
-postURL: "reference-vs-value"
-alternativeLanguageURL: "referencia-vs-valor"
+postURL: 'reference-vs-value'
+alternativeLanguageURL: 'referencia-vs-valor'
 ---
 
-import { Code, Highlight, PostImage, Warning } from '@components/shared';
-import { Link } from "@remix-run/react";
-import mainImage from "public/images/ReferenceVsValue.jpg";
+import {
+  CodeFragment,
+  Highlight,
+  PostImage,
+  Warning,
+} from '@components/shared';
+import { Link } from '@remix-run/react';
+import mainImage from 'public/images/ReferenceVsValue.jpg';
 
 ## {attributes.title}
 
@@ -22,9 +27,9 @@ import mainImage from "public/images/ReferenceVsValue.jpg";
 
 <img
   src={mainImage}
-  alt=""
-  title="Photo by David Jorre"
-  className="MainImage"
+  alt=''
+  title='Photo by David Jorre'
+  className='MainImage'
 />
 
 <Warning>
@@ -32,17 +37,17 @@ import mainImage from "public/images/ReferenceVsValue.jpg";
   replicated, otherwise your code will return a syntax error.
 </Warning>
 
-If for some reason you've tried comparing <Code>objects</Code> or <Code>arrays</Code> in JavaScript, you probably went confused by why they weren't the same even having an identical value/content.. <br/>
+If for some reason you've tried comparing <CodeFragment>objects</CodeFragment> or <CodeFragment>arrays</CodeFragment> in JavaScript, you probably went confused by why they weren't the same even having an identical value/content.. <br/>
 
 This happens because JavaScript compares non-primitive types with their <Highlight>reference</Highlight> and not their actual value, and not knowing that, can cause a headache.
 
 ### Copy by Value <br/>
 
-Primitive data types like <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code>, <Code>null</Code>, are tagged as <Highlight>Value</Highlight> types, because, when we throw its information or value in some other variable, this new variable will copy its value.
+Primitive data types like <CodeFragment>String</CodeFragment>, <CodeFragment>Number</CodeFragment>, <CodeFragment>Boolean</CodeFragment>, <CodeFragment>undefined</CodeFragment>, <CodeFragment>null</CodeFragment>, are tagged as <Highlight>Value</Highlight> types, because, when we throw its information or value in some other variable, this new variable will copy its value.
 
 See the following example.
 
-```js showLineNumbers
+```js
 let 🍎 = "Apple"
 let 💰 = 0
 
@@ -54,16 +59,16 @@ console.log(👜 === 💰) // true
 
 ```
 
-When comparing the new variables using <Code>console.log()</Code>, it will return <Code>true</Code>, because JavaScript compares the primitives according to their content.
+When comparing the new variables using <CodeFragment>console.log()</CodeFragment>, it will return <CodeFragment>true</CodeFragment>, because JavaScript compares the primitives according to their content.
 
 ### Copy by Reference
 
-On the other hand, the non-primitives, <Code>Arrays</Code>, <Code>Objects</Code>, and <Code>Functions</Code>, are tagged as <Highlight>Reference</Highlight> types. Because, when we define a new variable with its information, this new variable will have its reference and not its value.
+On the other hand, the non-primitives, <CodeFragment>Arrays</CodeFragment>, <CodeFragment>Objects</CodeFragment>, and <CodeFragment>Functions</CodeFragment>, are tagged as <Highlight>Reference</Highlight> types. Because, when we define a new variable with its information, this new variable will have its reference and not its value.
 
 <br />
 See the following example
 
-```js title="12312sdfasd"
+```js
 const 🚗 = [💺, 💺, 💺, 💺]
 const 🚓 = [💺, 💺, 💺, 💺]
 const 🚘 = 🚗
@@ -76,13 +81,13 @@ Let's go back to some lines in the text <Highlight>"this new variable will have 
 
 The answer is simple, comparison by <Highlight>reference</Highlight>! Primitive data types are copied and compared by value, and non-primitive ones are copied and compared by reference. <br/>
 
-So knowing the difference between <Highlight>reference</Highlight> and actual <Highlight>value</Highlight> is critical for learning advanced hooks in React like <Code>useEffect()</Code>, <Code>useCallback() </Code> and <Code>useMemo()</Code>.
+So knowing the difference between <Highlight>reference</Highlight> and actual <Highlight>value</Highlight> is critical for learning advanced hooks in React like <CodeFragment>useEffect()</CodeFragment>, <CodeFragment>useCallback() </CodeFragment> and <CodeFragment>useMemo()</CodeFragment>.
 
 ### Ok, but what is Reference?
 
-References are addresses allocated in your computer's memory, and when we compare two non-primitive pieces of information, for example, an <Code>object</Code>, JavaScript compares its memory address and not its contents. Let's see one more example.
+References are addresses allocated in your computer's memory, and when we compare two non-primitive pieces of information, for example, an <CodeFragment>object</CodeFragment>, JavaScript compares its memory address and not its contents. Let's see one more example.
 
-```js title="12312sdfasd"
+```js
 const 👩‍⚕️ = {
   name: "Bia",
   age: 28
@@ -98,20 +103,20 @@ console.log(👩‍⚕️.name); // Patricia
 console.log(👩‍🍳.name); // Patricia
 ```
 
-When we set the name of 👩‍🍳 to Patricia, the name of 👩‍⚕️ also changes! That's because the content of 👩‍🍳 is a <Highlight>reference</Highlight> to the content of 👩‍⚕️, so whatever changes there are in any reference to the <Code>Object</Code>, <Code>Array</Code>, <Code >Function</Code> the original one will be affected.
+When we set the name of 👩‍🍳 to Patricia, the name of 👩‍⚕️ also changes! That's because the content of 👩‍🍳 is a <Highlight>reference</Highlight> to the content of 👩‍⚕️, so whatever changes there are in any reference to the <CodeFragment>Object</CodeFragment>, <CodeFragment>Array</CodeFragment>, <CodeFragment >Function</CodeFragment> the original one will be affected.
 
 ### Why knowing this is important?
 
-If you've been using React for a while, we have several hooks and features that help our program's performance, and an important one is the <Code>useEffect()</Code>'s dependency array. If you put an array or object as a dependency, your page will not work correctly, and that's because <Code>useEffect()</Code> is comparing non-primitives with their <Highlight>reference</Highlight>. <br/>
+If you've been using React for a while, we have several hooks and features that help our program's performance, and an important one is the <CodeFragment>useEffect()</CodeFragment>'s dependency array. If you put an array or object as a dependency, your page will not work correctly, and that's because <CodeFragment>useEffect()</CodeFragment> is comparing non-primitives with their <Highlight>reference</Highlight>. <br/>
 
-Another example is the <Code>useCallback()</Code>, used to memorize functions and not just compare with their reference, preventing the creation of another identical function on every rendering. If you want a post talking about it, let me know!
+Another example is the <CodeFragment>useCallback()</CodeFragment>, used to memorize functions and not just compare with their reference, preventing the creation of another identical function on every rendering. If you want a post talking about it, let me know!
 
 ### <Highlight>Remember!</Highlight>
 
     • Value types are Primitives and copied by their value. <br/>
     • Reference types are non-primitives and are copied by their reference. <br/>
 
-• When comparing identical non-primitives, they return <Code>false</Code> because their <Highlight>reference</Highlight> type. <br/>
+• When comparing identical non-primitives, they return <CodeFragment>false</CodeFragment> because their <Highlight>reference</Highlight> type. <br/>
 
-• Value types → <Code>String</Code>, <Code>Number</Code>, <Code>Boolean</Code>, <Code>undefined</Code> and <Code>null</Code>. <br/>
-• Reference types → <Code>Array</Code>, <Code>Object</Code> and <Code>Function</Code>.
+• Value types → <CodeFragment>String</CodeFragment>, <CodeFragment>Number</CodeFragment>, <CodeFragment>Boolean</CodeFragment>, <CodeFragment>undefined</CodeFragment> and <CodeFragment>null</CodeFragment>. <br/>
+• Reference types → <CodeFragment>Array</CodeFragment>, <CodeFragment>Object</CodeFragment> and <CodeFragment>Function</CodeFragment>.

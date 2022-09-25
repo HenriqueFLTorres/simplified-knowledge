@@ -10,7 +10,7 @@ postURL: "express-middlewares"
 alternativeLanguageURL: "middlewares-no-express"
 ---
 
-import { Code, Highlight, PostImage } from '@components/shared';
+import { CodeFragment, Highlight, PostImage } from '@components/shared';
 import { Link } from "@remix-run/react";
 
 import messageEN from "app/data/posts/express-middlewares/messageEN.png";
@@ -30,14 +30,14 @@ import messageEN from "app/data/posts/express-middlewares/messageEN.png";
 
 We can say that middlewares are, <Highlight>Functions that run between the `request` object
 and an application's `response`</Highlight>. With them, we can run any
-code during this process, terminate the <Code>response</Code> or even modify the
+code during this process, terminate the <CodeFragment>response</CodeFragment> or even modify the
 
-<Code>req</Code> and <Code>res</Code> objects.
+<CodeFragment>req</CodeFragment> and <CodeFragment>res</CodeFragment> objects.
 
 ### Writing a simple Middleware
 
-Let's write a function called <Code>simpleMiddleware</Code> as our middleware,
-and after that, we'll use <Code>app.use(simpleMiddleware)</Code> for our <Code>app.get('/')</Code> to access it.
+Let's write a function called <CodeFragment>simpleMiddleware</CodeFragment> as our middleware,
+and after that, we'll use <CodeFragment>app.use(simpleMiddleware)</CodeFragment> for our <CodeFragment>app.get('/')</CodeFragment> to access it.
 
 ```js
 const express = require("express");
@@ -57,13 +57,13 @@ app.get("/", (req, res) => {
 app.listen(3000);
 ```
 
-When we access <Code>http://localhost:3000/</Code> we will get the message <Code>"Middleware working!"</Code>.
-Note that we will not receive the <Code>console.log()</Code> in the browser, Node.js runs on the <Highlight>V8 Engine</Highlight> of the
+When we access <CodeFragment>http://localhost:3000/</CodeFragment> we will get the message <CodeFragment>"Middleware working!"</CodeFragment>.
+Note that we will not receive the <CodeFragment>console.log()</CodeFragment> in the browser, Node.js runs on the <Highlight>V8 Engine</Highlight> of the
 JavaScript and does not have access to our browser!
 
 ### Using a Middleware: Global
 
-In the example above, we use <Code>app.use()</Code>, if we happen to have more routes in this file, Middleware
+In the example above, we use <CodeFragment>app.use()</CodeFragment>, if we happen to have more routes in this file, Middleware
 will be used in all, hence called global usage. It is important to note that they are called in the order they are defined.
 See the example:
 
@@ -84,12 +84,12 @@ app.get("/about", (req, res) => {
 
 ```
 
-Our Middleware will only be called if someone is already accessing the page <Code>http://localhost:3000/About</Code>, the main
+Our Middleware will only be called if someone is already accessing the page <CodeFragment>http://localhost:3000/About</CodeFragment>, the main
 page will be ignored. Global usage can be useful when organizing routes by files and types!
 
 ### Using a Middleware: Route
 
-If you want to use it by route, you can add the Middleware name between the <Code>req</Code> and <Code>res</Code> objects.
+If you want to use it by route, you can add the Middleware name between the <CodeFragment>req</CodeFragment> and <CodeFragment>res</CodeFragment> objects.
 see the example
 
 ```js
@@ -116,7 +116,7 @@ app.get("/", (req, res, next) => {
 
 ### Middleware Preference: Global vs Route
 
-Know that when we use <Code>app.use(middleware)</Code>, it has a higher preference than the route one, that is, it will be called first.
+Know that when we use <CodeFragment>app.use(middleware)</CodeFragment>, it has a higher preference than the route one, that is, it will be called first.
 
 ```js
 app.use(myGlobalMiddleware);
@@ -131,7 +131,7 @@ app.get("/about", myRouteMiddleware, (req, res) => {
 
 ### Communication between Middlewares
 
-We can pass information between Middlewares by modifying its <Code>req</Code> and <Code>res</Code> objects.
+We can pass information between Middlewares by modifying its <CodeFragment>req</CodeFragment> and <CodeFragment>res</CodeFragment> objects.
 See the example
 
 ```js
@@ -149,14 +149,14 @@ app.get("/", authorizeMajorAge, (req, res) => {
 });
 ```
 
-When accessing with <Code>http://localhost:3000/?age=18</Code>, the Middleware authorizes us to have the necessary requirements, and soon after, renders
-the page with the message: Authorized <Code>true</Code>.
+When accessing with <CodeFragment>http://localhost:3000/?age=18</CodeFragment>, the Middleware authorizes us to have the necessary requirements, and soon after, renders
+the page with the message: Authorized <CodeFragment>true</CodeFragment>.
 
 <PostImage image={messageEN} description="" />
 
 ### Avoid errors using Middlewares
 
-In the previous examples, we used a <Code>if</Code> and <Code>else</Code> to determine if the user is a minor or not,
+In the previous examples, we used a <CodeFragment>if</CodeFragment> and <CodeFragment>else</CodeFragment> to determine if the user is a minor or not,
 but what if we want to "shorten" the code with the intention of making it cleaner? The first thing someone thinks about is leaving it like this:
 
 ```js
@@ -169,7 +169,7 @@ const authorizeMajorAge = (req, res, next) => {
 };
 ```
 
-express runs code even after <Code>next()</Code>, so the user would be authorized and then get an error!
+express runs code even after <CodeFragment>next()</CodeFragment>, so the user would be authorized and then get an error!
 As annoying as it is, this way that express uses in Middlewares opens up another opportunity for us to run some code after the
 
-<Code>response</Code> object.
+<CodeFragment>response</CodeFragment> object.

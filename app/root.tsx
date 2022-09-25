@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import codeHikeStyles from "@code-hike/mdx/dist/index.css";
 
 import { LanguageContext } from '@hooks/useLanguage';
 import styles from './styles/tailwind.css';
@@ -27,6 +28,7 @@ export function links() {
       href: 'favicons/favicon16.png',
     },
     { rel: 'stylesheet', href: styles },
+    { rel: "stylesheet", href: codeHikeStyles }
   ];
 }
 
