@@ -22,6 +22,9 @@
       "@content/*": [
         "app/content/*"
       ],
+      "@routes/*": [
+        "app/routes/*"
+      ],
       "@utils/*": [
         "app/utils/*"
       ],

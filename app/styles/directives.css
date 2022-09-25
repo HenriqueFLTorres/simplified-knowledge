@@ -9,7 +9,7 @@
     width: 100%;
     object-fit: cover;
   }
-
+/* 
   .InlineCode {
     background-color: #dddddd;
     border: 1px solid rgba(0, 0, 0, 0.4) !important;
@@ -29,9 +29,10 @@
     padding: 0.25rem 0.75rem;
     margin-inline: 0.2rem;
     font-size: 1rem;
-  }
-
-  .Highlight {
+  } */
+  
+  
+  /* .Highlight {
     color: #ff8f00;
   }
 
@@ -42,89 +43,23 @@
   .Highlight {
     display: inline;
     font-weight: 600;
-  }
+  } */
+
+  
 }
 
-@layer base {
-  pre {
-    background-color: #f0f0f0 !important;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-  }
-  .dark pre {
-    background-color: #202020 !important;
-    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-  }
+code {
+  counter-reset: line;
 }
-
-@layer utilities {
-  .clip-path-inset {
-    clip-path: inset(0);
-  }
-  .hide-top {
-    clip-path: inset(0 0 100% 0);
-  }
-
-  .light code.hljs.language-js {
-    background-color: transparent !important;
-    color: #1d1d1d;
-  }
-
-  .dark code.hljs.language-js {
-    background-color: transparent !important;
-  }
-
-  code.hljs.language-js {
-    border-radius: 0.5rem !important;
-    padding: 1.5rem 2rem !important;
-    border: 1px solid #ffffff1d !important;
-  }
-
-  .light .hljs-attr,
-  .light .hljs-title.function_ {
-    color: #9b7cd4 !important;
-    font-weight: 800 !important;
-  }
-
-  .dark .hljs-attr,
-  .dark .hljs-title.function_ {
-    color: #bb9af7 !important;
-  }
-
-  .light .hljs-keyword,
-  .light .hljs-variable.language_ {
-    color: #e88419 !important;
-  }
-
-  .dark .hljs-keyword,
-  .dark .hljs-variable.language_ {
-    color: #d99f62 !important;
-  }
-
-  .light .hljs-property {
-    color: #cba6e1 !important;
-  }
-
-  .dark .hljs-property {
-    color: #d0bfd9 !important;
-  }
-
-  .light .hljs-string,
-  .light .hljs-number {
-    color: #dead6b !important;
-  }
-
-  .dark .hljs-string,
-  .dark .hljs-number {
-    color: #dbc09c !important;
-  }
-
-  .light .hljs-comment {
-    color: #717171 !important;
-  }
-
-  .dark .hljs-comment {
-    color: #768390 !important;
-  }
+ 
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+ 
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
 }

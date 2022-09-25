@@ -42,12 +42,12 @@ Tipos de dados primitivos como <Code>String</Code>, <Code>Number</Code>, <Code>B
 
 Veja o exemplo a seguir.
 
-```js
+```js showLineNumbers
 let 🍎 = "Maçã"
-deixe 💰 = 0
+let 💰 = 0
 
 let 🍏 = 🍎 // "Maçã"
-deixe 👜 = 💰 // 0
+let 👜 = 💰 // 0
 
 console.log(🍏 === 🍎) // true
 console.log(👜 === 💰) // true
@@ -62,7 +62,7 @@ Por outro lado, os não primitivos, <Code>Array</Code>, <Code>Object</Code> e <C
 <br />
 Veja o exemplo a seguir
 
-```js
+```js showLineNumbers
 const 🚗 = [💺, 💺, 💺, 💺]
 const 🚓 = [💺, 💺, 💺, 💺]
 const 🚘 = 🚗
@@ -79,7 +79,7 @@ A resposta é simples, comparação por <Highlight>referência</Highlight>! Os t
 
 Referências são endereços alocados na memória do seu computador, e quando comparamos duas informações não primitivas, por exemplo, um <Code>objeto</Code>, o JavaScript compara seu endereço de memória e não seu conteúdo. Vamos ver mais um exemplo.
 
-```js
+```js showLineNumbers
 const 👩‍⚕️ = {
   nome: "Bia",
   idade: 28

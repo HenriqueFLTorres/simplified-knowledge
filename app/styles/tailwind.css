@@ -449,37 +449,40 @@
      object-fit: cover;
 }
 
-.InlineCode {
-  background-color: #dddddd;
-  border: 1px solid rgba(0, 0, 0, 0.4) !important;
-  white-space: nowrap;
-}
+/* 
+  .InlineCode {
+    background-color: #dddddd;
+    border: 1px solid rgba(0, 0, 0, 0.4) !important;
+    white-space: nowrap;
+  }
 
-.dark .InlineCode {
-  background-color: #222222;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-}
+  .dark .InlineCode {
+    background-color: #222222;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  }
 
-.InlineCode {
-  display: inline;
-  border-radius: 0.3rem;
-  padding: 0.25rem 0.75rem;
-  margin-inline: 0.2rem;
-  font-size: 1rem;
-}
+  .InlineCode {
+    display: inline;
 
-.Highlight {
-  color: #ff8f00;
-}
+    border-radius: 0.3rem;
 
-.dark .Highlight {
-  color: #f3c52c;
-}
+    padding: 0.25rem 0.75rem;
+    margin-inline: 0.2rem;
+    font-size: 1rem;
+  } */
 
-.Highlight {
-  display: inline;
-  font-weight: 600;
-}
+/* .Highlight {
+    color: #ff8f00;
+  }
+
+  .dark .Highlight {
+    color: #f3c52c;
+  }
+
+  .Highlight {
+    display: inline;
+    font-weight: 600;
+  } */
 
 .fixed {
   position: fixed;
@@ -525,10 +528,6 @@
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 
 .flex {
@@ -809,10 +808,6 @@
   background-color: rgb(229 229 229 / var(--tw-bg-opacity));
 }
 
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -968,10 +963,6 @@
   font-weight: 500;
 }
 
-.font-normal {
-  font-weight: 400;
-}
-
 .text-neutral-800 {
   --tw-text-opacity: 1;
   color: rgb(38 38 38 / var(--tw-text-opacity));
@@ -1081,75 +1072,8 @@
   transition-duration: 150ms;
 }
 
-.clip-path-inset {
-  -webkit-clip-path: inset(0);
-          clip-path: inset(0);
-}
-
-.hide-top {
-  -webkit-clip-path: inset(0 0 100% 0);
-          clip-path: inset(0 0 100% 0);
-}
-
-.light code.hljs.language-js {
-  background-color: transparent !important;
-  color: #1d1d1d;
-}
-
-.dark code.hljs.language-js {
-  background-color: transparent !important;
-}
-
-.light .hljs-attr,
-  .light .hljs-title.function_ {
-  color: #9b7cd4 !important;
-  font-weight: 800 !important;
-}
-
-.dark .hljs-attr,
-  .dark .hljs-title.function_ {
-  color: #bb9af7 !important;
-}
-
-.light .hljs-keyword,
-  .light .hljs-variable.language_ {
-  color: #e88419 !important;
-}
-
-.dark .hljs-keyword,
-  .dark .hljs-variable.language_ {
-  color: #d99f62 !important;
-}
-
-.light .hljs-property {
-  color: #cba6e1 !important;
-}
-
-.dark .hljs-property {
-  color: #d0bfd9 !important;
-}
-
-.light .hljs-string,
-  .light .hljs-number {
-  color: #dead6b !important;
-}
-
-.dark .hljs-string,
-  .dark .hljs-number {
-  color: #dbc09c !important;
-}
-
-.light .hljs-comment {
-  color: #717171 !important;
-}
-
-.dark .hljs-comment {
-  color: #768390 !important;
-}
-
-/*
-! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
-*/
+/* 
+  ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -1572,18 +1496,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-pre {
-  background-color: #f0f0f0 !important;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.dark pre {
-  background-color: #202020 !important;
-  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-}
-
 *, ::before, ::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -1627,6 +1539,21 @@ pre {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
 }
 
 .hover\:-translate-y-2:hover {

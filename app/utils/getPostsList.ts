@@ -1,11 +1,11 @@
-import * as dryCodePost from '@content/dry-code-controversies/dry-code-controversies.mdx';
-import * as postDryCode from '@content/dry-code-controversies/controversias-dry-code.mdx';
+import * as dryCodePost from '@routes/blog/dry-code-controversies.mdx';
+import * as postDryCode from '@routes/blog/controversias-dry-code.mdx';
 
-import * as referencePost from '@content/reference-vs-value/reference-vs-value.mdx';
-import * as postReferencia from '@content/reference-vs-value/referencia-vs-valor.mdx';
+import * as referencePost from '@routes/blog/reference-vs-value.mdx';
+import * as postReferencia from '@routes/blog/referencia-vs-valor.mdx';
 
-import * as middlewarePost from '@content/express-middlewares/express-middlewares.mdx';
-import * as middlewareNoExpress from '@content/express-middlewares/middlewares-no-express.mdx';
+import * as middlewarePost from '@routes/blog/express-middlewares.mdx';
+import * as middlewareNoExpress from '@routes/blog/middlewares-no-express.mdx';
 
 export interface blogPostType {
   title: string;
@@ -28,8 +28,23 @@ let posts = [
   middlewarePost.attributes,
 ];
 
+let dry = [
+  referencePost,
+  postReferencia,
+  dryCodePost,
+  postDryCode,
+  middlewareNoExpress,
+  middlewarePost,
+];
+
 const getPosts = new Promise((resolve) => {
+  // console.log(posts)
   resolve(posts);
+});
+
+export const getDry = new Promise((resolve) => {
+  // console.log(posts)
+  resolve(dry);
 });
 
 export default getPosts;

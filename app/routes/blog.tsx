@@ -12,14 +12,17 @@ export const meta: MetaFunction = () => ({
   }),
 });
 
-const Blog = () => (
-  <div className='w-full min-h-screen h-full bg-neutral-100 dark:bg-neutral-900'>
-    <Navbar />
-    <article className='prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40 px-2'>
-      <Outlet />
-    </article>
-    <Footer />
-  </div>
-);
+
+const Blog = () => {
+  return (
+    <div className='w-full min-h-screen h-full bg-neutral-100 dark:bg-neutral-900'>
+      <Navbar />
+      <article className='prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40 px-2'>
+        <Outlet />
+      </article>
+      <Footer />
+    </div>
+  );
+}
 
 export default Blog;
