@@ -45,6 +45,10 @@
   }
 }
 
+.card-transition {
+  transition: max-height 800ms ease-in-out, opacity 400ms ease 100ms;
+}
+
 .clip-path-inset {
   clip-path: inset(0);
 }

@@ -41,7 +41,7 @@ const BlogCard = ({
           <h1 className='text-lg text-neutral-800 dark:text-neutral-100 font-semibold drop-shadow-lg'>
             {title}
           </h1>
-          <p className='max-h-0 text-neutral-700 dark:text-neutral-400 font-normal my-2 opacity-0 group-hover:max-h-52 group-hover:opacity-100 transition-[max-height,_opacity] duration-[400ms] clip-path-inset'>
+          <p className='max-h-0 text-neutral-700 dark:text-neutral-400 font-normal my-2 opacity-0 group-hover:max-h-52 group-hover:opacity-100 card-transition clip-path-inset'>
             Taking advantage of features such as local storage and state
             management...
           </p>
