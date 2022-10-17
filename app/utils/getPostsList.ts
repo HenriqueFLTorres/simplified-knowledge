@@ -12,8 +12,9 @@ export interface blogPostType {
   postImage: string;
   postedOn: string;
   editedOn: string;
-  postTags: string[];
+  tags: string[];
   readTimeInMinutes: string;
+  shortDescription: string;
   englishLanguage: boolean;
   postURL: string;
   alternativeLanguageURL: string;
@@ -37,14 +38,8 @@ let dry = [
   middlewarePost,
 ];
 
-const getPosts = new Promise((resolve) => {
-  // console.log(posts)
-  resolve(posts);
-});
+const getPosts = new Promise((resolve) => resolve(posts));
 
-export const getDry = new Promise((resolve) => {
-  // console.log(posts)
-  resolve(dry);
-});
+export const getDry = new Promise((resolve) => resolve(dry));
 
 export default getPosts;

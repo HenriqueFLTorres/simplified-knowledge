@@ -50,17 +50,20 @@ const Navbar = () => {
           <Moon className='absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8] translate-y-10 dark:translate-y-0 transition-transform' />
           <Sun className='absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8] translate-y-0 dark:-translate-y-10 transition-transform' />
         </button>
-        <button
+        <div
+          role={'menu'}
           onClick={() => setLanguageDropDown(!languageDropDown)}
+          onKeyDown={() => setLanguageDropDown(!languageDropDown)}
           ref={dropDownRef}
           className='flex items-center justify-center w-12 h-12 rounded border border-neutral-300 dark:border-neutral-800 hover:border-neutral-600 hover:dark:border-neutral-500 hover:bg-[#2929292c] cursor-pointer transition-all duration-200'
+          tabIndex={0}
         >
           <Language className='absolute w-6 fill-neutral-800 dark:fill-neutral-100 drop-shadow-[0_0_5px_#404040] dark:drop-shadow-[0_0_5px_#e8e8e8]' />
           <div
             className={`absolute flex flex-col items-center justify-between p-2 w-16 h-auto rounded bg-gradient-to-br from-[#cecece90] to-[#ababab4d] dark:from-[#272727e5] dark:to-[#1a1a1a9e] backdrop-blur-sm divide-y border border-neutral-200/20 divide-solid opacity-0 divide-neutral-300 dark:divide-neutral-600 translate-y-[5rem] ${
               languageDropDown
-                ? 'opacity-100 clip-path-inset'
-                : 'opacity-0 hide-top'
+                ? 'opacity-100 clip-path-inset pointer-events-auto'
+                : 'opacity-0 hide-top pointer-events-none'
             } duration-200 transition-all`}
           >
             <button
@@ -82,7 +85,7 @@ const Navbar = () => {
               PT
             </button>
           </div>
-        </button>
+        </div>
       </div>
     </nav>
   );

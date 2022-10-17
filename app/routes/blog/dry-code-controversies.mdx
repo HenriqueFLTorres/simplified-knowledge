@@ -1,9 +1,10 @@
 ---
 title: "Clean Code: DRY code controversies and the Monster of the Wrong Abstraction"
+shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
 postImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
 postedOn: "6 2 2022 20:10"
 editedOn: "6 2 2022 20:10"
-postTags: ["Clean Code"]
+tags: ["Clean Code"]
 readTimeInMinutes: "3"
 englishLanguage: true
 postURL: "dry-code-controversies"
@@ -11,7 +12,7 @@ alternativeLanguageURL: "controversias-dry-code"
 ---
 
 import { CodeFragment, Highlight } from '@components/shared';
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react';
 
 ## {attributes.title}
 
@@ -21,9 +22,9 @@ import { Link } from "@remix-run/react";
 
 <img
   src={attributes.mainImage}
-  alt=""
-  title="Imagem de David Jorre"
-  className="MainImage"
+  alt=''
+  title='Imagem de David Jorre'
+  className='MainImage'
 />
 
 DRY, "Don't repeat yourself", is a principle in software development that has been
@@ -44,7 +45,7 @@ that the situation starts to get complicated.
 This post takes strong inspiration from Kent C. Dodds' conversation on
 post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> and by Dan Abramov at
 
-<a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>.
+<a href='https://overreacted.io/the-wet-codebase/'>The WET Codebase</a>.
 
 ## What are abstractions?
 
@@ -57,7 +58,7 @@ function printNameAndAge(name, age) {
   console.log(`${name} is ${age} years old.`);
 }
 
-printNameAndAge("Mary", 26);
+printNameAndAge('Mary', 26);
 // Mary is 26 years old.
 ```
 
@@ -75,7 +76,7 @@ function printNameAndAge(name, age) {
   }
 }
 
-printNameAndAge("Jonas", 235);
+printNameAndAge('Jonas', 235);
 // Jonas is 235 years old and eligible for retirement.
 ```
 
@@ -87,7 +88,7 @@ complicated, so probably your abstraction got complexier too.
 
 > Prefer duplication over the wrong abstraction.
 
-<a href="https://twitter.com/sandimetz">Sandi Metz</a>
+<a href='https://twitter.com/sandimetz'>Sandi Metz</a>
 
 The important thing is to know when to break an abstraction if it is getting more and more complex and harder to manage and implement features to support several cases, the solution is to break it to avoid a headache, and so, we enter another programming principle.
 

@@ -10,7 +10,8 @@ const BlogCard = ({
   postImage,
   postedOn,
   editedOn,
-  postTags,
+  tags,
+  shortDescription,
   readTimeInMinutes,
   englishLanguage,
   postURL,
@@ -25,9 +26,9 @@ const BlogCard = ({
   return (
     <Link to={`blog/${postURL}`}>
       <div className='flex flex-col relative group h-[300px] w-[350px] cursor-pointer bg-neutral-200 dark:bg-neutral-800 rounded-tl-3xl rounded-br-3xl clip-path-inset'>
-        <div className='absolute z-10 text-xs font-semibold translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 text-neutral-100 dark:text-neutral-800 py-1 px-4 ml-4 mt-2 rounded-full bg-neutral-800 dark:bg-neutral-200 transition-[opacity,_transform] duration-[400ms]'>
-          JavaScript
-        </div>
+        {tags.map((tag) => (
+          <CardTag key={tag} name={tag} />
+        ))}
         <div
           className={`absolute w-full h-full bg-cool rounded-tl-3xl rounded-br-3xl clip-path-inset duration-[400ms]`}
         >
@@ -42,8 +43,7 @@ const BlogCard = ({
             {title}
           </h1>
           <p className='max-h-0 text-neutral-700 dark:text-neutral-400 font-normal my-2 opacity-0 group-hover:max-h-52 group-hover:opacity-100 card-transition clip-path-inset'>
-            Taking advantage of features such as local storage and state
-            management...
+            { shortDescription }
           </p>
           <footer className='flex flex-row justify-between text-neutral-700 dark:text-neutral-400'>
             <p className='text-sm fill-neutral-200 font-semibold'>
@@ -63,3 +63,11 @@ const BlogCard = ({
 };
 
 export default BlogCard;
+
+const CardTag = ({ name }: { name: string }) => {
+  return (
+    <div className='absolute z-10 text-xs font-semibold translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 text-neutral-100 dark:text-neutral-800 py-1 px-4 ml-4 mt-2 rounded-full bg-neutral-800 dark:bg-neutral-200 transition-[opacity,_transform] duration-[400ms]'>
+      {name}
+    </div>
+  );
+};

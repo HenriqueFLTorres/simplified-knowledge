@@ -7,15 +7,6 @@ import { useEnglishLanguage } from '@hooks/useLanguage';
 
 import { Background, Navbar, Footer } from '@components/global';
 import { BlogCard, Pill } from '@components/shared';
-import {
-  HTML,
-  CSS,
-  JavaScript,
-  TypeScriptIcon,
-  ReactIcon,
-  NextJS,
-  NodeJS,
-} from '@components/icons/technology';
 
 import type { blogPostType } from '@utils/getPostsList';
 import getPosts from '@utils/getPostsList';
@@ -46,86 +37,39 @@ export default function Index() {
       <div className='flex flex-col justify-between font-default max-w-full min-h-screen'>
         <div className='flex flex-col items-center w-full'>
           <Navbar />
+
           <div className='flex flex-row flex-wrap w-4/5 mx-auto justify-center pt-40 gap-6'>
-            <Pill
-              name='HTML'
-              icon={<HTML />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='CSS'
-              icon={<CSS />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='JavaScript'
-              icon={<JavaScript />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='TypeScript'
-              icon={<TypeScriptIcon />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='React'
-              icon={<ReactIcon />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='Next.js'
-              icon={<NextJS />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
-            <Pill
-              name='Node.js'
-              icon={<NodeJS />}
-              handleSelectedTags={handleSelectedTags}
-              activeTags={tags}
-            />
+            {tagsFilter.map((tag) => (
+              <Pill
+                key={tag}
+                name={tag}
+                handleSelectedTags={handleSelectedTags}
+                activeTags={tags}
+              />
+            ))}
           </div>
 
           <div className='flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap'>
             {filterPostsByLanguage(allPosts, isEnglish).map(
-              (post: blogPostType) => {
-                const {
-                  title,
-                  postedOn,
-                  editedOn,
-                  postImage,
-                  postTags,
-                  postURL,
-                  readTimeInMinutes,
-                  englishLanguage,
-                  alternativeLanguageURL,
-                } = post;
-
-                return (
-                  <BlogCard
-                    key={title}
-                    title={title}
-                    postImage={postImage}
-                    postedOn={postedOn}
-                    editedOn={editedOn}
-                    postTags={postTags}
-                    readTimeInMinutes={readTimeInMinutes}
-                    englishLanguage={englishLanguage}
-                    postURL={postURL}
-                    alternativeLanguageURL={alternativeLanguageURL}
-                  />
-                );
+              (post: blogPostType, index: number) => {
+                return <BlogCard key={index} {...post} />;
               }
             )}
           </div>
+          
         </div>
         <Footer />
       </div>
     </>
   );
 }
+
+const tagsFilter = [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+];

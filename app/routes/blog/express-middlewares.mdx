@@ -1,19 +1,20 @@
 ---
-title: "Express Middlewares: Everything you need to know!"
-postImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80"
-postedOn: "6 5 2022 15:09"
-editedOn: "6 5 2022 15:09"
-postTags: ["Express"]
-readTimeInMinutes: "3"
+title: 'Express Middlewares: Everything you need to know!'
+shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
+postImage: 'https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80'
+postedOn: '6 5 2022 15:09'
+editedOn: '6 5 2022 15:09'
+tags: ['Express']
+readTimeInMinutes: '3'
 englishLanguage: true
-postURL: "express-middlewares"
-alternativeLanguageURL: "middlewares-no-express"
+postURL: 'express-middlewares'
+alternativeLanguageURL: 'middlewares-no-express'
 ---
 
 import { CodeFragment, Highlight, PostImage } from '@components/shared';
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react';
 
-import messageEN from "app/data/posts/express-middlewares/messageEN.png";
+import messageEN from 'app/data/posts/express-middlewares/messageEN.png';
 
 ## {attributes.title}
 
@@ -23,9 +24,9 @@ import messageEN from "app/data/posts/express-middlewares/messageEN.png";
 
 <img
   src={attributes.mainImage}
-  alt=""
-  title="Image of @darth_u"
-  className="MainImage"
+  alt=''
+  title='Image of @darth_u'
+  className='MainImage'
 />
 
 We can say that middlewares are, <Highlight>Functions that run between the `request` object
@@ -40,18 +41,18 @@ Let's write a function called <CodeFragment>simpleMiddleware</CodeFragment> as o
 and after that, we'll use <CodeFragment>app.use(simpleMiddleware)</CodeFragment> for our <CodeFragment>app.get('/')</CodeFragment> to access it.
 
 ```js
-const express = require("express");
+const express = require('express');
 const app = express();
 
 const simpleMiddleware = (req, res, next) => {
-  console.log("Middleware working!");
+  console.log('Middleware working!');
   next();
 };
 
 app.use(simpleMiddleware);
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World!</h1>");
+app.get('/', (req, res) => {
+  res.send('<h1>Hello World!</h1>');
 });
 
 app.listen(3000);
@@ -121,8 +122,8 @@ Know that when we use <CodeFragment>app.use(middleware)</CodeFragment>, it has a
 ```js
 app.use(myGlobalMiddleware);
 
-app.get("/about", myRouteMiddleware, (req, res) => {
-  res.send("About page");
+app.get('/about', myRouteMiddleware, (req, res) => {
+  res.send('About page');
 });
 
 // myGlobalMiddleware is called
@@ -152,7 +153,7 @@ app.get("/", authorizeMajorAge, (req, res) => {
 When accessing with <CodeFragment>http://localhost:3000/?age=18</CodeFragment>, the Middleware authorizes us to have the necessary requirements, and soon after, renders
 the page with the message: Authorized <CodeFragment>true</CodeFragment>.
 
-<PostImage image={messageEN} description="" />
+<PostImage image={messageEN} description='' />
 
 ### Avoid errors using Middlewares
 
@@ -161,11 +162,11 @@ but what if we want to "shorten" the code with the intention of making it cleane
 
 ```js
 const authorizeMajorAge = (req, res, next) => {
-  if (req.query.age >= "18") {
+  if (req.query.age >= '18') {
     authorized.req = true;
     next();
   }
-  res.send("ERROR: You are a minor");
+  res.send('ERROR: You are a minor');
 };
 ```
 
