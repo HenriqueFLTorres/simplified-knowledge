@@ -34,7 +34,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='flex z-50 justify-between px-12 lg:px-36 items-center w-full h-20 select-none'>
+    <nav className='flex z-50 justify-between px-8 items-center w-full max-w-[1800px] h-20 select-none'>
       <Link to='/'>
         <div className='flex items-center justify-center w-12 h-12'>
           <IconWhite className='absolute w-10 h-10 opacity-0 dark:opacity-100 transition-all duration-300' />
