@@ -46,7 +46,7 @@
 }
 
 .card-transition {
-  transition: max-height 800ms ease-in-out, opacity 400ms ease 100ms;
+  transition: max-height 500ms ease-in-out, opacity 300ms ease 100ms;
 }
 
 .clip-path-inset {

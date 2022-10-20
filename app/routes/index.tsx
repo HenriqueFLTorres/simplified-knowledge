@@ -5,7 +5,7 @@ import { useLoaderData } from '@remix-run/react';
 
 import { useEnglishLanguage } from '@hooks/useLanguage';
 
-import { Background, Navbar, Footer, Sidebar } from '@components/global';
+import { Background, Navbar, Sidebar } from '@components/global';
 import { BlogCard, Pill } from '@components/shared';
 
 import type { blogPostType } from '@utils/getPostsList';
@@ -50,7 +50,7 @@ export default function Index() {
             ))}
           </div>
 
-          <div className='flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap'>
+          <div className='flex flex-row w-4/5 mx-auto justify-center mt-24 mb-32 gap-14 flex-wrap'>
             {filterPostsByLanguage(allPosts, isEnglish, tags).map(
               (post: blogPostType, index: number) => {
                 return <BlogCard key={index} {...post} />;
