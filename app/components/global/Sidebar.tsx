@@ -6,7 +6,7 @@ const Sidebar = () => {
   const { isEnglish } = useEnglishLanguage();
 
   return (
-    <aside className='w-full max-w-[1800px] fixed hidden md:flex flex-col gap-20 pl-9 top-44'>
+    <aside className='w-max fixed hidden md:flex flex-col gap-20 left-9 top-44'>
       <a
         href={'https://htportfolio.vercel.app/'}
         className='flex items-center group'

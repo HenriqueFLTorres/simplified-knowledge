@@ -17,18 +17,17 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function Index() {
-  const [tags, setTags] = useState<Array<String>>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const { isEnglish } = useEnglishLanguage();
 
   const allPosts = useLoaderData();
 
-  const handleSelectedTags = (tagName: any) => {
-    if (tags.includes(tagName)) {
-      const filteredTags = tags.filter((tag: String) => tag !== tagName);
-      setTags(filteredTags);
-    } else {
-      setTags([...tags, tagName]);
-    }
+  const handleSelectedTags = (tagName: string) => {
+    if (!tags.includes(tagName)) return setTags([...tags, tagName]);
+
+    const filteredTags = tags.filter((tag) => tag !== tagName);
+    console.log(filteredTags);
+    return setTags(filteredTags);
   };
 
   return (
@@ -45,22 +44,21 @@ export default function Index() {
               <Pill
                 key={tag}
                 name={tag}
-                handleSelectedTags={handleSelectedTags}
+                onClick={() => handleSelectedTags(tag)}
                 activeTags={tags}
               />
             ))}
           </div>
 
           <div className='flex flex-row w-4/5 mx-auto justify-center mt-24 gap-14 flex-wrap'>
-            {filterPostsByLanguage(allPosts, isEnglish).map(
+            {filterPostsByLanguage(allPosts, isEnglish, tags).map(
               (post: blogPostType, index: number) => {
                 return <BlogCard key={index} {...post} />;
               }
             )}
           </div>
-          
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

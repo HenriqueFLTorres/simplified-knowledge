@@ -2,10 +2,14 @@ import type { blogPostType } from './getPostsList';
 
 export const filterPostsByLanguage = (
   posts: blogPostType[],
-  isEnglish: boolean
+  isEnglish: boolean,
+  tags: string[]
 ) => {
-  
-  return posts.filter(
-    (post: blogPostType) => post.englishLanguage === isEnglish
+  let filteredPosts = posts.filter(
+    (post) => post.englishLanguage === isEnglish
   );
+
+  if (tags.length < 1) return filteredPosts;
+
+  return filteredPosts.filter((post) => tags.includes(post.tags[0]));
 };
