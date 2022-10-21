@@ -58,7 +58,6 @@ export default function Index() {
             )}
           </div>
         </div>
-        {/* <Footer /> */}
       </div>
     </>
   );

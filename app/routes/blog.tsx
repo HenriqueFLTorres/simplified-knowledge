@@ -20,7 +20,6 @@ const Blog = () => {
       <article className='prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40 px-2'>
         <Outlet />
       </article>
-      <Footer />
     </div>
   );
 }

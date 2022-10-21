@@ -1,6 +1,6 @@
 ---
 title: 'Clean Code: Controvérsias do DRY code e o Monstro da Abstração errada'
-shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
+shortDescription: 'DRY is a principle in software development that has been followed by a large part of the programming community and basically'
 postImage: 'https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
 postedOn: '6 2 2022 20:10'
 editedOn: '6 2 2022 20:10'
@@ -16,20 +16,20 @@ import { Link } from '@remix-run/react';
 
 ## {attributes.title}
 
+<Link to={`/blog/${attributes.alternativeLanguageURL}`}>
+  <div>English Article</div>
+</Link>
+
 <img
-  src={attributes.mainImage}
+  src={attributes.postImage}
   alt=''
-  title='Imagem de David Jorre'
+  title='Imagem de David Jorre pelo Unsplash'
   className='MainImage'
 />
 
 seguido por grande parte da comunidade de programação e consiste basicamente em fazer abstrações para
 evitar repetições, não se preocupe se ficou um pouco confuso, durante este post vamos detalhar essas definições
 DRY, "Don't repeat yourself" ou "Não se repita", é um princípio no desenvolvimento de software que vem sendo
-
-<Link to={`/blog/${attributes.alternativeLanguageURL}`}>
-  <div>English Article</div>
-</Link>
 e conceitos.
 
 ### Por que é tão usado?

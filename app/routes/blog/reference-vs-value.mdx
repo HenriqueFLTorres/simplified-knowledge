@@ -1,7 +1,7 @@
 ---
 title: 'Reference and Value: Why you should know the difference'
-shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
-postImage: 'https://images.unsplash.com/photo-1512998844734-cd2cca565822?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1921'
+shortDescription: 'DRY is a principle in software development that has been followed by a large part of the programming community and basically'
+postImage: 'https://images.unsplash.com/photo-1512998844734-cd2cca565822?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=721&q=80'
 postedOn: '5 25 2022 17:26'
 editedOn: '5 25 2022 17:26'
 tags: ['JavaScript']
@@ -14,11 +14,11 @@ alternativeLanguageURL: 'referencia-vs-valor'
 import {
   CodeFragment,
   Highlight,
+  MainImage,
   PostImage,
   Warning,
 } from '@components/shared';
 import { Link } from '@remix-run/react';
-import mainImage from 'public/images/ReferenceVsValue.jpg';
 
 ## {attributes.title}
 
@@ -26,10 +26,10 @@ import mainImage from 'public/images/ReferenceVsValue.jpg';
   <div>Artigo em Português</div>
 </Link>
 
-<img
-  src={mainImage}
+<MainImage
+  src={attributes.postImage}
   alt=''
-  title='Photo by David Jorre'
+  title='Photo by David Jorre on Unsplash'
   className='MainImage'
 />
 

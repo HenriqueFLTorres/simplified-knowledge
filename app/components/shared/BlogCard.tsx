@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-import { format, formatDistance, formatRelative } from 'date-fns';
+import { formatDistance, formatRelative } from 'date-fns';
 import { ptBR, enUS } from 'date-fns/locale';
 import type { blogPostType } from '@utils/getPostsList';
 
