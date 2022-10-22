@@ -1,11 +1,11 @@
-import * as dryCodePost from '@routes/blog/dry-code-controversies.mdx';
-import * as postDryCode from '@routes/blog/controversias-dry-code.mdx';
+import * as dryCodePost from "@routes/blog/dry-code-controversies.mdx";
+import * as postDryCode from "@routes/blog/controversias-dry-code.mdx";
 
-import * as referencePost from '@routes/blog/reference-vs-value.mdx';
-import * as postReferencia from '@routes/blog/referencia-vs-valor.mdx';
+import * as referencePost from "@routes/blog/reference-vs-value.mdx";
+import * as postReferencia from "@routes/blog/referencia-vs-valor.mdx";
 
-import * as middlewarePost from '@routes/blog/express-middlewares.mdx';
-import * as middlewareNoExpress from '@routes/blog/middlewares-no-express.mdx';
+import * as middlewarePost from "@routes/blog/express-middlewares.mdx";
+import * as middlewareNoExpress from "@routes/blog/middlewares-no-express.mdx";
 
 export interface blogPostType {
   title: string;

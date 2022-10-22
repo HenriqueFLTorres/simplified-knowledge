@@ -1,20 +1,20 @@
 ---
-title: 'Middlewares no Express: Tudo que você precisa saber!'
-shortDescription: 'DRY is a principle in software development that has been followed by a large part of the programming community and basically'
-postImage: 'https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80'
-postedOn: '6 5 2022 15:09'
-editedOn: '6 5 2022 15:09'
-tags: ['Node.js', 'Express']
-readTimeInMinutes: '3'
+title: "Middlewares no Express: Tudo que você precisa saber!"
+shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
+postImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80"
+postedOn: "6 5 2022 15:09"
+editedOn: "6 5 2022 15:09"
+tags: ["Node.js", "Express"]
+readTimeInMinutes: "3"
 englishLanguage: false
-postURL: 'middlewares-no-express'
-alternativeLanguageURL: 'express-middlewares'
+postURL: "middlewares-no-express"
+alternativeLanguageURL: "express-middlewares"
 ---
 
-import { CodeFragment, Highlight, PostImage } from '@components/shared';
-import { Link } from '@remix-run/react';
+import { CodeFragment, Highlight, PostImage } from "@components/shared";
+import { Link } from "@remix-run/react";
 
-import messagePT from 'app/data/posts/express-middlewares/messagePT.png';
+import messagePT from "app/data/posts/express-middlewares/messagePT.png";
 
 ## {attributes.title}
 
@@ -24,9 +24,9 @@ import messagePT from 'app/data/posts/express-middlewares/messagePT.png';
 
 <img
   src={attributes.postImage}
-  alt=''
-  title='Imagem de Vincent Lin pelo Unsplash'
-  className='MainImage'
+  alt=""
+  title="Imagem de Vincent Lin pelo Unsplash"
+  className="MainImage"
 />
 
 Podemos falar que middlewares são, <Highlight>Funcões que rodam entre o objeto `request`
@@ -40,18 +40,18 @@ Vamos escrever uma função chamada <CodeFragment>simpleMiddleware</CodeFragment
 e depois disso, usaremos <CodeFragment>app.use(simpleMiddleware)</CodeFragment> para nosso <CodeFragment>app.get('/')</CodeFragment> ter acesso à ela.
 
 ```js
-const express = require('express');
+const express = require("express");
 const app = express();
 
 const simpleMiddleware = (req, res, next) => {
-  console.log('Middleware funcionando!');
+  console.log("Middleware funcionando!");
   next();
 };
 
 app.use(simpleMiddleware);
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>');
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World!</h1>");
 });
 
 app.listen(3000);
@@ -121,8 +121,8 @@ Saiba que quando usamos <CodeFragment>app.use(middleware)</CodeFragment>, ele te
 ```js
 app.use(myGlobalMiddleware);
 
-app.get('/about', myRouteMiddleware, (req, res) => {
-  res.send('About page');
+app.get("/about", myRouteMiddleware, (req, res) => {
+  res.send("About page");
 });
 
 // myGlobalMiddleware é chamado
@@ -135,15 +135,15 @@ Podemos passar informações entre Middleware ao modificar os seus objetos <Code
 
 ```js
 const autorizarMaioresDeIdade = (req, res, next) => {
-  if (req.query.idade >= '18') {
+  if (req.query.idade >= "18") {
     req.autorizado = true;
     next();
   } else {
-    res.send('ERRO: Você é menor de idade');
+    res.send("ERRO: Você é menor de idade");
   }
 };
 
-app.get('/', autorizarMaioresDeIdade, (req, res) => {
+app.get("/", autorizarMaioresDeIdade, (req, res) => {
   res.send(`<h1>Página principal <br/> Autorizado = ${req.autorizado} </h1>`);
 });
 ```
@@ -151,7 +151,7 @@ app.get('/', autorizarMaioresDeIdade, (req, res) => {
 Ao acessar com <CodeFragment>http://localhost:3000/?idade=18</CodeFragment>, o Middleware nos autoriza por termos os requisitos necessários, e logo depois, renderiza
 a página com a mensagem: Autorizado <CodeFragment>true</CodeFragment>.
 
-<PostImage image={messagePT} description='' />
+<PostImage image={messagePT} description="" />
 
 ### Evite erros usando Middlewares
 
@@ -160,11 +160,11 @@ mas e se quisermos "encurtar" o código com a intenção de deixá-lo mais limpo
 
 ```js
 const autorizarMaioresDeIdade = (req, res, next) => {
-  if (req.query.idade >= '18') {
+  if (req.query.idade >= "18") {
     req.autorizado = true;
     next();
   }
-  res.send('ERRO: Você é menor de idade');
+  res.send("ERRO: Você é menor de idade");
 };
 ```
 

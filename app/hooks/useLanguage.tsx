@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type LanguageProviderProps = {
   isEnglish: boolean;
@@ -29,8 +29,11 @@ export const LanguageContext = ({
   };
 
   useEffect(() => {
-    const languageStorage: any = localStorage.getItem('isEnglishLanguage');
-    if ('isEnglishLanguage' in localStorage) return;
+    if (!("isEnglishLanguage" in localStorage)) return;
+
+    let languageStorage: string | boolean =
+      localStorage.getItem("isEnglishLanguage")!;
+    languageStorage = languageStorage === "true" ? true : false;
 
     setIsEnglishLanguage(languageStorage);
   }, []);

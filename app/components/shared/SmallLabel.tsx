@@ -1,5 +1,5 @@
 const SmallLabel = ({
-  title = 'Please, GIVE ME A TITLE',
+  title = "Please, GIVE ME A TITLE",
 }: {
   title: string;
 }) => (

@@ -1,4 +1,4 @@
-import type { blogPostType } from './getPostsList';
+import type { blogPostType } from "./getPostsList";
 
 export const filterPostsByLanguage = (
   posts: blogPostType[],

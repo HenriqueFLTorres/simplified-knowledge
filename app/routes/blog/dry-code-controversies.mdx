@@ -11,8 +11,8 @@ postURL: "dry-code-controversies"
 alternativeLanguageURL: "controversias-dry-code"
 ---
 
-import { CodeFragment, Highlight } from '@components/shared';
-import { Link } from '@remix-run/react';
+import { CodeFragment, Highlight } from "@components/shared";
+import { Link } from "@remix-run/react";
 
 ## {attributes.title}
 
@@ -22,9 +22,9 @@ import { Link } from '@remix-run/react';
 
 <img
   src={attributes.postImage}
-  alt=''
-  title='Photo by David Jorre on Unsplash'
-  className='MainImage'
+  alt=""
+  title="Photo by David Jorre on Unsplash"
+  className="MainImage"
 />
 
 DRY, "Don't repeat yourself", is a principle in software development that has been
@@ -45,7 +45,7 @@ that the situation starts to get complicated.
 This post takes strong inspiration from Kent C. Dodds' conversation on
 post <a href="https://kentcdodds.com/blog/aha-programming">AHA Programming</a> and by Dan Abramov at
 
-<a href='https://overreacted.io/the-wet-codebase/'>The WET Codebase</a>.
+<a href="https://overreacted.io/the-wet-codebase/">The WET Codebase</a>.
 
 ## What are abstractions?
 
@@ -58,7 +58,7 @@ function printNameAndAge(name, age) {
   console.log(`${name} is ${age} years old.`);
 }
 
-printNameAndAge('Mary', 26);
+printNameAndAge("Mary", 26);
 // Mary is 26 years old.
 ```
 
@@ -76,7 +76,7 @@ function printNameAndAge(name, age) {
   }
 }
 
-printNameAndAge('Jonas', 235);
+printNameAndAge("Jonas", 235);
 // Jonas is 235 years old and eligible for retirement.
 ```
 
@@ -88,7 +88,7 @@ complicated, so probably your abstraction got complexier too.
 
 > Prefer duplication over the wrong abstraction.
 
-<a href='https://twitter.com/sandimetz'>Sandi Metz</a>
+<a href="https://twitter.com/sandimetz">Sandi Metz</a>
 
 The important thing is to know when to break an abstraction if it is getting more and more complex and harder to manage and implement features to support several cases, the solution is to break it to avoid a headache, and so, we enter another programming principle.
 

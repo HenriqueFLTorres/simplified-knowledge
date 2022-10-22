@@ -1,18 +1,18 @@
 ---
-title: 'Clean Code: Controvérsias do DRY code e o Monstro da Abstração errada'
-shortDescription: 'DRY is a principle in software development that has been followed by a large part of the programming community and basically'
-postImage: 'https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
-postedOn: '6 2 2022 20:10'
-editedOn: '6 2 2022 20:10'
-tags: ['Clean Code']
-readTimeInMinutes: '3'
+title: "Clean Code: Controvérsias do DRY code e o Monstro da Abstração errada"
+shortDescription: "DRY is a principle in software development that has been followed by a large part of the programming community and basically"
+postImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+postedOn: "6 2 2022 20:10"
+editedOn: "6 2 2022 20:10"
+tags: ["Clean Code"]
+readTimeInMinutes: "3"
 englishLanguage: false
-postURL: 'controversias-dry-code'
-alternativeLanguageURL: 'dry-code-controversies'
+postURL: "controversias-dry-code"
+alternativeLanguageURL: "dry-code-controversies"
 ---
 
-import { CodeFragment, Highlight } from '@components/shared';
-import { Link } from '@remix-run/react';
+import { CodeFragment, Highlight } from "@components/shared";
+import { Link } from "@remix-run/react";
 
 ## {attributes.title}
 
@@ -22,9 +22,9 @@ import { Link } from '@remix-run/react';
 
 <img
   src={attributes.postImage}
-  alt=''
-  title='Imagem de David Jorre pelo Unsplash'
-  className='MainImage'
+  alt=""
+  title="Imagem de David Jorre pelo Unsplash"
+  className="MainImage"
 />
 
 seguido por grande parte da comunidade de programação e consiste basicamente em fazer abstrações para
@@ -45,7 +45,7 @@ que a situação começa a se complicar.
 Este post se inspira fortemente na conversa de Kent C. Dodds no
 post <a href="https://kentcdodds.com/blog/aha-programming">Programação AHA</a> e por Dan Abramov em
 
-<a href='https://overreacted.io/the-wet-codebase/'>A base de código WET</a>.
+<a href="https://overreacted.io/the-wet-codebase/">A base de código WET</a>.
 
 ## O que são abstrações?
 
@@ -58,7 +58,7 @@ function printNameAndAge(nome, idade) {
   console.log(`${name} tem ${age} anos.`);
 }
 
-printNameAndAge('Maria', 26);
+printNameAndAge("Maria", 26);
 // Maria tem 26 anos.
 ```
 
@@ -88,7 +88,7 @@ complicado, então provavelmente sua abstração ganhou mais complexidade.
 
 > Prefira a duplicação ao invés abstração errada.
 
-<a href='https://twitter.com/sandimetz'>Sandi Metz</a>
+<a href="https://twitter.com/sandimetz">Sandi Metz</a>
 
 O importante é saber quando se deve quebrar uma abstração, caso ela esteja ficando cada vez mais complexa e mais difícil de
 implementar features para suportar diversos casos, a solução é quebrá-la para evitar dor de cabeça, e assim, entramos em outro

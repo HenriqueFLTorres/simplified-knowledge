@@ -1,5 +1,5 @@
-const { remarkCodeHike } = require("@code-hike/mdx")
-const theme = require("shiki/themes/one-dark-pro.json")
+const { remarkCodeHike } = require("@code-hike/mdx");
+const theme = require("shiki/themes/one-dark-pro.json");
 
 /**
  * @type {import('@remix-run/dev').AppConfig}
@@ -12,9 +12,8 @@ module.exports = {
   // publicPath: "/build/",
   // devServerPort: 8002
   mdx: {
-    remarkPlugins: [[remarkCodeHike, { theme,
-      lineNumbers: true,
-      showCopyButton: true,
-    }]],
+    remarkPlugins: [
+      [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }],
+    ],
   },
-}
+};
