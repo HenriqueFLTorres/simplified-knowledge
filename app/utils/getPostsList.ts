@@ -7,6 +7,9 @@ import * as postReferencia from "@routes/blog/referencia-vs-valor.mdx";
 import * as middlewarePost from "@routes/blog/express-middlewares.mdx";
 import * as middlewareNoExpress from "@routes/blog/middlewares-no-express.mdx";
 
+import * as bigOPost from "@routes/blog/algorithms-and-big-o.mdx"
+import * as postBigO from "@routes/blog/big-o-e-algoritimos.mdx"
+
 export interface blogPostType {
   title: string;
   postImage: string;
@@ -27,6 +30,8 @@ let posts = [
   postDryCode.attributes,
   middlewareNoExpress.attributes,
   middlewarePost.attributes,
+  bigOPost.attributes,
+  postBigO.attributes
 ];
 
 let dry = [
@@ -36,6 +41,8 @@ let dry = [
   postDryCode,
   middlewareNoExpress,
   middlewarePost,
+  bigOPost,
+  postBigO
 ];
 
 const getPosts = new Promise((resolve) => resolve(posts));
