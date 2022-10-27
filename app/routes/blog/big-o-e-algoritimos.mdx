@@ -11,8 +11,11 @@ postURL: 'algorithms-and-big-o'
 alternativeLanguageURL: 'dry-code-controversies'
 ---
 
-import { CodeFragment, Highlight } from '@components/shared';
+import { CodeFragment, Highlight, PostImage } from '@components/shared';
 import { Link } from '@remix-run/react';
+
+import BigOImage from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph.png'
+import BigOImageDark from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph_Dark.png'
 
 ## {attributes.title}
 
@@ -27,47 +30,63 @@ import { Link } from '@remix-run/react';
   className='MainImage'
 />
 
-se você é uma pessoa comum como eu, provavelmente tem uma rotina para o seu dia, passos que segue todos os dias. Algumas pessoas gostam de acordar e
-tomar uma xícara de café, e outros gostam de escovar os dentes logo de manhã e depois tomar café da manhã, ir à academia, tomar banho
-e assim por diante. Então, o que isso tem a ver com algoritmos ou notações Big O? Bem, nada com Big O por enquanto, mas algoritmos são como nossas rotinas,
-um conjunto de instruções, quando você abre o Twitter, por exemplo, eles têm um algoritmo para pesquisar tendências e os tweets mais quentes, ou quando você pesquisa
-para algo no Google, eles têm um conjunto de instruções para lidar com sua entrada.
+Se você é uma pessoa comum como eu, provavelmente tem uma rotina para o seu dia, passos que segue todos os dias.
+Algumas pessoas gostam de acordar e tomar uma xícara de café, e outras escovam os dentes logo pela manhã,
+e depois tomar café da manhã, ir à academia, tomar banho e assim por diante. Então, o que isso tem a ver com algoritmos ou notações
+Big O? Bem, nada com Big O por enquanto, mas, algoritmos são como nossas rotinas, um conjunto de instruções, falando
+sobre rotinas de computador, quando você abre o Twitter, por exemplo, eles têm um algoritmo para buscar tendências e o
+tweets mais quentes, ou quando você pesquisa algo no Google, eles têm um conjunto de instruções para lidar com a sua pesquisa.
     
-    ## Que problema eles resolvem
+## Que problema eles resolvem
     
-  Eles fazem parte do nosso dia e não necessariamente “resolvem” um problema, mas podemos conseguir o que queremos. Podemos pesquisar um e-mail usando um algoritmo de pesquisa,
-podemos encontrar uma pessoa no Instagram pelo nome ou podemos fazer coisas importantes como pousar um foguete na lua. Nós os usamos para fazer coisas pesadas que
-computadores estão fazendo muito rápido.
+  Eles fazem parte do nosso dia e não necessariamente “resolvem” um problema, mas podemos conseguir o que queremos. Podemos pesquisar
+  por um e-mail usando um algoritmo de pesquisa, podemos encontrar uma pessoa no Instagram pelo nome ou podemos fazer
+  coisas importante como pousar um foguete na lua. Nós usamos algorítimos para cálculos pesados no qual os computadores fazem muito rápido.
 
-   ## O que faz um bom algoritmo
+## O que faz um bom algoritmo
  
- Primeiro, precisamos pensar no que é uma boa solução para você, correto? Rapidez? Normalmente, tendemos a preferir os dois, mas especificamente a velocidade, podemos medi-la
-através do Big O(n). E antes que você pensasse que temos cronômetros apontando para os computadores executando algoritmos diferentes, essa é uma maneira estúpida de medir
-eles, porque existem muitos fatores como velocidade do processador, otimização do compilador ou linguagem de programação. Em vez disso, temos Big O(n), que mede a
-velocidade do algoritmo de acordo com o tamanho da entrada <Highlight>avaliando seu pior cenário</Highlight>.
+ Primeiro, precisamos pensar no que é uma boa solução para você, taxa de assertividade? Rapidez? Normalmente, tendemos a preferir
+ ambos quando se fala em eficiência de algoritmo, mas especificamente em velocidade, podemos medi-la através do Big O(n). E
+ antes de você pensar que temos cronômetros apontando para os computadores executando algoritmos diferentes, isso é uma estúpida
+ maneira de medi-los, porque existem muitos fatores como velocidade do processador, otimização do compilador ou a maneira como a linguagem
+ de programação foi construída. Em vez disso, temos `Big O(n)`, que mede a velocidade do algoritmo de acordo com o tamanho do
+ input <Highlight>avaliando seu pior cenário</Highlight>.
 
 ## Como o tamanho da entrada afeta o desempenho
 
-  É inegável que pesquisar em uma lista de 500 mil nomes de pessoas do Facebook é mais pesado do que uma lista de 2 mil membros do discord, mas como
-especificamente, isso afeta o algoritmo? Bem, dependendo da sua abordagem, ou do tipo de algoritmo escolhido, o algoritmo pode perder muito tempo pesquisando
-nomes que não são importantes para a pesquisa, se você pressionar T (20ª letra do alfabeto), por exemplo, a pessoa que você está tentando encontrar é muito mais provável
-estar próximo ao final da lista e depois ao início, e comparando as abordagens de busca linear e binária, podemos dizer com confiança que a busca binária é muito
-mais rápido que o linear.
+É inegável que pesquisar em uma lista de 500 mil nomes de pessoas do Facebook é mais pesado que uma lista de 2 mil membros
+de um grupo de discord. Mas como especificamente isso afeta o algoritmo? Bem, dependendo da sua abordagem,
+ou o tipo de algoritmo escolhido, o algoritmo pode perder muito tempo pesquisando nomes que não são importantes
+para a pesquisa, se você pressionar T (20ª letra do alfabeto), por exemplo, a pessoa que você está tentando encontrar é
+muito mais provável de estar próximo ao final da lista do que ao início e comparando as abordagens de pesquisa linear e binária,
+podemos dizer com segurança que a busca binária é muito mais rápida que a linear.
 
-  Usando uma lista de 500k de nomes ordenados alfabeticamente, usando a pesquisa linear (Big O(n)), se nosso destino for o sobrenome da lista (pior cenário), precisaríamos
-percorrer 499.999 nomes para chegar ao nosso alvo. Por exemplo, se fosse 1 ms para cada nome que passaríamos, os algoritmos levariam cerca de 8
-minutos para completar a busca, e se usarmos busca binária (Big O(log n)), o algoritmo levaria 19 tentativas no máximo resultando em 19ms
+Tomando como exemplo uma lista de 500 mil nomes ordenados alfabeticamente e utilizando o algoritmo de pesquisa linear `O(n)`, se
+nosso destino é o último nome da lista (pior cenário), precisaríamos passar por 499.999 itens para chegar
+nosso alvo. Por exemplo, se fosse 1ms para cada nome que passaríamos, os algoritmos levariam cerca de 8 minutos
+para completar a busca, e se usarmos busca binária `O(log n)`, o algoritmo levaria um máximo de 19 tentativas resultando em 19ms
 
-### Como posso saber o que é Big O no meu algoritmo?
+### Como posso definir o Big O do meu algoritmo?
 
-  Como eu disse no parágrafo anterior, a velocidade do seu algoritmo está relacionada ao tamanho de entrada dele, e o n dentro dos parênteses Big O(n) é o
-equação do seu algoritmo, um pouco confuso né? Então, de uma maneira simples de explicar, o n é como a expressão <CodeFragment>time * n</CodeFragment>,
-em uma pesquisa linear, o tempo é multiplicado pelo número de itens ou comprimento de sua matriz que você está pesquisando. Na busca binária, o Big O é
-<CodeFragment>log n</CodeFragment> "basicamente significa que o tempo sobe linearmente enquanto o n sobe exponencialmente", saiba mais aqui
-(https://stackoverflow.com/a/2307330/17776680).
+Bem, temos muitos artigos e cheatsheets explicando o desempenho de cada algoritmo, mas como eu disse no
+parágrafo anterior, a velocidade do seu algoritmo está relacionada ao seu tamanho do seu input, e o `n` dentro dos parênteses do Big O(n), é a
+equação do seu algoritmo. Então, de uma maneira simples de explicar, o `n` é o tamanho do input multiplicado pelo tempo que cada processo
+levaria, mas transformamos em uma expressão: <CodeFragment>tempo \* n</CodeFragment>. Na busca binária, por exemplo, o
+Big O é <CodeFragment>log n</CodeFragment>, equação explicada pela seguinte [resposta do Stack Overflow](https://stackoverflow.com/a/2307330/17776680)
+
+> O(log N) basicamente significa que o tempo aumenta linearmente enquanto o n aumenta exponencialmente.
 
 ### E se eu tiver mais de um tipo de algoritmo?
 
-  Como dito anteriormente, o Big o leva o pior cenário possível, então, por exemplo, se o Facebook usou diferentes tipos de algoritmos na pesquisa com base no tipo de usuário,
-se o algoritmo linear fosse para usuários gratuitos e a busca binária para usuários premium, o pior cenário seria a busca linear (não porque eles são os
-mais comuns). Portanto, nossa eficiência de tempo seria Big O(n)
+Como dito anteriormente, Big o assume o pior cenário. Se o Facebook usasse diferentes tipos de algoritmos com base em um "plano" de usário, o 
+algoritmo linear para usuários gratuitos e a busca binária para usuários premium, o pior cenário
+é a busca linear porque é a mais lenta. Veja o código abaixo.
+
+``` js
+switch (tipoDeUsuario) {
+  caso 'PREMIUM':
+    return buscaBinaria; // O(log n)
+  default:
+    return buscaLinear; // O(n)
+}
+```

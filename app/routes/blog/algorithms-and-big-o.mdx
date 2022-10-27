@@ -11,8 +11,11 @@ postURL: 'algorithms-and-big-o'
 alternativeLanguageURL: 'dry-code-controversies'
 ---
 
-import { CodeFragment, Highlight } from '@components/shared';
+import { CodeFragment, Highlight, PostImage } from '@components/shared';
 import { Link } from '@remix-run/react';
+
+import BigOImage from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph.png';
+import BigOImageDark from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph_Dark.png';
 
 ## {attributes.title}
 
@@ -27,47 +30,63 @@ import { Link } from '@remix-run/react';
   className='MainImage'
 />
 
-if you are a common person like me, you probably have a routine to your day, steps that you follow every day. Some people like to wake up and 
-have a cup of coffee, and others like to brush their teeth first thing in the morning, and then have breakfast, go to the gym, take a shower 
-and so on. So, what this has to do with algorithms or Big O notations? Well, nothing with Big O for now, but, algorithms are like our routines,
-a set of instructions, when you open Twitter, for example, they have an algorithm to search for trends and the hottest tweets, or when you search 
-for something on Google, they have a set of instructions to handle your input.
+If you are a common person like me, you probably have a routine to your day, steps that you follow every day. 
+Some people like to wake up and have a cup of coffee, and others brush their teeth first thing in the morning, 
+and then have breakfast, go to the gym, take a shower, and so on. So, what this has to do with algorithms or Big 
+O notations? Well, nothing with Big O for now, but, algorithms are like our routines, a set of instructions, talking 
+about computer routines, when you open Twitter, for example, they have an algorithm to search for trends and the 
+hottest tweets, or when you search for something on Google, they have a set of instructions to handle your input.
     
-    ## What problem do they solve
+## What problem do they solve
     
-  They are part of our day and do not necessarily "solve" a problem, but we can get what we want. We can search for an email by using a search algorithm,
-we can find one person on Instagram by their name, or we can do important things like landing a rocket on the moon. We use them to do heavy stuff that
-computers are pretty fast doing.
+  They are part of our day and do not necessarily "solve" a problem, but we can get what we want. We can search 
+  for an email by using a search algorithm, we can find one person on Instagram by their name, or we can do important 
+  things like landing a rocket on the moon. We use them to do heavy stuff that computers are pretty fast doing.
 
-   ## What makes a good algorithm
+## What makes a good algorithm
  
- First, we need to think about what's a good solution for you, correctness? speed? Usually, we tend to prefer both, but specifically speed, we can measure it
-through the Big O(n). And before you thought that we have chronometers pointing to the computers running different algorithms, this is a stupid way to measure
-them, because there are so many factors like processor speed, compiler optimization, or programming language. Instead, we have Big O(n), which measures the
-speed of the algorithm according to the size of the input <Highlight>assessing its worst-case scenario</Highlight>.
+ First, we need to think about what's a good solution for you, correctness? speed? Usually, we tend to prefer 
+ both when talking about algorithm efficiency, but specifically speed, we can measure it through the Big O(n). And 
+ before you thought that we have chronometers pointing to the computers running different algorithms, this is a stupid 
+ way to measure them, because there are so many factors like processor speed, compiler optimization, or how the programming 
+ language was built. Instead, we have `Big O(n)`, which measures the speed of the algorithm according to the size of the 
+ input <Highlight>assessing its worst-case scenario</Highlight>.
 
 ## How the input size affects performance
 
-  Is undeniable that searching through a 500k thousand list of people's names from Facebook is heavier than a 2k discord members list, but how 
-specifically, this affects the algorithm? Well, depending on your approach, or the algorithm type is chosen, the algorithm can lose a lot of time searching through
-names that aren't important for the search, if you press T (20th letter of the alphabet) for example, the person that you are trying to find is much more likely 
-to be next to the end of the list and then to the start, and comparing the linear and binary search approaches, we can confidently say that the binary search is much
-faster than the linear.
+It's undeniable that searching through a 500k thousand list of people's names from Facebook is heavier than a 2k
+discord members list. But how specifically, this affects the algorithm? Well, depending on your approach, 
+or the algorithm type chosen, the algorithm can lose a lot of time searching through names that aren't important 
+for the search, if you press T (20th letter of the alphabet) for example, the person that you are trying to find is 
+much more likely to be next to the end of the list than to the start and comparing the linear and binary search approaches, 
+we can confidently say that the binary search is much faster than the linear one.
 
-  Using a 500k list of alphabetically ordered names, using the linear search (Big O(n)), if our target is the last name of the list (worst-case scenario), we would need
-to wade through 499,999 names to get to our target. For example, if it was 1ms for each name that we would go through, the algorithms would take about 8
-minutes to complete the search, and if we would use binary search (Big O(log n)), the algorithm would take 19 maximum tries resulting in 19ms
+Taking as an example an alphabetically ordered list of 500k names and utilizing the linear search algorithm `O(n)`, if 
+our target is the last name of the list (worst-case scenario), we would need to go through 499,999 items to get to 
+our target. For example, if it was 1ms for each name that we would go through, the algorithms would take about 8 minutes 
+to complete the search, and if we would use binary search `O(log n)`, the algorithm would take a 19 maximum of tries resulting in 19ms
 
-### How can I know what Big O is in my algorithm?
+### How can I define the Big O of my algorithm?
 
-  As I have said in the previous paragraph, the speed of your algorithm is related to its input size of it, and the n inside the parenthesis Big O(n) is the
-equation of your algorithm, a bit confusing right? So in a simple way of explaining, the n is like the expression <CodeFragment>time * n</CodeFragment>,
-in a linear search, time is multiplied by the number of items or length of your array that you are searching through. In the binary search, the Big O is
-<CodeFragment>log n</CodeFragment> "basically means time goes up linearly while the n goes up exponentially", learn more from here 
-(https://stackoverflow.com/a/2307330/17776680).
+Well, we have many articles and cheatsheets explaining the performance of each algorithm, but as I have said in the previous 
+paragraph, the speed of your algorithm is related to its input size, and the `n` inside the parenthesis of the Big O(n), is the
+equation of your algorithm. So in a simple way of explaining, the `n` is the input size multiplied by the time that each process 
+would take, but we transform it into an expression: <CodeFragment>time \* n</CodeFragment>. In the binary search for example, the 
+Big O is <CodeFragment>log n</CodeFragment>, equation explained by the following [Stack Overflow answer](https://stackoverflow.com/a/2307330/17776680)
+
+> O(log N) basically means time goes up linearly while the n goes up exponentially.
 
 ### What if I have more than one type of algorithm?
 
-  As said earlier, Big o takes the worst-case scenario, so for example, if Facebook used different algorithm types on search based on the user type,
-if the linear algorithm was for free users and the binary search for premium users, the worst-case scenario is the linear search (not because they are the
-most common ones). So our time efficiency would be Big O(n)
+As said earlier, Big o takes the worst-case scenario. If Facebook used different algorithm types based on the user 
+"membership", the linear algorithm for free users, and the binary search for premium users, the worst-case scenario 
+is the linear search because it's the slowest. Check the code below.
+
+```js
+switch (userType) {
+  case 'PREMIUM':
+    return binarySearchAlgorithm; // O(log n)
+  default:
+    return linearSearchAlgorithm; // O(n)
+}
+```

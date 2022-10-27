@@ -27,12 +27,6 @@ export function links() {
       sizes: '16x16',
       href: 'favicons/favicon16.png',
     },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: 'favicons/favicon32.png',
-    },
-    { rel: 'icon', href: 'favicons/favicon16.png' },
     { rel: 'stylesheet', href: styles },
     { rel: 'stylesheet', href: codeHikeStyles },
   ];

@@ -3,6 +3,22 @@
 @tailwind base;
 
 @layer components {
+  .light-mode {
+    display: block;
+  }
+
+  .dark-mode {
+    display: none;
+  }
+
+  .dark .dark-mode {
+    display: block;
+  }
+
+  .dark .light-mode {
+    display: none;
+  }
+
   .MainImage {
     border-radius: 0.75rem;
     height: 20rem;
