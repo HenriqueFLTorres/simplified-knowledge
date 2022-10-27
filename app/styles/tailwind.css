@@ -441,14 +441,6 @@
   --tw-prose-invert-td-borders: #404040;
 }
 
-.light-mode {
-  display: block;
-}
-
-.dark-mode {
-  display: none;
-}
-
 .dark .dark-mode {
   display: block;
 }
