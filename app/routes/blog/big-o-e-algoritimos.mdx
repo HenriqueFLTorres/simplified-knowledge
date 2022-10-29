@@ -3,7 +3,7 @@ title: 'Notações Big O e algorítimos'
 shortDescription: 'Você sabe o que é um algoritmo e qual é o seu poder? Eles são usados por muitas empresas e são muito comuns do que pensamos'
 postImage: 'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
 postedOn: '10 26 2022 23:17'
-editedOn: '10 26 2022 23:17'
+editedOn: '10 29 2022 16:27'
 tags: ['Computer Science']
 readTimeInMinutes: '4'
 englishLanguage: false
@@ -11,11 +11,11 @@ postURL: 'big-o-e-algoritimos'
 alternativeLanguageURL: 'algorithms-and-big-o'
 ---
 
-import { CodeFragment, Highlight, PostImage } from '@components/shared';
+import { CodeFragment, Highlight, PostImage, Warning } from '@components/shared';
 import { Link } from '@remix-run/react';
 
-import BigOImage from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph.png'
-import BigOImageDark from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph_Dark.png'
+import BigOImage from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph.png';
+import BigOImageDark from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph_Dark.png';
 
 ## {attributes.title}
 
@@ -30,27 +30,33 @@ import BigOImageDark from 'app/data/posts/algorithms-and-big-o/PT/BigOGraph_Dark
   className='MainImage'
 />
 
+<Warning>
+  Neste post vamos dar uma olhada em algoritmos de complexidade de tempo, para
+  mais detalhes sobre o tema de complexidade de espaço, há recursos adicionais
+  no final do post
+</Warning>
+
 Se você é uma pessoa comum como eu, provavelmente tem uma rotina para o seu dia, passos que segue todos os dias.
 Algumas pessoas gostam de acordar e tomar uma xícara de café, e outras escovam os dentes logo pela manhã,
 e depois tomar café da manhã, ir à academia, tomar banho e assim por diante. Então, o que isso tem a ver com algoritmos ou notações
 Big O? Bem, nada com Big O por enquanto, mas, algoritmos são como nossas rotinas, um conjunto de instruções, falando
 sobre rotinas de computador, quando você abre o Twitter, por exemplo, eles têm um algoritmo para buscar tendências e o
 tweets mais quentes, ou quando você pesquisa algo no Google, eles têm um conjunto de instruções para lidar com a sua pesquisa.
-    
+
 ## Que problema eles resolvem
-    
-  Eles fazem parte do nosso dia e não necessariamente “resolvem” um problema, mas podemos conseguir o que queremos. Podemos pesquisar
-  por um e-mail usando um algoritmo de pesquisa, podemos encontrar uma pessoa no Instagram pelo nome ou podemos fazer
-  coisas importante como pousar um foguete na lua. Nós usamos algorítimos para cálculos pesados no qual os computadores fazem muito rápido.
+
+Eles fazem parte do nosso dia e não necessariamente “resolvem” um problema, mas podemos conseguir o que queremos. Podemos pesquisar
+por um e-mail usando um algoritmo de pesquisa, podemos encontrar uma pessoa no Instagram pelo nome ou podemos fazer
+coisas importante como pousar um foguete na lua. Nós usamos algorítimos para cálculos pesados no qual os computadores fazem muito rápido.
 
 ## O que faz um bom algoritmo
- 
- Primeiro, precisamos pensar no que é uma boa solução para você, taxa de assertividade? Rapidez? Normalmente, tendemos a preferir
- ambos quando se fala em eficiência de algoritmo, mas especificamente em velocidade, podemos medi-la através do Big O(n). E
- antes de você pensar que temos cronômetros apontando para os computadores executando algoritmos diferentes, isso é uma estúpida
- maneira de medi-los, porque existem muitos fatores como velocidade do processador, otimização do compilador ou a maneira como a linguagem
- de programação foi construída. Em vez disso, temos `Big O(n)`, que mede a velocidade do algoritmo de acordo com o tamanho do
- input <Highlight>avaliando seu pior cenário</Highlight>.
+
+Primeiro, precisamos pensar no que é uma boa solução para você, taxa de assertividade? Rapidez? Normalmente, tendemos a preferir
+ambos quando se fala em eficiência de algoritmo, mas especificamente em velocidade, podemos medi-la através do Big O(n). E
+antes de você pensar que temos cronômetros apontando para os computadores executando algoritmos diferentes, isso é uma estúpida
+maneira de medi-los, porque existem muitos fatores como velocidade do processador, otimização do compilador ou a maneira como a linguagem
+de programação foi construída. Em vez disso, temos `Big O(n)`, que mede a velocidade do algoritmo de acordo com o tamanho do
+input <Highlight>avaliando seu pior cenário</Highlight>.
 
 ## Como o tamanho da entrada afeta o desempenho
 
@@ -78,11 +84,11 @@ Big O é <CodeFragment>log n</CodeFragment>, equação explicada pela seguinte [
 
 ### E se eu tiver mais de um tipo de algoritmo?
 
-Como dito anteriormente, Big o assume o pior cenário. Se o Facebook usasse diferentes tipos de algoritmos com base em um "plano" de usário, o 
+Como dito anteriormente, Big o assume o pior cenário. Se o Facebook usasse diferentes tipos de algoritmos com base em um "plano" de usário, o
 algoritmo linear para usuários gratuitos e a busca binária para usuários premium, o pior cenário
 é a busca linear porque é a mais lenta. Veja o código abaixo.
 
-``` js
+```js
 switch (tipoDeUsuario) {
   caso 'PREMIUM':
     return buscaBinaria; // O(log n)
@@ -90,3 +96,8 @@ switch (tipoDeUsuario) {
     return buscaLinear; // O(n)
 }
 ```
+
+### Informações adicionais
+
+[Vídeo do canal Código Fonte](https://www.youtube.com/watch?v=RGD3iwqDdAE) <br/>
+[Excelente artigo FreeCodeCamp](https://www.freecodecamp.org/portuguese/news/o-que-e-a-notacao-big-o-complexidade-de-tempo-e-de-espaco)

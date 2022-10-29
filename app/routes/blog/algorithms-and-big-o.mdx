@@ -3,7 +3,7 @@ title: 'Big O notations and algorithms'
 shortDescription: "Do you know what's an algorithm and what it's power? They are used by many companies and are much common than we think"
 postImage: 'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
 postedOn: '10 26 2022 23:17'
-editedOn: '10 26 2022 23:17'
+editedOn: '10 29 2022 16:27'
 tags: ['Computer Science']
 readTimeInMinutes: '4'
 englishLanguage: true
@@ -11,7 +11,7 @@ postURL: 'algorithms-and-big-o'
 alternativeLanguageURL: 'big-o-e-algoritimos'
 ---
 
-import { CodeFragment, Highlight, PostImage } from '@components/shared';
+import { CodeFragment, Highlight, PostImage, Warning } from '@components/shared';
 import { Link } from '@remix-run/react';
 
 import BigOImage from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph.png';
@@ -29,6 +29,10 @@ import BigOImageDark from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph_Dark
   title='Imagem de Andrik Langfield pelo Unsplash'
   className='MainImage'
 />
+
+<Warning>
+  In this post we're going to take a look at time complexity algorithms, for further details on the space complexity theme, there are additional resources at the end of the post
+</Warning>
 
 If you are a common person like me, you probably have a routine to your day, steps that you follow every day. 
 Some people like to wake up and have a cup of coffee, and others brush their teeth first thing in the morning, 
@@ -90,3 +94,9 @@ switch (userType) {
     return linearSearchAlgorithm; // O(n)
 }
 ```
+
+### Aditional Resources
+
+[Awesome video from WDS](https://www.youtube.com/watch?v=itn09C2ZB9Y) <br/>
+[Big o on Wikipedia](https://en.wikipedia.org/wiki/Big_O_notation) <br/>
+[Big o Cheatsheet](https://www.bigocheatsheet.com/)
