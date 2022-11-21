@@ -76,6 +76,8 @@ export default BlogCard;
 
 const CardTag = ({ name, index }: { name: string; index: number }) => {
   const delay = (index + 1) * 200;
+  console.log(name, delay)
+
   return (
     <div
       className={`text-xs font-medium translate-y-4 group-hover/card:translate-y-0 opacity-0 group-hover/card:opacity-100 text-neutral-100 dark:text-neutral-800 py-1 px-3 rounded-full bg-neutral-800 dark:bg-neutral-200 transition-[opacity,_transform] duration-[${delay}ms]`}

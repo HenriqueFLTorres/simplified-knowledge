@@ -1250,6 +1250,14 @@
   transition-duration: 300ms;
 }
 
+.duration-\[600ms\] {
+  transition-duration: 600ms;
+}
+
+.duration-\[800ms\] {
+  transition-duration: 800ms;
+}
+
 /*
 ! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
 */
