@@ -86,9 +86,27 @@
  *
  */
 
+.ch-codegroup {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
 .ch-codeblock {
   filter: none !important;
   box-shadow: none !important;
+}
+
+.ch-frame-title-bar {
+  background-color: #222222 !important;
+}
+
+.ch-editor-tab {
+  background-color: #222222 !important;
+  border-bottom-color: #303030 !important;
+}
+
+.ch-editor-tab.ch-editor-tab-active {
+  border-bottom-color: #dddddd !important;
 }
 
 .ch-frame-buttons {
@@ -135,7 +153,8 @@
 
 .ch-editor-frame {
   height: max-content !important;
-  max-height: 500px !important;
+  /* max-height: 100px !important; */
+  max-height: max-content !important;
 }
 
 .ch-code-line-number {

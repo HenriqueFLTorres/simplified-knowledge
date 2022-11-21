@@ -1,0 +1,452 @@
+---
+title: 'Aumentando a legibilidade do código'
+shortDescription: "Neste artigo, mostrarei meus métodos para tornar meu código JavaScript e React mais legível."
+postImage: 'https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80'
+postedOn: '11 20 2022 10:12'
+editedOn: '11 20 2022 10:12'
+tags: ['Clean Code', 'JavaScript', 'React.js']
+readTimeInMinutes: '9'
+englishLanguage: false
+postURL: 'aumentando-legibilidade-do-codigo'
+alternativeLanguageURL: 'boost-code-readability'
+---
+
+import {
+  CodeFragment,
+  Highlight,
+  PostImage,
+  Warning,
+} from '@components/shared';
+import { Link } from '@remix-run/react';
+
+## {attributes.title}
+
+<Link to={`/blog/${attributes.alternativeLanguageURL}`}>
+  <div>English Article</div>
+</Link>
+
+<img
+  src={attributes.postImage}
+  alt=''
+  title='Imagem de Colin Lloyd pelo Unsplash'
+  className='MainImage'
+/>
+
+<Warning>
+  A maioria das dicas apresentadas neste artigo dependerá do ES6 (ECMAScript 2015)
+  sintaxe
+</Warning>
+
+## Desestruturando
+
+A desestruturação pode ser útil para retirar itens individuais de um objeto ou array. Tenha cuidado ao usar com arrays, pois você pode se confundir facilmente renomeando alguma propriedade de maneira errada, vamos dar uma olhada em um exemplo:
+
+```js
+// alunos => [idade, série]
+const alunos = [
+  [19, 80.9],
+  [21, 75.2],
+  [19, 88.7],
+];
+
+alunos.forEach(([idade]) => idade); // 19, 21, 19
+
+// Mesmo renomeando o primeiro valor como nota, obtemos a idade
+alunos.forEach(([série, idade]) => série); // 19, 21, 19
+
+// Podemos pular valores de uma array usando uma vírgula (,)
+alunos.forEach(([, nota]) => nota); // 80.9, 75.2, 88.7
+```
+
+Agora usando um objeto.
+
+```js
+const alunos = {
+  Kevin: {
+    idade: 19,
+    nota: 80,9,
+  },
+  Laura: {
+    idade: 21,
+    nota: 75,2,
+  },
+};
+
+const { Kevin } = alunos;
+
+Kevin.nota; // 80.9
+```
+
+## Usando acessadores de propriedade
+
+Podemos ter acesso a uma propriedade de duas maneiras, você pode usar o simples ponto `.`, ou a notação de acesso colchete `[]`.
+
+```jsx
+const Kevin = {
+  idade: 19,
+  nota: 80,9
+}
+
+Kevin['nota']) // 80.9
+```
+
+Um exemplo com `CSS Modules`: usando um nome de classe com caracteres especiais.
+
+```jsx
+const Texto = () => {
+  return <p className={styles['primary-text']}>Olá!</p>;
+};
+```
+
+Se desejar, você também pode acessar as propriedades dinamicamente:
+
+```js
+const mensagensDeStatus = {
+  ERRO: 'servidor morreu',
+  CARREGANDO: 'Estamos dando o nosso melhor',
+  OCIOSO: 'Aguardando entrada',
+};
+
+const status = getCurrentStatus(); // CARREGANDO
+
+mensagensDeStatus[status]; // Estamos dando o nosso melhor
+```
+
+## Usando parâmetros de função de objeto
+
+Isso é situacional, mas geralmente quando tenho mais de 2 ou 3 parâmetros em uma função, uso esse método. Compare as funções abaixo:
+
+```js
+const retorneListaRandomica = (tamanhoDaLista, variacaoDeConteudo, delayEmMS) =>
+  nova Promessa((resolve) => {
+    const numeroRandomico = () => Math.ceil(Math.random() * variacaoDeConteudo);
+
+    const arrayGerada = Array(tamanhoDaLista)
+      .fill(0)
+      .map((_) => numeroRandomico());
+
+    setTimeout(() => resolve(generatedArray), delayEmMS);
+  });
+
+retorneListaRandomica(8, 5, 2000).then((array) => array); // [4, 4, 5, 1, 4, 5, 1, 4]
+```
+
+Desculpe, não consegui pensar em nada melhor do que isso. Mas vamos agora dar uma olhada nos parâmetros em objetos.
+
+```js
+const retorneListaRandomica = ({ tamanhoDaLista, variacaoDeConteudo, delayEmMS }) =>
+new Promise((resolve) => ... );
+
+retorneListaRandomica({ tamanhoDaLista: 8, delayEmMS: 2000, variacaoDeConteudo: 5 });
+```
+
+Agora, não nos perdemos em nossos parâmetros e não precisamos nos preocupar em ordená-los corretamente.
+
+## Dicionários
+
+Às vezes, queremos traduzir alguns retornos ou receber uma mensagem por status. Os dicionários podem fazer isso facilmente sem escrever um monte de `if statements`.
+Eles foram mencionados anteriormente em um bloco de código antes, então vamos retroceder.
+
+```js
+const ifStatement = (status) => {
+  if (status === 'ERRO') return 'servidor morreu';
+  if (status === 'CARREGANDO') return 'Estamos tentando o nosso melhor';
+  if (status === 'OCIOSO') return 'Aguardando entrada';
+};
+
+ifStatement('ERRO');
+
+const switchCases = (status) => {
+  switch (status) {
+    case 'ERRO':
+      return 'servidor morreu';
+    case 'CARREGANDO':
+      return 'Estamos dando o nosso melhor';
+    case 'OCIOSO':
+      return 'Aguardando entrada';
+    default:
+      throw new Error(`Status: ${status}, não encontrado`);
+  }
+};
+
+switchCases('ERRO');
+
+dicionário const = {
+  ERRO: 'servidor morreu',
+  CARREGANDO: 'Estamos dando o nosso melhor',
+  OCIOSO: 'Aguardando entrada',
+};
+
+dicionário['ERRO'];
+```
+
+- **If statements -** Legibilidade média e 3 linhas
+- **Switch cases -** Legibilidade média e 7-9 linhas
+- **Dicionários -** Fácil legibilidade e 3 linhas
+
+## Arrow functions
+
+As arrow functions têm suas desvantagens quando comparadas com as normais, mas você pode obter um bom resultado usando-as. Veja algumas comparações abaixo.
+
+```js
+// Versão normal
+function dobrarValorF(valor) {
+  return value * 2;
+}
+
+function retorneNomeDePessoasF(pessoas) {
+  return pessoas.map((pessoa) => pessoa.nome);
+}
+
+// Versão Arrow function
+const dobrarValorA = (valor) => valor * 2;
+
+const retorneNomeDePessoasA = (pessoas) => pessoas.map((pessoa) => pessoa.nome);
+
+// Desestruturando
+const retorneNomeDePessoasA = (pessoas) => pessoas.map(({ nome }) => nome);
+```
+
+Usando-os, podemos fazer tudo em apenas uma linha e omitir os parênteses em torno dos parâmetros caso haja **apenas um**. Na linha 27, combinamos a desestruturação com `arrow functions`.
+
+## Guard clauses - Evitando o <CodeFragment>else</CodeFragment>
+
+Quando usamos `if statements`, pretendemos cobrir todos os casos de que precisamos, consequentemente inundando nosso código com o <CodeFragment>else</CodeFragment>. Vamos pegar este exemplo que usa o <CodeFragment>return</CodeFragment>:
+
+```js
+const verificarIdade = (idade) => {
+  if (idade < 18) {
+    return 'Não pode entrar na festa.';
+  } else if (idade >= 18 && idade < 21) {
+    return 'Pode entrar, mas não pode beber.';
+  } else {
+    return 'Pode entrar e beber.';
+  }
+};
+```
+
+Na função <CodeFragment>verificarIdade</CodeFragment> verificamos o `input`, e a lógica funciona assim:
+
+- Se a pessoa estiver mais que 18 anos ela **não pode entrar na festa**.
+- Se tiver menos de 21 anos, mas 18 anos ou mais, pode **entrar** mas **não beber**.
+- Se forem mais velhos, podem **entrar** e **beber**.
+
+Temos alguns problemas neste código que podemos corrigir:
+
+- Na linha 4, não precisamos verificar se a pessoa tem mais de 18 anos porque já a retornamos na linha 2.
+- Precisamos apenas retornar uma mensagem, então nos podemos colocar a condição e a declaração de retorno em uma única linha, alguns programadores não gostam dessa forma, então use o que achar melhor para você.
+- Podemos substituir as palavras-chave <CodeFragment>else if</CodeFragment> e <CodeFragment>else</CodeFragment> por `if statements` e até mesmo omitir o <CodeFragment>else</CodeFragment> na última linha.
+
+Vamos refatorar e conferir.
+
+```js
+const verificarIdade = (idade) => {
+  if (idade < 18) return 'Não pode entrar na festa.';
+  if (idade < 21) return 'Pode entrar, mas não pode beber.';
+
+  return 'Pode entrar e beber.';
+};
+```
+
+Veja como podemos usar as formas `linha 2` ou `linha 3-4` para retornar a mensagem, então use o que parecer melhor para você. Pessoalmente, para mensagens longas, uso o segundo método. Em conclusão, avalie se você precisa usar ou não uma `keyword`.
+
+#### Quando não podemos evitar a `keyword` <CodeFragment>else</CodeFragment>
+
+Normalmente, não podemos evitar o uso de <CodeFragment>else</CodeFragment> se precisarmos retornar a mesma coisa para ambas as condições.
+
+```js
+const verificarCargos = (usuário) => {
+  if (user.isPremium) renderizarStatusPremium();
+  else renderizarAnuncios();
+
+  return renderizarInterfaceDoAplicativo();
+};
+```
+
+## Operador `Spread` para passar props no React
+
+Este operador é responsável por obter o restante de um objeto, vamos supor que precisamos mapear uma lista de usuários e retornar um componente de cada usuário. Esta é a lista de usuários:
+
+```js
+const usuarios = [
+  {
+    nome: "Jorge",
+    idade: 72,
+    peso: 80,
+    altura: 182,
+    trabalho: "Caminhoneiro"
+  },
+  ...
+]
+```
+
+E agora o componente e os props. 
+
+Sem operador de `spread`:
+
+```jsx
+const UserCard = ({ nome, idade, trabalho }) => <></>;
+
+const app = () =>
+  users.map(({ nome, idade, trabalho }) => (
+    <UserCard nome={nome} idade={idade} trabalho={emprego} />
+  ));
+```
+
+Usando o operador `spread`:
+
+```jsx
+const App = () => users.map((user) => <UserCard {...user} />);
+```
+
+Veja como sem precisar de todos os props, ainda podemos passar o operador `spread` para o componente. Mesmo desestruturando as props no primeiro exemplo, nosso segundo bloco de código dá muito mais legibilidade.
+
+## Short Circuit Evaluation
+
+Às vezes, precisamos apenas de uma condicional curta para definir um valor de variável ou verificar uma condicional e, com o `if statements` gastamos muito espaço para coisas simples. Veja estes dois exemplos:
+
+```js
+// declaração if
+if (estaEnsolarado) roupaEscolhida = RoupaDeVerao
+else roupaEscolhida = RoupaDeInverno
+
+// Short Circuits
+const roupaEscolhida = estaEnsolarado ? RoupaDeVerao: RoupaDeInverno
+```
+
+<br/>
+
+```js
+...
+
+if (estaEnsolarado && estouFeliz) return irParaPraia()
+
+...
+```
+
+Para obter mais informações sobre os `Short Circuits`, verifique os recursos adicionais no final do artigo.
+
+## Evite Short Circuits no React
+
+Sim, eu sei que recomendei o uso de Short Circuits neste artigo, mas às vezes evitá-los pode nos dar uma melhor legibilidade em nosso código. Vejamos alguns exemplos
+
+**Short Circuits**
+```jsx
+const componente = ({ isAdmin }) => {
+const [state, setState] = useState(false)
+
+  return isAdmin? (
+    <AdminInterface>
+      <>
+        <></>
+      </>
+    </AdminInterface>
+  ) : (
+    <UserInterface>
+      <>
+        <></>
+      </>
+    </UserInterface>
+  );
+};
+```
+
+
+**Declarações if**
+```jsx
+const componente = ({ isAdmin }) => {
+const [state, setState] = useState(false)
+
+  if (éAdmin)
+    return (
+      <AdminInterface>
+        <>
+          <></>
+        </>
+      </AdminInterface>
+    );
+
+    
+  return (
+    <UserInterface>
+      <>
+        <></>
+      </>
+    </UserInterface>
+  );
+};
+```
+
+**Componentes individuais**
+```jsx
+const componente = ({ isAdmin }) => {
+  const [state, setState] = useState(false)
+  
+  if (isAdmin) return <AdminInterface />;
+
+  return <UserInterface />;
+};
+```
+
+**Componentes individuais e sem lógica interna**
+```jsx
+const componente = ({ isAdmin }) =>
+  isAdmin ? <AdminInterface /> : <UserInterface />;
+```
+
+## Exportando tudo do arquivo <CodeFragment>index</CodeFragment>
+
+Esse é um truque legal de importação/exportação, que não tem nada a ver com nosso código real, mas podemos obter resultados interessantes usando-o. É assim que costumamos import arquivos:
+
+```js
+import Cérebro from './Brain.png';
+import pasta from './BriefCase.png';
+import BuildingConstruction from './BuildingConstruction.png';
+```
+
+Agora usando um arquivo <CodeFragment>index</CodeFragment> dentro da pasta de imagens:
+
+```js index.js
+import Brain from './Brain.png';
+import BriefCase from './BriefCase.png';
+import BuildingConstruction from './BuildingConstruction.png';
+import CowboyHat from './CowboyHat.png';
+import CrystalBall from './CrystalBall.png';
+import Desktop from './Desktop.png';
+...
+	 
+export {
+ Brain,
+ BriefCase,
+ BuildingConstruction,
+ CowboyHat,
+ CrystalBall,
+ Desktop,
+...
+};
+```
+
+```js component.js
+import { Brain, BriefCase, BuildingConstruction } from 'public/Emojis';
+```
+
+Veja como transformamos 3 linhas em 1. Observe que não precisamos usar `public/Emojis/index`, JavaScript importa automaticamente o arquivo se o nome dele for `index`.
+
+## Transformando condicionais complicadas em variáveis
+
+Veja um exemplo em que estamos verificando vários condicionais para verificar se podemos renderizar o painel de gerenciamento:
+
+```js
+if (user.roles.includes("ADMIN") || (user.age > 18 && user.reputation > 10))
+   return renderManagementPannel();
+```
+Vamos refatorar o código transformando os complicados condicionais em variáveis:
+
+```js
+const isAdmin = user.roles.includes("ADMIN")
+const responsibleUser = user.age > 18 && user.reputation > 10
+
+if (isAdmin || responsibleUser) return renderManagementPannel()
+```
+
+Veja como aumentamos as linhas em nosso código, mas nossa equipe trabalhando no aplicativo pode saber facilmente porque a função <CodeFragment>renderManagementPannel</CodeFragment> está sendo acionada.

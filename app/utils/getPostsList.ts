@@ -10,6 +10,9 @@ import * as middlewareNoExpress from "@routes/blog/middlewares-no-express.mdx";
 import * as bigOPost from "@routes/blog/algorithms-and-big-o.mdx"
 import * as postBigO from "@routes/blog/big-o-e-algoritimos.mdx"
 
+import * as boostCodeReadability from "@routes/blog/boost-code-readability.mdx"
+import * as aumentandoLegibilidadeDoCodigo from "@routes/blog/aumentando-legibilidade-do-codigo.mdx"
+
 export interface blogPostType {
   title: string;
   postImage: string;
@@ -24,25 +27,29 @@ export interface blogPostType {
 }
 
 let posts = [
+  boostCodeReadability.attributes,
+  aumentandoLegibilidadeDoCodigo.attributes,
+  bigOPost.attributes,
+  postBigO.attributes,
   referencePost.attributes,
   postReferencia.attributes,
-  dryCodePost.attributes,
-  postDryCode.attributes,
   middlewareNoExpress.attributes,
   middlewarePost.attributes,
-  bigOPost.attributes,
-  postBigO.attributes
+  dryCodePost.attributes,
+  postDryCode.attributes,
 ];
 
 let dry = [
+  boostCodeReadability,
+  aumentandoLegibilidadeDoCodigo,
+  bigOPost,
+  postBigO,
   referencePost,
   postReferencia,
-  dryCodePost,
-  postDryCode,
   middlewareNoExpress,
   middlewarePost,
-  bigOPost,
-  postBigO
+  dryCodePost,
+  postDryCode,
 ];
 
 const getPosts = new Promise((resolve) => resolve(posts));
