@@ -1,14 +1,14 @@
 ---
-title: 'Boosting Code Readability'
-shortDescription: 'In this article, I will show you my methods to make my JavaScript and React code more readable.'
-postImage: 'https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80'
-postedOn: '11 20 2022 10:12'
-editedOn: '11 20 2022 10:12'
-tags: ['Clean Code', 'JavaScript', 'React.js']
-readTimeInMinutes: '9'
+title: "Boosting Code Readability"
+shortDescription: "In this article, I will show you my methods to make my JavaScript and React code more readable."
+postImage: "https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
+postedOn: "11 20 2022 10:12"
+editedOn: "11 20 2022 10:12"
+tags: ["Clean Code", "JavaScript", "React.js"]
+readTimeInMinutes: "9"
 englishLanguage: true
-postURL: 'boost-code-readability'
-alternativeLanguageURL: 'aumentando-legibilidade-do-codigo'
+postURL: "boost-code-readability"
+alternativeLanguageURL: "aumentando-legibilidade-do-codigo"
 ---
 
 import {
@@ -16,20 +16,20 @@ import {
   Highlight,
   PostImage,
   Warning,
-} from '@components/shared';
-import { Link } from '@remix-run/react';
+} from "@components/shared";
+import { Link } from "@remix-run/react";
 
 ## {attributes.title}
 
 <Link to={`/blog/${attributes.alternativeLanguageURL}`}>
-  <div>English Article</div>
+  <div>Artigo em português</div>
 </Link>
 
 <img
   src={attributes.postImage}
-  alt=''
-  title='Photo by Colin Lloyd on Unsplash'
-  className='MainImage'
+  alt=""
+  title="Photo by Colin Lloyd on Unsplash"
+  className="MainImage"
 />
 
 <Warning>
@@ -87,14 +87,14 @@ const Kevin = {
   grade: 80.9,
 };
 
-Kevin['grade']; // 80.9
+Kevin["grade"]; // 80.9
 ```
 
 An example with CSS modules: using a class name with special characters.
 
 ```jsx
 const Text = () => {
-  return <p className={styles['primary-text']}>Hello!</p>;
+  return <p className={styles["primary-text"]}>Hello!</p>;
 };
 ```
 
@@ -102,9 +102,9 @@ If you want, you can also access dynamically properties:
 
 ```js
 const statusMessages = {
-  ERROR: 'RIP server',
-  LOADING: 'We are trying our best',
-  IDLE: 'Waiting for input',
+  ERROR: "RIP server",
+  LOADING: "We are trying our best",
+  IDLE: "Waiting for input",
 };
 
 const status = getCurrentStatus(); // LOADING
@@ -149,35 +149,35 @@ They were previously mentioned in a code block before so let's rewind.
 
 ```js
 const ifStatement = (status) => {
-  if (status === 'ERROR') return 'RIP server';
-  if (status === 'LOADING') return 'We are trying our best';
-  if (status === 'IDLE') return 'Waiting for input';
+  if (status === "ERROR") return "RIP server";
+  if (status === "LOADING") return "We are trying our best";
+  if (status === "IDLE") return "Waiting for input";
 };
 
-ifStatement('ERROR');
+ifStatement("ERROR");
 
 const switchCases = (status) => {
   switch (status) {
-    case 'ERROR':
-      return 'RIP server';
-    case 'LOADING':
-      return 'We are trying our best';
-    case 'IDLE':
-      return 'Waiting for input';
+    case "ERROR":
+      return "RIP server";
+    case "LOADING":
+      return "We are trying our best";
+    case "IDLE":
+      return "Waiting for input";
     default:
       throw new Error(`Status: ${status}, not found`);
   }
 };
 
-switchCases('ERROR');
+switchCases("ERROR");
 
 const dictionary = {
-  ERROR: 'RIP server',
-  LOADING: 'We are trying our best',
-  IDLE: 'Waiting for input',
+  ERROR: "RIP server",
+  LOADING: "We are trying our best",
+  IDLE: "Waiting for input",
 };
 
-dictionary['ERROR'];
+dictionary["ERROR"];
 ```
 
 - **If statements -** Medium readability and 3 lines
@@ -216,11 +216,11 @@ When we use if statements, we intend to cover every case we need, consequently f
 ```js
 const checkAge = (age) => {
   if (age < 18) {
-    return 'Cannot enter in the party.';
+    return "Cannot enter in the party.";
   } else if (age >= 18 && age < 21) {
     return "Can enter, but can't drink.";
   } else {
-    return 'Can enter and drink.';
+    return "Can enter and drink.";
   }
 };
 ```
@@ -241,10 +241,10 @@ Let's refactor and check it out.
 
 ```js
 const checkAge = (age) => {
-  if (age < 18) return 'Cannot enter in the party.';
+  if (age < 18) return "Cannot enter in the party.";
   if (age < 21) return "Can enter, but can't drink.";
 
-  return 'Can enter and drink.';
+  return "Can enter and drink.";
 };
 ```
 
@@ -401,9 +401,9 @@ const Component = ({ isAdmin }) =>
 That's a cool import/export trick, which has nothing to do with our real code, but we can get interesting results using it. That's how we usually import files:
 
 ```js
-import Brain from './Brain.png';
-import BriefCase from './BriefCase.png';
-import BuildingConstruction from './BuildingConstruction.png';
+import Brain from "./Brain.png";
+import BriefCase from "./BriefCase.png";
+import BuildingConstruction from "./BuildingConstruction.png";
 ```
 
 Now using an <CodeFragment>index</CodeFragment> file inside the images folder:
@@ -429,7 +429,7 @@ export {
 ```
 
 ```js component.js
-import { Brain, BriefCase, BuildingConstruction } from 'public/Emojis';
+import { Brain, BriefCase, BuildingConstruction } from "public/Emojis";
 ```
 
 Look how we transformed 3 lines into 1. Note that we don't need to use `public/Emojis/index`, JavaScript automatically imports the file if its name is `index`.
@@ -439,14 +439,14 @@ Look how we transformed 3 lines into 1. Note that we don't need to use `public/E
 Look at one example in which we are checking for multiple conditionals to verify if we can render the management panel:
 
 ```js
-if (user.roles.includes('ADMIN') || (user.age > 18 && user.reputation > 10))
+if (user.roles.includes("ADMIN") || (user.age > 18 && user.reputation > 10))
   return renderManagementPannel();
 ```
 
 Let's refactor the code transforming the complicated conditionals into variables:
 
 ```js
-const isAdmin = user.roles.includes('ADMIN');
+const isAdmin = user.roles.includes("ADMIN");
 const responsibleUser = user.age > 18 && user.reputation > 10;
 
 if (isAdmin || responsibleUser) return renderManagementPannel();

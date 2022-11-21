@@ -1,9 +1,9 @@
-import { Outlet } from '@remix-run/react';
-import type { MetaFunction } from '@remix-run/node';
-import { useLocation } from 'react-router-dom';
+import { Outlet } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
+import { useLocation } from "react-router-dom";
 
-import { Navbar, Background } from '@components/global';
-import generateSocialPreview from '@utils/generateSocialPreview';
+import { Navbar, Background } from "@components/global";
+import generateSocialPreview from "@utils/generateSocialPreview";
 
 export const meta: MetaFunction = () => ({
   ...generateSocialPreview({
@@ -17,7 +17,7 @@ const Blog = () => {
     <>
       <Background />
       <Navbar />
-      <article className='prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40 px-2'>
+      <article className="prose lg:prose-xl mx-auto prose-neutral dark:prose-invert py-40 px-2">
         <Outlet />
       </article>
     </>
