@@ -1,20 +1,20 @@
 ---
-title: "Express Middlewares: Everything you need to know!"
-shortDescription: "Middlewares are interesting functions provided by Express. This post introduce you to them and show some situations where we use them"
-postImage: "https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1968&q=80"
-postedOn: "6 5 2022 15:09"
-editedOn: "6 5 2022 15:09"
-tags: ["Node.js", "Express"]
-readTimeInMinutes: "3"
+title: 'Express Middlewares: Everything you need to know!'
+shortDescription: 'Middlewares are interesting functions provided by Express. This post introduce you to them and show some situations where we use them'
+postImage: 'https://images.unsplash.com/photo-1644136322465-fc1a30e444ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1968&q=80'
+postedOn: '6 5 2022 15:09'
+editedOn: '6 5 2022 15:09'
+tags: ['Node.js', 'Express']
+readTimeInMinutes: '3'
 englishLanguage: true
-postURL: "express-middlewares"
-alternativeLanguageURL: "middlewares-no-express"
+postURL: 'express-middlewares'
+alternativeLanguageURL: 'middlewares-no-express'
 ---
 
-import { CodeFragment, Highlight, PostImage } from "@components/shared";
-import { Link } from "@remix-run/react";
+import { CodeFragment, Highlight, PostImage } from '@components/shared'
+import { Link } from '@remix-run/react'
 
-import messageEN from "app/data/posts/express-middlewares/messageEN.png";
+import messageEN from 'app/data/posts/express-middlewares/messageEN.png'
 
 ## {attributes.title}
 
@@ -41,21 +41,21 @@ Let's write a function called <CodeFragment>simpleMiddleware</CodeFragment> as o
 and after that, we'll use <CodeFragment>app.use(simpleMiddleware)</CodeFragment> for our <CodeFragment>app.get('/')</CodeFragment> to access it.
 
 ```js
-const express = require("express");
-const app = express();
+const express = require('express')
+const app = express()
 
 const simpleMiddleware = (req, res, next) => {
-  console.log("Middleware working!");
-  next();
-};
+  console.log('Middleware working!')
+  next()
+}
 
-app.use(simpleMiddleware);
+app.use(simpleMiddleware)
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World!</h1>");
-});
+app.get('/', (req, res) => {
+  res.send('<h1>Hello World!</h1>')
+})
 
-app.listen(3000);
+app.listen(3000)
 ```
 
 When we access <CodeFragment>http://localhost:3000/</CodeFragment> we will get the message <CodeFragment>"Middleware working!"</CodeFragment>.
@@ -120,11 +120,11 @@ app.get("/", (req, res, next) => {
 Know that when we use <CodeFragment>app.use(middleware)</CodeFragment>, it has a higher preference than the route one, that is, it will be called first.
 
 ```js
-app.use(myGlobalMiddleware);
+app.use(myGlobalMiddleware)
 
-app.get("/about", myRouteMiddleware, (req, res) => {
-  res.send("About page");
-});
+app.get('/about', myRouteMiddleware, (req, res) => {
+  res.send('About page')
+})
 
 // myGlobalMiddleware is called
 // myRouteMiddleware is called
@@ -162,12 +162,12 @@ but what if we want to "shorten" the code with the intention of making it cleane
 
 ```js
 const authorizeMajorAge = (req, res, next) => {
-  if (req.query.age >= "18") {
-    authorized.req = true;
-    next();
+  if (req.query.age >= '18') {
+    authorized.req = true
+    next()
   }
-  res.send("ERROR: You are a minor");
-};
+  res.send('ERROR: You are a minor')
+}
 ```
 
 express runs code even after <CodeFragment>next()</CodeFragment>, so the user would be authorized and then get an error!

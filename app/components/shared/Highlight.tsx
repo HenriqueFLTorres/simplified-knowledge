@@ -1,5 +1,5 @@
 const Highlight = ({ children }: any) => {
-  return <span className="Highlight">{children}</span>;
-};
+  return <span className="Highlight">{children}</span>
+}
 
-export default Highlight;
+export default Highlight

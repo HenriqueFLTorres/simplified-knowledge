@@ -1,8 +1,8 @@
 type PostImageProps = {
-  src: string;
-  alt?: string;
-  title: string;
-};
+  src: string
+  alt?: string
+  title: string
+}
 
 const MainImage = ({ src, alt, title }: PostImageProps) => (
   <img
@@ -12,6 +12,6 @@ const MainImage = ({ src, alt, title }: PostImageProps) => (
     src={src}
     alt={alt}
   />
-);
+)
 
-export default MainImage;
+export default MainImage

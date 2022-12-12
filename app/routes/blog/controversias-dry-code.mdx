@@ -1,18 +1,18 @@
 ---
-title: "Clean Code: Controvérsias do DRY code e o Monstro da Abstração errada"
-shortDescription: "Não é surpresa que tenhamos muitos princípios de programação que nos ajudam a criar aplicativos poderosos, mas devemos segui-los à risca?"
-postImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-postedOn: "6 2 2022 20:10"
-editedOn: "6 2 2022 20:10"
-tags: ["Clean Code"]
-readTimeInMinutes: "3"
+title: 'Clean Code: Controvérsias do DRY code e o Monstro da Abstração errada'
+shortDescription: 'Não é surpresa que tenhamos muitos princípios de programação que nos ajudam a criar aplicativos poderosos, mas devemos segui-los à risca?'
+postImage: 'https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+postedOn: '6 2 2022 20:10'
+editedOn: '6 2 2022 20:10'
+tags: ['Clean Code']
+readTimeInMinutes: '3'
 englishLanguage: false
-postURL: "controversias-dry-code"
-alternativeLanguageURL: "dry-code-controversies"
+postURL: 'controversias-dry-code'
+alternativeLanguageURL: 'dry-code-controversies'
 ---
 
-import { CodeFragment, Highlight } from "@components/shared";
-import { Link } from "@remix-run/react";
+import { CodeFragment, Highlight } from '@components/shared'
+import { Link } from '@remix-run/react'
 
 ## {attributes.title}
 
@@ -53,10 +53,10 @@ certos props, e esses props são usados para <Highlight>"deixar do seu jeito"</H
 
 ```js
 function printNameAndAge(nome, idade) {
-  console.log(`${name} tem ${age} anos.`);
+  console.log(`${name} tem ${age} anos.`)
 }
 
-printNameAndAge("Maria", 26);
+printNameAndAge('Maria', 26)
 // Maria tem 26 anos.
 ```
 

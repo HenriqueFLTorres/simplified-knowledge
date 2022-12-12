@@ -1,26 +1,21 @@
 ---
-title: "Big O notations and algorithms"
+title: 'Big O notations and algorithms'
 shortDescription: "Do you know what's an algorithm and what it's power? They are used by many companies and are much common than we think"
-postImage: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-postedOn: "10 26 2022 23:17"
-editedOn: "10 29 2022 16:27"
-tags: ["Computer Science"]
-readTimeInMinutes: "4"
+postImage: 'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+postedOn: '10 26 2022 23:17'
+editedOn: '10 29 2022 16:27'
+tags: ['Computer Science']
+readTimeInMinutes: '4'
 englishLanguage: true
-postURL: "algorithms-and-big-o"
-alternativeLanguageURL: "big-o-e-algoritimos"
+postURL: 'algorithms-and-big-o'
+alternativeLanguageURL: 'big-o-e-algoritimos'
 ---
 
-import {
-  CodeFragment,
-  Highlight,
-  PostImage,
-  Warning,
-} from "@components/shared";
-import { Link } from "@remix-run/react";
+import { CodeFragment, Highlight, PostImage, Warning } from '@components/shared'
+import { Link } from '@remix-run/react'
 
-import BigOImage from "app/data/posts/algorithms-and-big-o/EN/BigOGraph.png";
-import BigOImageDark from "app/data/posts/algorithms-and-big-o/EN/BigOGraph_Dark.png";
+import BigOImage from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph.png'
+import BigOImageDark from 'app/data/posts/algorithms-and-big-o/EN/BigOGraph_Dark.png'
 
 ## {attributes.title}
 
@@ -95,10 +90,10 @@ is the linear search because it's the slowest. Check the code below.
 
 ```js
 switch (userType) {
-  case "PREMIUM":
-    return binarySearchAlgorithm; // O(log n)
+  case 'PREMIUM':
+    return binarySearchAlgorithm // O(log n)
   default:
-    return linearSearchAlgorithm; // O(n)
+    return linearSearchAlgorithm // O(n)
 }
 ```
 

@@ -1,23 +1,18 @@
 ---
-title: "Aumentando a legibilidade do código"
-shortDescription: "Neste artigo, mostrarei meus métodos para tornar meu código JavaScript e React mais legível."
-postImage: "https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
-postedOn: "11 20 2022 10:12"
-editedOn: "11 20 2022 10:12"
-tags: ["Clean Code", "JavaScript", "React.js"]
-readTimeInMinutes: "9"
+title: 'Aumentando a legibilidade do código'
+shortDescription: 'Neste artigo, mostrarei meus métodos para tornar meu código JavaScript e React mais legível.'
+postImage: 'https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80'
+postedOn: '11 20 2022 10:12'
+editedOn: '11 20 2022 10:12'
+tags: ['Clean Code', 'JavaScript', 'React.js']
+readTimeInMinutes: '9'
 englishLanguage: false
-postURL: "aumentando-legibilidade-do-codigo"
-alternativeLanguageURL: "boost-code-readability"
+postURL: 'aumentando-legibilidade-do-codigo'
+alternativeLanguageURL: 'boost-code-readability'
 ---
 
-import {
-  CodeFragment,
-  Highlight,
-  PostImage,
-  Warning,
-} from "@components/shared";
-import { Link } from "@remix-run/react";
+import { CodeFragment, Highlight, PostImage, Warning } from '@components/shared'
+import { Link } from '@remix-run/react'
 
 ## {attributes.title}
 
@@ -46,16 +41,16 @@ A desestruturação pode ser útil para retirar itens individuais de um objeto o
 const alunos = [
   [19, 80.9],
   [21, 75.2],
-  [19, 88.7],
-];
+  [19, 88.7]
+]
 
-alunos.forEach(([idade]) => idade); // 19, 21, 19
+alunos.forEach(([idade]) => idade) // 19, 21, 19
 
 // Mesmo renomeando o primeiro valor como nota, obtemos a idade
-alunos.forEach(([série, idade]) => série); // 19, 21, 19
+alunos.forEach(([série, idade]) => série) // 19, 21, 19
 
 // Podemos pular valores de uma array usando uma vírgula (,)
-alunos.forEach(([, nota]) => nota); // 80.9, 75.2, 88.7
+alunos.forEach(([, nota]) => nota) // 80.9, 75.2, 88.7
 ```
 
 Agora usando um objeto.
@@ -94,22 +89,22 @@ Um exemplo com `CSS Modules`: usando um nome de classe com caracteres especiais.
 
 ```jsx
 const Texto = () => {
-  return <p className={styles["primary-text"]}>Olá!</p>;
-};
+  return <p className={styles['primary-text']}>Olá!</p>
+}
 ```
 
 Se desejar, você também pode acessar as propriedades dinamicamente:
 
 ```js
 const mensagensDeStatus = {
-  ERRO: "servidor morreu",
-  CARREGANDO: "Estamos dando o nosso melhor",
-  OCIOSO: "Aguardando entrada",
-};
+  ERRO: 'servidor morreu',
+  CARREGANDO: 'Estamos dando o nosso melhor',
+  OCIOSO: 'Aguardando entrada'
+}
 
-const status = getCurrentStatus(); // CARREGANDO
+const status = getCurrentStatus() // CARREGANDO
 
-mensagensDeStatus[status]; // Estamos dando o nosso melhor
+mensagensDeStatus[status] // Estamos dando o nosso melhor
 ```
 
 ## Usando parâmetros de função de objeto
@@ -191,20 +186,20 @@ As arrow functions têm suas desvantagens quando comparadas com as normais, mas 
 ```js
 // Versão normal
 function dobrarValorF(valor) {
-  return value * 2;
+  return value * 2
 }
 
 function retorneNomeDePessoasF(pessoas) {
-  return pessoas.map((pessoa) => pessoa.nome);
+  return pessoas.map((pessoa) => pessoa.nome)
 }
 
 // Versão Arrow function
-const dobrarValorA = (valor) => valor * 2;
+const dobrarValorA = (valor) => valor * 2
 
-const retorneNomeDePessoasA = (pessoas) => pessoas.map((pessoa) => pessoa.nome);
+const retorneNomeDePessoasA = (pessoas) => pessoas.map((pessoa) => pessoa.nome)
 
 // Desestruturando
-const retorneNomeDePessoasA = (pessoas) => pessoas.map(({ nome }) => nome);
+const retorneNomeDePessoasA = (pessoas) => pessoas.map(({ nome }) => nome)
 ```
 
 Usando-os, podemos fazer tudo em apenas uma linha e omitir os parênteses em torno dos parâmetros caso haja **apenas um**. Na linha 27, combinamos a desestruturação com `arrow functions`.
@@ -216,13 +211,13 @@ Quando usamos `if statements`, pretendemos cobrir todos os casos de que precisam
 ```js
 const verificarIdade = (idade) => {
   if (idade < 18) {
-    return "Não pode entrar na festa.";
+    return 'Não pode entrar na festa.'
   } else if (idade >= 18 && idade < 21) {
-    return "Pode entrar, mas não pode beber.";
+    return 'Pode entrar, mas não pode beber.'
   } else {
-    return "Pode entrar e beber.";
+    return 'Pode entrar e beber.'
   }
-};
+}
 ```
 
 Na função <CodeFragment>verificarIdade</CodeFragment> verificamos o `input`, e a lógica funciona assim:
@@ -241,11 +236,11 @@ Vamos refatorar e conferir.
 
 ```js
 const verificarIdade = (idade) => {
-  if (idade < 18) return "Não pode entrar na festa.";
-  if (idade < 21) return "Pode entrar, mas não pode beber.";
+  if (idade < 18) return 'Não pode entrar na festa.'
+  if (idade < 21) return 'Pode entrar, mas não pode beber.'
 
-  return "Pode entrar e beber.";
-};
+  return 'Pode entrar e beber.'
+}
 ```
 
 Veja como podemos usar as formas `linha 2` ou `linha 3-4` para retornar a mensagem, então use o que parecer melhor para você. Pessoalmente, para mensagens longas, uso o segundo método. Em conclusão, avalie se você precisa usar ou não uma `keyword`.
@@ -256,11 +251,11 @@ Normalmente, não podemos evitar o uso de <CodeFragment>else</CodeFragment> se p
 
 ```js
 const verificarCargos = (usuário) => {
-  if (user.isPremium) renderizarStatusPremium();
-  else renderizarAnuncios();
+  if (user.isPremium) renderizarStatusPremium()
+  else renderizarAnuncios()
 
-  return renderizarInterfaceDoAplicativo();
-};
+  return renderizarInterfaceDoAplicativo()
+}
 ```
 
 ## Operador `Spread` para passar props no React
@@ -285,18 +280,18 @@ E agora o componente e os props.
 Sem operador de `spread`:
 
 ```jsx
-const UserCard = ({ nome, idade, trabalho }) => <></>;
+const UserCard = ({ nome, idade, trabalho }) => <></>
 
 const app = () =>
   users.map(({ nome, idade, trabalho }) => (
     <UserCard nome={nome} idade={idade} trabalho={emprego} />
-  ));
+  ))
 ```
 
 Usando o operador `spread`:
 
 ```jsx
-const App = () => users.map((user) => <UserCard {...user} />);
+const App = () => users.map((user) => <UserCard {...user} />)
 ```
 
 Veja como sem precisar de todos os props, ainda podemos passar o operador `spread` para o componente. Mesmo desestruturando as props no primeiro exemplo, nosso segundo bloco de código dá muito mais legibilidade.
@@ -307,11 +302,11 @@ Veja como sem precisar de todos os props, ainda podemos passar o operador `sprea
 
 ```js
 // declaração if
-if (estaEnsolarado) roupaEscolhida = RoupaDeVerao;
-else roupaEscolhida = RoupaDeInverno;
+if (estaEnsolarado) roupaEscolhida = RoupaDeVerao
+else roupaEscolhida = RoupaDeInverno
 
 // Short Circuits
-const roupaEscolhida = estaEnsolarado ? RoupaDeVerao : RoupaDeInverno;
+const roupaEscolhida = estaEnsolarado ? RoupaDeVerao : RoupaDeInverno
 ```
 
 <br />
@@ -334,7 +329,7 @@ Sim, eu sei que recomendei o uso de Short Circuits neste artigo, mas às vezes e
 
 ```jsx
 const componente = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
   return isAdmin ? (
     <AdminInterface>
@@ -348,15 +343,15 @@ const componente = ({ isAdmin }) => {
         <></>
       </>
     </UserInterface>
-  );
-};
+  )
+}
 ```
 
 **Declarações if**
 
 ```jsx
 const componente = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
   if (éAdmin)
     return (
@@ -365,7 +360,7 @@ const componente = ({ isAdmin }) => {
           <></>
         </>
       </AdminInterface>
-    );
+    )
 
   return (
     <UserInterface>
@@ -373,27 +368,27 @@ const componente = ({ isAdmin }) => {
         <></>
       </>
     </UserInterface>
-  );
-};
+  )
+}
 ```
 
 **Componentes individuais**
 
 ```jsx
 const componente = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
-  if (isAdmin) return <AdminInterface />;
+  if (isAdmin) return <AdminInterface />
 
-  return <UserInterface />;
-};
+  return <UserInterface />
+}
 ```
 
 **Componentes individuais e sem lógica interna**
 
 ```jsx
 const componente = ({ isAdmin }) =>
-  isAdmin ? <AdminInterface /> : <UserInterface />;
+  isAdmin ? <AdminInterface /> : <UserInterface />
 ```
 
 ## Exportando tudo do arquivo <CodeFragment>index</CodeFragment>
@@ -401,9 +396,9 @@ const componente = ({ isAdmin }) =>
 Esse é um truque legal de importação/exportação, que não tem nada a ver com nosso código real, mas podemos obter resultados interessantes usando-o. É assim que costumamos import arquivos:
 
 ```js
-import Cérebro from "./Brain.png";
-import pasta from "./BriefCase.png";
-import BuildingConstruction from "./BuildingConstruction.png";
+import Cérebro from './Brain.png'
+import pasta from './BriefCase.png'
+import BuildingConstruction from './BuildingConstruction.png'
 ```
 
 Agora usando um arquivo <CodeFragment>index</CodeFragment> dentro da pasta de imagens:
@@ -429,7 +424,7 @@ export {
 ```
 
 ```js component.js
-import { Brain, BriefCase, BuildingConstruction } from "public/Emojis";
+import { Brain, BriefCase, BuildingConstruction } from 'public/Emojis'
 ```
 
 Veja como transformamos 3 linhas em 1. Observe que não precisamos usar `public/Emojis/index`, JavaScript importa automaticamente o arquivo se o nome dele for `index`.
@@ -439,17 +434,17 @@ Veja como transformamos 3 linhas em 1. Observe que não precisamos usar `public/
 Veja um exemplo em que estamos verificando vários condicionais para verificar se podemos renderizar o painel de gerenciamento:
 
 ```js
-if (user.roles.includes("ADMIN") || (user.age > 18 && user.reputation > 10))
-  return renderManagementPannel();
+if (user.roles.includes('ADMIN') || (user.age > 18 && user.reputation > 10))
+  return renderManagementPannel()
 ```
 
 Vamos refatorar o código transformando os complicados condicionais em variáveis:
 
 ```js
-const isAdmin = user.roles.includes("ADMIN");
-const responsibleUser = user.age > 18 && user.reputation > 10;
+const isAdmin = user.roles.includes('ADMIN')
+const responsibleUser = user.age > 18 && user.reputation > 10
 
-if (isAdmin || responsibleUser) return renderManagementPannel();
+if (isAdmin || responsibleUser) return renderManagementPannel()
 ```
 
 Veja como aumentamos as linhas em nosso código, mas nossa equipe trabalhando no aplicativo pode saber facilmente porque a função <CodeFragment>renderManagementPannel</CodeFragment> está sendo acionada.

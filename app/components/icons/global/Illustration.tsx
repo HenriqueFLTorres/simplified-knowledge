@@ -49,6 +49,6 @@ const Illustration = (
       fill="#F2F2F2"
     />
   </svg>
-);
+)
 
-export default Illustration;
+export default Illustration

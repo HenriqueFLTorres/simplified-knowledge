@@ -1,23 +1,24 @@
 ---
-title: "Boosting Code Readability"
-shortDescription: "In this article, I will show you my methods to make my JavaScript and React code more readable."
-postImage: "https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80"
-postedOn: "11 20 2022 10:12"
-editedOn: "11 20 2022 10:12"
-tags: ["Clean Code", "JavaScript", "React.js"]
-readTimeInMinutes: "9"
+title: 'Boosting Code Readability'
+shortDescription: 'In this article, I will show you my methods to make my JavaScript and React code more readable.'
+postImage: 'https://images.unsplash.com/photo-1619409437363-1b1d6e539836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80'
+postedOn: '11 20 2022 10:12'
+editedOn: '11 20 2022 10:12'
+tags: ['Clean Code', 'JavaScript', 'React.js']
+readTimeInMinutes: '9'
 englishLanguage: true
-postURL: "boost-code-readability"
-alternativeLanguageURL: "aumentando-legibilidade-do-codigo"
+postURL: 'boost-code-readability'
+alternativeLanguageURL: 'aumentando-legibilidade-do-codigo'
 ---
 
 import {
   CodeFragment,
+  ContentTable,
   Highlight,
   PostImage,
-  Warning,
-} from "@components/shared";
-import { Link } from "@remix-run/react";
+  Warning
+} from '@components/shared'
+import { Link } from '@remix-run/react'
 
 ## {attributes.title}
 
@@ -37,6 +38,8 @@ import { Link } from "@remix-run/react";
   syntax
 </Warning>
 
+<ContentTable />
+
 ## Destructuring
 
 Destructuring can be useful for retrieving individual items from an object or an array. Be careful when using arrays as you can get easily confused by renaming some property in the wrong way, let's take a look at one example:
@@ -46,16 +49,16 @@ Destructuring can be useful for retrieving individual items from an object or an
 const students = [
   [19, 80.9],
   [21, 75.2],
-  [19, 88.7],
-];
+  [19, 88.7]
+]
 
-students.forEach(([age]) => age); // 19, 21, 19
+students.forEach(([age]) => age) // 19, 21, 19
 
 // Even renaming the first value as a grade, we get their age
-students.forEach(([grade, age]) => grade); // 19, 21, 19
+students.forEach(([grade, age]) => grade) // 19, 21, 19
 
 // We can skip array values using a comma (,)
-students.forEach(([, grade]) => grade); // 80.9, 75.2, 88.7
+students.forEach(([, grade]) => grade) // 80.9, 75.2, 88.7
 ```
 
 Now using an object.
@@ -64,17 +67,17 @@ Now using an object.
 const students = {
   Kevin: {
     age: 19,
-    grade: 80.9,
+    grade: 80.9
   },
   Laura: {
     age: 21,
-    grade: 75.2,
-  },
-};
+    grade: 75.2
+  }
+}
 
-const { Kevin } = students;
+const { Kevin } = students
 
-Kevin.grade; // 80.9
+Kevin.grade // 80.9
 ```
 
 ## Using property accessors
@@ -84,32 +87,32 @@ We can have access to an object property in two ways, you can use the simple dot
 ```jsx
 const Kevin = {
   age: 19,
-  grade: 80.9,
-};
+  grade: 80.9
+}
 
-Kevin["grade"]; // 80.9
+Kevin['grade'] // 80.9
 ```
 
 An example with CSS modules: using a class name with special characters.
 
 ```jsx
 const Text = () => {
-  return <p className={styles["primary-text"]}>Hello!</p>;
-};
+  return <p className={styles['primary-text']}>Hello!</p>
+}
 ```
 
 If you want, you can also access dynamically properties:
 
 ```js
 const statusMessages = {
-  ERROR: "RIP server",
-  LOADING: "We are trying our best",
-  IDLE: "Waiting for input",
-};
+  ERROR: 'RIP server',
+  LOADING: 'We are trying our best',
+  IDLE: 'Waiting for input'
+}
 
-const status = getCurrentStatus(); // LOADING
+const status = getCurrentStatus() // LOADING
 
-statusMessages[status]; // We are trying our best
+statusMessages[status] // We are trying our best
 ```
 
 ## Using object function parameters
@@ -119,16 +122,16 @@ This is situational, but usually, when I get more than 2 or 3 parameters in a fu
 ```js
 const getRandomArray = (arrayLength, contentVariation, delayInMS) =>
   new Promise((resolve) => {
-    const randomNumber = () => Math.ceil(Math.random() * contentVariation);
+    const randomNumber = () => Math.ceil(Math.random() * contentVariation)
 
     const generatedArray = Array(arrayLength)
       .fill(0)
-      .map((_) => randomNumber());
+      .map((_) => randomNumber())
 
-    setTimeout(() => resolve(generatedArray), delayInMS);
-  });
+    setTimeout(() => resolve(generatedArray), delayInMS)
+  })
 
-getRandomArray(8, 5, 2000).then((array) => array); // [4, 4, 5, 1, 4, 5, 1, 4]
+getRandomArray(8, 5, 2000).then((array) => array) // [4, 4, 5, 1, 4, 5, 1, 4]
 ```
 
 I'm sorry, I couldn't think of anything better than this. But let's now take a look at the object notation.
@@ -149,35 +152,35 @@ They were previously mentioned in a code block before so let's rewind.
 
 ```js
 const ifStatement = (status) => {
-  if (status === "ERROR") return "RIP server";
-  if (status === "LOADING") return "We are trying our best";
-  if (status === "IDLE") return "Waiting for input";
-};
+  if (status === 'ERROR') return 'RIP server'
+  if (status === 'LOADING') return 'We are trying our best'
+  if (status === 'IDLE') return 'Waiting for input'
+}
 
-ifStatement("ERROR");
+ifStatement('ERROR')
 
 const switchCases = (status) => {
   switch (status) {
-    case "ERROR":
-      return "RIP server";
-    case "LOADING":
-      return "We are trying our best";
-    case "IDLE":
-      return "Waiting for input";
+    case 'ERROR':
+      return 'RIP server'
+    case 'LOADING':
+      return 'We are trying our best'
+    case 'IDLE':
+      return 'Waiting for input'
     default:
-      throw new Error(`Status: ${status}, not found`);
+      throw new Error(`Status: ${status}, not found`)
   }
-};
+}
 
-switchCases("ERROR");
+switchCases('ERROR')
 
 const dictionary = {
-  ERROR: "RIP server",
-  LOADING: "We are trying our best",
-  IDLE: "Waiting for input",
-};
+  ERROR: 'RIP server',
+  LOADING: 'We are trying our best',
+  IDLE: 'Waiting for input'
+}
 
-dictionary["ERROR"];
+dictionary['ERROR']
 ```
 
 - **If statements -** Medium readability and 3 lines
@@ -191,20 +194,20 @@ Arrow functions have their disadvantages when compared with normal ones, but you
 ```js
 // Function version
 function doubleValueF(value) {
-  return value * 2;
+  return value * 2
 }
 
 function getPeopleNameF(people) {
-  return people.map((person) => person.name);
+  return people.map((person) => person.name)
 }
 
 // Arrow function version
-const doubleValueA = (value) => value * 2;
+const doubleValueA = (value) => value * 2
 
-const getPeopleNameA = (people) => people.map((person) => person.name);
+const getPeopleNameA = (people) => people.map((person) => person.name)
 
 // Destructuring
-const getPeopleNameA = (people) => people.map(({ name }) => name);
+const getPeopleNameA = (people) => people.map(({ name }) => name)
 ```
 
 Using them, we can do one-liners and omit the parenthesis around the parameters in case there's **only one**. In line 27, we combine destructuring with arrow functions.
@@ -216,13 +219,13 @@ When we use if statements, we intend to cover every case we need, consequently f
 ```js
 const checkAge = (age) => {
   if (age < 18) {
-    return "Cannot enter in the party.";
+    return 'Cannot enter in the party.'
   } else if (age >= 18 && age < 21) {
-    return "Can enter, but can't drink.";
+    return "Can enter, but can't drink."
   } else {
-    return "Can enter and drink.";
+    return 'Can enter and drink.'
   }
-};
+}
 ```
 
 In the <CodeFragment>checkAge</CodeFragment> function we check for the input, and the logic work's like this:
@@ -241,11 +244,11 @@ Let's refactor and check it out.
 
 ```js
 const checkAge = (age) => {
-  if (age < 18) return "Cannot enter in the party.";
-  if (age < 21) return "Can enter, but can't drink.";
+  if (age < 18) return 'Cannot enter in the party.'
+  if (age < 21) return "Can enter, but can't drink."
 
-  return "Can enter and drink.";
-};
+  return 'Can enter and drink.'
+}
 ```
 
 Look how we can both use the `line 2` or `line 3-4` ways to return the message, so use what looks better for you. Personally, for long messages, I use the second method. In conclusion, evaluate if you need to use a keyword.
@@ -256,11 +259,11 @@ Usually, we can't avoid the use of <CodeFragment>else</CodeFragment> if we need 
 
 ```js
 const checkUserRoles = (user) => {
-  if (user.isPremium) renderPremiumStats();
-  else renderAds();
+  if (user.isPremium) renderPremiumStats()
+  else renderAds()
 
-  return renderApplicationInterface();
-};
+  return renderApplicationInterface()
+}
 ```
 
 ## Spread operator to pass React Props
@@ -285,18 +288,18 @@ And now the component and the props.
 Without spread operator:
 
 ```jsx
-const UserCard = ({ name, age, job }) => <></>;
+const UserCard = ({ name, age, job }) => <></>
 
 const App = () =>
   users.map(({ name, age, job }) => (
     <UserCard name={name} age={age} job={job} />
-  ));
+  ))
 ```
 
 Using spread operator:
 
 ```jsx
-const App = () => users.map((user) => <UserCard {...user} />);
+const App = () => users.map((user) => <UserCard {...user} />)
 ```
 
 Look how without needing all the props, we still can pass the spread operator to the component. Even destructuring the props in the first example, our second code block gives much more readability.
@@ -307,11 +310,11 @@ Sometimes we just need a short conditional to define a variable value or check a
 
 ```js
 // if statement
-if (isSunny) chosenClothing = SummerClothing;
-else chosenClothing = WinterClothing;
+if (isSunny) chosenClothing = SummerClothing
+else chosenClothing = WinterClothing
 
 // short circuit
-const chosenClothing = isSunny ? SummerClothing : WinterClothing;
+const chosenClothing = isSunny ? SummerClothing : WinterClothing
 ```
 
 <br />
@@ -334,7 +337,7 @@ Yes, I know that I recommended using short circuits in this article, but sometim
 
 ```jsx
 const Component = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
   return isAdmin ? (
     <AdminInterface>
@@ -348,15 +351,15 @@ const Component = ({ isAdmin }) => {
         <></>
       </>
     </UserInterface>
-  );
-};
+  )
+}
 ```
 
 **If statements**
 
 ```jsx
 const Component = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
   if (isAdmin)
     return (
@@ -365,7 +368,7 @@ const Component = ({ isAdmin }) => {
           <></>
         </>
       </AdminInterface>
-    );
+    )
 
   return (
     <UserInterface>
@@ -373,27 +376,27 @@ const Component = ({ isAdmin }) => {
         <></>
       </>
     </UserInterface>
-  );
-};
+  )
+}
 ```
 
 **Individual components**
 
 ```jsx
 const Component = ({ isAdmin }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(false)
 
-  if (isAdmin) return <AdminInterface />;
+  if (isAdmin) return <AdminInterface />
 
-  return <UserInterface />;
-};
+  return <UserInterface />
+}
 ```
 
 **Individual components and no internal logic**
 
 ```jsx
 const Component = ({ isAdmin }) =>
-  isAdmin ? <AdminInterface /> : <UserInterface />;
+  isAdmin ? <AdminInterface /> : <UserInterface />
 ```
 
 ## Exporting all from <CodeFragment>index</CodeFragment> file
@@ -401,9 +404,9 @@ const Component = ({ isAdmin }) =>
 That's a cool import/export trick, which has nothing to do with our real code, but we can get interesting results using it. That's how we usually import files:
 
 ```js
-import Brain from "./Brain.png";
-import BriefCase from "./BriefCase.png";
-import BuildingConstruction from "./BuildingConstruction.png";
+import Brain from './Brain.png'
+import BriefCase from './BriefCase.png'
+import BuildingConstruction from './BuildingConstruction.png'
 ```
 
 Now using an <CodeFragment>index</CodeFragment> file inside the images folder:
@@ -429,7 +432,7 @@ export {
 ```
 
 ```js component.js
-import { Brain, BriefCase, BuildingConstruction } from "public/Emojis";
+import { Brain, BriefCase, BuildingConstruction } from 'public/Emojis'
 ```
 
 Look how we transformed 3 lines into 1. Note that we don't need to use `public/Emojis/index`, JavaScript automatically imports the file if its name is `index`.
@@ -439,17 +442,17 @@ Look how we transformed 3 lines into 1. Note that we don't need to use `public/E
 Look at one example in which we are checking for multiple conditionals to verify if we can render the management panel:
 
 ```js
-if (user.roles.includes("ADMIN") || (user.age > 18 && user.reputation > 10))
-  return renderManagementPannel();
+if (user.roles.includes('ADMIN') || (user.age > 18 && user.reputation > 10))
+  return renderManagementPannel()
 ```
 
 Let's refactor the code transforming the complicated conditionals into variables:
 
 ```js
-const isAdmin = user.roles.includes("ADMIN");
-const responsibleUser = user.age > 18 && user.reputation > 10;
+const isAdmin = user.roles.includes('ADMIN')
+const responsibleUser = user.age > 18 && user.reputation > 10
 
-if (isAdmin || responsibleUser) return renderManagementPannel();
+if (isAdmin || responsibleUser) return renderManagementPannel()
 ```
 
 Look how we increase lines in our code, but our team working on the application can easily know why the <CodeFragment>renderManagementPannel</CodeFragment> function is being fired.

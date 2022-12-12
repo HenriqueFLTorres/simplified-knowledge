@@ -1,11 +1,11 @@
-import { Link } from "@remix-run/react";
-import { formatDistance, formatRelative } from "date-fns";
-import { ptBR, enUS } from "date-fns/locale";
-import type { blogPostType } from "@utils/getPostsList";
+import { Link } from '@remix-run/react'
+import { formatDistance, formatRelative } from 'date-fns'
+import { ptBR, enUS } from 'date-fns/locale'
+import type { blogPostType } from '@utils/getPostsList'
 
-import { Pencil, ReadTime } from "@components/icons/global";
-import { useEnglishLanguage } from "@hooks/useLanguage";
-import SmallLabel from "./SmallLabel";
+import { Pencil, ReadTime } from '@components/icons/global'
+import { useEnglishLanguage } from '@hooks/useLanguage'
+import SmallLabel from './SmallLabel'
 
 const BlogCard = ({
   title,
@@ -15,53 +15,53 @@ const BlogCard = ({
   tags,
   shortDescription,
   readTimeInMinutes,
-  postURL,
+  postURL
 }: blogPostType) => {
-  const uploadDate = new Date(postedOn);
-  const { isEnglish } = useEnglishLanguage();
+  const uploadDate = new Date(postedOn)
+  const { isEnglish } = useEnglishLanguage()
 
-  const hasUpdated = postedOn !== editedOn;
-  const localeObject = isEnglish ? { locale: enUS } : { locale: ptBR };
+  const hasUpdated = postedOn !== editedOn
+  const localeObject = isEnglish ? { locale: enUS } : { locale: ptBR }
 
-  const dateFormated = formatRelative(uploadDate, new Date(), localeObject);
+  const dateFormated = formatRelative(uploadDate, new Date(), localeObject)
   const editFormated = formatDistance(
     new Date(editedOn),
     new Date(),
     localeObject
-  );
+  )
 
   return (
     <Link to={`blog/${postURL}`}>
-      <div className="flex flex-col relative group/card h-[300px] w-[350px] cursor-pointer bg-gradient-to-b from-neutral-200 to-neutral-200/40 dark:from-neutral-800 dark:to-neutral-800/40 rounded-tl-3xl rounded-br-3xl clip-path-inset">
-        <div className="z-10 flex flex-row gap-2 ml-3 mt-3">
+      <div className="group/card clip-path-inset relative flex h-[300px] w-[350px] cursor-pointer flex-col rounded-tl-3xl rounded-br-3xl bg-gradient-to-b from-neutral-200 to-neutral-200/40 dark:from-neutral-800 dark:to-neutral-800/40">
+        <div className="z-10 ml-3 mt-3 flex flex-row gap-2">
           {tags.map((tag, index) => (
             <CardTag key={tag} name={tag} index={index} />
           ))}
         </div>
         <div
-          className={`absolute w-full h-full bg-cool rounded-tl-3xl rounded-br-3xl clip-path-inset duration-[400ms]`}
+          className={`bg-cool clip-path-inset absolute h-full w-full rounded-tl-3xl rounded-br-3xl duration-[400ms]`}
         >
           <img
-            className="object-cover bg-center w-full h-full rounded-tl-3xl rounded-br-3xl fade-image"
+            className="fade-image h-full w-full rounded-tl-3xl rounded-br-3xl bg-center object-cover"
             src={postImage}
             alt=""
           />
         </div>
-        <div className="px-5 py-2.5 flex flex-col justify-end mt-auto">
-          <h1 className="text-lg text-neutral-800 dark:text-neutral-100 font-semibold drop-shadow-lg">
+        <div className="mt-auto flex flex-col justify-end px-5 py-2.5">
+          <h1 className="text-lg font-semibold text-neutral-800 drop-shadow-lg dark:text-neutral-100">
             {title}
           </h1>
-          <p className="max-h-0 text-neutral-700 dark:text-neutral-400 font-normal my-2 opacity-0 group-hover/card:max-h-52 group-hover/card:opacity-100 card-transition clip-path-inset">
+          <p className="card-transition clip-path-inset my-2 max-h-0 font-normal text-neutral-700 opacity-0 group-hover/card:max-h-52 group-hover/card:opacity-100 dark:text-neutral-400">
             {shortDescription}
           </p>
           <footer className="flex flex-row justify-end gap-3 text-neutral-700 dark:text-neutral-400">
-            <p className="relative z-10 text-sm fill-neutral-200 font-semibold mr-auto">
+            <p className="relative z-10 mr-auto fill-neutral-200 text-sm font-semibold">
               {dateFormated}
             </p>
             {hasUpdated ? <EditedOnFragment editedOn={editFormated} /> : null}
-            <div className="flex flex-row w-auto justify-between items-center">
-              <ReadTime className="w-5 h-5 mr-2 fill-neutral-700 dark:fill-neutral-400" />
-              <p className="text-sm text-neutral-700 dark:text-neutral-400 font-semibold text-right">
+            <div className="flex w-auto flex-row items-center justify-between">
+              <ReadTime className="mr-2 h-5 w-5 fill-neutral-700 dark:fill-neutral-400" />
+              <p className="text-right text-sm font-semibold text-neutral-700 dark:text-neutral-400">
                 {readTimeInMinutes} min
               </p>
             </div>
@@ -69,31 +69,31 @@ const BlogCard = ({
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default BlogCard;
+export default BlogCard
 
 const CardTag = ({ name, index }: { name: string; index: number }) => {
-  const delay = (index + 1) * 200;
+  const delay = (index + 1) * 200
 
   return (
     <div
-      className={`text-xs font-medium translate-y-4 group-hover/card:translate-y-0 opacity-0 group-hover/card:opacity-100 text-neutral-100 dark:text-neutral-800 py-1 px-3 rounded-full bg-neutral-800 dark:bg-neutral-200 transition-[opacity,_transform] duration-[${delay}ms]`}
+      className={`translate-y-4 rounded-full bg-neutral-800 py-1 px-3 text-xs font-medium text-neutral-100 opacity-0 transition-[opacity,_transform] group-hover/card:translate-y-0 group-hover/card:opacity-100 dark:bg-neutral-200 dark:text-neutral-800 duration-[${delay}ms]`}
     >
       {name}
     </div>
-  );
-};
+  )
+}
 
 const EditedOnFragment = ({ editedOn }: { editedOn: string }) => (
-  <div className="group/item flex flex-row w-auto justify-between items-center">
-    <Pencil className="w-4 h-4 mr-2 fill-neutral-700 dark:fill-neutral-400" />
+  <div className="group/item flex w-auto flex-row items-center justify-between">
+    <Pencil className="mr-2 h-4 w-4 fill-neutral-700 dark:fill-neutral-400" />
     <SmallLabel
       title={editedOn}
       styling={
-        "-translate-y-6 group-hover/item:bg-red-900 group-hover/item:-translate-y-12 translate-x-0 group-hover/item:translate-x-0"
+        '-translate-y-6 group-hover/item:bg-red-900 group-hover/item:-translate-y-12 translate-x-0 group-hover/item:translate-x-0'
       }
     />
   </div>
-);
+)

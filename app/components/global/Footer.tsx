@@ -1,5 +1,5 @@
 const Footer = () => (
-  <div className="hidden sm:flex flex-row justify-center mt-20 lg:justify-between items-center px-32 w-full h-20 bg-neutral-800 text-neutral-400">
+  <div className="mt-20 hidden h-20 w-full flex-row items-center justify-center bg-neutral-800 px-32 text-neutral-400 sm:flex lg:justify-between">
     <div className="flex gap-10">
       <a
         href="https://www.linkedin.com/in/henriquefltorres/"
@@ -35,7 +35,7 @@ const Footer = () => (
       </a>
     </div>
     <div className="hidden lg:inline">
-      Designed and Developed by{" "}
+      Designed and Developed by{' '}
       <a
         href="https://github.com/HenriqueFLTorres"
         target="_blank"
@@ -46,6 +46,6 @@ const Footer = () => (
       </a>
     </div>
   </div>
-);
+)
 
-export default Footer;
+export default Footer

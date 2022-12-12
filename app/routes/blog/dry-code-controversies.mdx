@@ -1,18 +1,18 @@
 ---
-title: "Clean Code: DRY code controversies and the Monster of the Wrong Abstraction"
-shortDescription: "There is no surprise that we have many programming principles which help us creating powerful applications, but shall we follow them strictly?"
-postImage: "https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-postedOn: "6 2 2022 20:10"
-editedOn: "6 2 2022 20:10"
-tags: ["Clean Code"]
-readTimeInMinutes: "3"
+title: 'Clean Code: DRY code controversies and the Monster of the Wrong Abstraction'
+shortDescription: 'There is no surprise that we have many programming principles which help us creating powerful applications, but shall we follow them strictly?'
+postImage: 'https://images.unsplash.com/photo-1517487728715-4713140dcac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+postedOn: '6 2 2022 20:10'
+editedOn: '6 2 2022 20:10'
+tags: ['Clean Code']
+readTimeInMinutes: '3'
 englishLanguage: true
-postURL: "dry-code-controversies"
-alternativeLanguageURL: "controversias-dry-code"
+postURL: 'dry-code-controversies'
+alternativeLanguageURL: 'controversias-dry-code'
 ---
 
-import { CodeFragment, Highlight } from "@components/shared";
-import { Link } from "@remix-run/react";
+import { CodeFragment, Highlight } from '@components/shared'
+import { Link } from '@remix-run/react'
 
 ## {attributes.title}
 
@@ -53,10 +53,10 @@ certain props, and these props are used to <Highlight>"make the component your o
 
 ```js
 function printNameAndAge(name, age) {
-  console.log(`${name} is ${age} years old.`);
+  console.log(`${name} is ${age} years old.`)
 }
 
-printNameAndAge("Mary", 26);
+printNameAndAge('Mary', 26)
 // Mary is 26 years old.
 ```
 
@@ -66,15 +66,15 @@ function, which behaves uniquely at certain ages.
 ```js
 function printNameAndAge(name, age) {
   if (age < 18) {
-    console.log(`${name} is ${age} years old and cannot drink.`);
+    console.log(`${name} is ${age} years old and cannot drink.`)
   } else if (age >= 18 && age <= 120) {
-    console.log(`${name} is ${age} years old and can drive.`);
+    console.log(`${name} is ${age} years old and can drive.`)
   } else {
-    console.log(`${name} is ${age} years old and eligible for retirement.`);
+    console.log(`${name} is ${age} years old and eligible for retirement.`)
   }
 }
 
-printNameAndAge("Jonas", 235);
+printNameAndAge('Jonas', 235)
 // Jonas is 235 years old and eligible for retirement.
 ```
 
