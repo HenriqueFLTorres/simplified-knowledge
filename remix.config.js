@@ -11,9 +11,15 @@ module.exports = {
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
   // devServerPort: 8002
-  mdx: {
-    remarkPlugins: [
-      [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }]
-    ]
+  mdx: async (filename) => {
+    const [rehypeSlug] = await Promise.all([
+      import('rehype-slug').then((mod) => mod.default),
+    ])
+    return {
+      rehypePlugins: [rehypeSlug],
+      remarkPlugins: [
+        [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }]
+      ]
+    }
   }
 }

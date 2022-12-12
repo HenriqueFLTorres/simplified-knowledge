@@ -11,7 +11,7 @@ postURL: 'aumentando-legibilidade-do-codigo'
 alternativeLanguageURL: 'boost-code-readability'
 ---
 
-import { CodeFragment, Highlight, PostImage, Warning } from '@components/shared'
+import { CodeFragment, ContentTable, Highlight, PostImage, Warning } from '@components/shared'
 import { Link } from '@remix-run/react'
 
 ## {attributes.title}
@@ -31,6 +31,22 @@ import { Link } from '@remix-run/react'
   A maioria das dicas apresentadas neste artigo dependerá do ES6 (ECMAScript
   2015) sintaxe
 </Warning>
+
+<ContentTable
+  content={[
+    'Desestruturando',
+    'Usando acessadores de propriedade',
+    'Usando parâmetros de função de objeto',
+    'Dicionários',
+    'Arrow functions',
+    'Guard clauses - Evitando o else',
+    'Operador Spread para passar props no React',
+    'Short Circuit Evaluation',
+    'Evite Short Circuits no React',
+    'Exportando tudo do arquivo index',
+    'Transformando condicionais complicadas em variáveis'
+  ]}
+/>
 
 ## Desestruturando
 
@@ -220,7 +236,7 @@ const verificarIdade = (idade) => {
 }
 ```
 
-Na função <CodeFragment>verificarIdade</CodeFragment> verificamos o `input`, e a lógica funciona assim:
+Na função <CodeFragment>verificarIdade</CodeFragment> verificamos o <CodeFragment>input</CodeFragment>, e a lógica funciona assim:
 
 - Se a pessoa estiver mais que 18 anos ela **não pode entrar na festa**.
 - Se tiver menos de 21 anos, mas 18 anos ou mais, pode **entrar** mas **não beber**.
@@ -230,7 +246,7 @@ Temos alguns problemas neste código que podemos corrigir:
 
 - Na linha 4, não precisamos verificar se a pessoa tem mais de 18 anos porque já a retornamos na linha 2.
 - Precisamos apenas retornar uma mensagem, então nos podemos colocar a condição e a declaração de retorno em uma única linha, alguns programadores não gostam dessa forma, então use o que achar melhor para você.
-- Podemos substituir as palavras-chave <CodeFragment>else if</CodeFragment> e <CodeFragment>else</CodeFragment> por `if statements` e até mesmo omitir o <CodeFragment>else</CodeFragment> na última linha.
+- Podemos substituir as palavras-chave <CodeFragment>else if</CodeFragment> e <CodeFragment>else</CodeFragment> por <CodeFragment>if statements<CodeFragment> e até mesmo omitir o <CodeFragment>else</CodeFragment> na última linha.
 
 Vamos refatorar e conferir.
 
@@ -258,7 +274,7 @@ const verificarCargos = (usuário) => {
 }
 ```
 
-## Operador `Spread` para passar props no React
+## Operador <CodeFragment>Spread</CodeFragment> para passar props no React
 
 Este operador é responsável por obter o restante de um objeto, vamos supor que precisamos mapear uma lista de usuários e retornar um componente de cada usuário. Esta é a lista de usuários:
 
@@ -277,7 +293,7 @@ const usuarios = [
 
 E agora o componente e os props.
 
-Sem operador de `spread`:
+Sem operador de <CodeFragment>spread</CodeFragment>:
 
 ```jsx
 const UserCard = ({ nome, idade, trabalho }) => <></>
@@ -288,17 +304,17 @@ const app = () =>
   ))
 ```
 
-Usando o operador `spread`:
+Usando o operador <CodeFragment>spread</CodeFragment>:
 
 ```jsx
 const App = () => users.map((user) => <UserCard {...user} />)
 ```
 
-Veja como sem precisar de todos os props, ainda podemos passar o operador `spread` para o componente. Mesmo desestruturando as props no primeiro exemplo, nosso segundo bloco de código dá muito mais legibilidade.
+Veja como sem precisar de todos os props, ainda podemos passar o operador <CodeFragment>spread</CodeFragment> para o componente. Mesmo desestruturando as props no primeiro exemplo, nosso segundo bloco de código dá muito mais legibilidade.
 
 ## Short Circuit Evaluation
 
-Às vezes, precisamos apenas de uma condicional curta para definir um valor de variável ou verificar uma condicional e, com o `if statements` gastamos muito espaço para coisas simples. Veja estes dois exemplos:
+Às vezes, precisamos apenas de uma condicional curta para definir um valor de variável ou verificar uma condicional e, com o <CodeFragment>if statements</CodeFragment> gastamos muito espaço para coisas simples. Veja estes dois exemplos:
 
 ```js
 // declaração if
@@ -427,7 +443,7 @@ export {
 import { Brain, BriefCase, BuildingConstruction } from 'public/Emojis'
 ```
 
-Veja como transformamos 3 linhas em 1. Observe que não precisamos usar `public/Emojis/index`, JavaScript importa automaticamente o arquivo se o nome dele for `index`.
+Veja como transformamos 3 linhas em 1. Observe que não precisamos usar `public/Emojis/index`, JavaScript importa automaticamente o arquivo se o nome dele for <CodeFragment>index</CodeFragment>.
 
 ## Transformando condicionais complicadas em variáveis
 
